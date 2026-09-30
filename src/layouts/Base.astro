@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import { dict, t } from '../lib/i18n';
+import ShareMenu from '../components/ShareMenu.astro';
+import WechatBanner from '../components/WechatBanner.astro';
 
 interface Props {
   title?: string;
@@ -107,10 +109,11 @@ const nav = [
   })} />
 </head>
 <body class={dark ? 'on-dark' : ''} data-page={dark ? 'dark' : 'paper'}>
+  {showChrome && <WechatBanner />}
   {showChrome && (
     <header class:list={['site-head', dark && 'on-dark']}>
       <a class="mark" href="/">种 子<span class="dot">。</span></a>
-      <nav aria-label="主导航">
+      <nav class="site-nav-desktop" aria-label="主导航">
         {nav.map((n) => (
           <a href={n.href}>
             <span data-lang-zh>{n.zh}</span><span data-lang-en hidden>{n.en}</span>
@@ -118,6 +121,7 @@ const nav = [
         ))}
       </nav>
       <div class="head-tools">
+        <ShareMenu dark={dark} />
         <button class="tool-btn" type="button" data-search-open aria-label={t('nav.search')}>
           <svg class="tool-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
             <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/>
@@ -129,8 +133,40 @@ const nav = [
         <button class="tool-btn lang-btn" type="button" data-lang-toggle aria-label={t('lang.toggle')}>
           EN
         </button>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-label="菜单" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
       </div>
     </header>
+  )}
+
+  <!-- 移动端抽屉导航 -->
+  {showChrome && (
+    <aside class="mobile-nav" id="mobile-nav" hidden aria-label="移动端导航">
+      <div class="mobile-nav-backdrop" data-nav-close></div>
+      <nav class="mobile-nav-panel" aria-label="主导航">
+        <div class="mobile-nav-head">
+          <a class="mark" href="/" data-nav-close>种 子<span class="dot">。</span></a>
+          <button class="mobile-nav-close" type="button" data-nav-close aria-label="关闭">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="mobile-nav-list">
+          {nav.map((n) => (
+            <li><a href={n.href} data-nav-close>
+              <span data-lang-zh>{n.zh}</span><span data-lang-en hidden>{n.en}</span>
+              <svg class="mobile-nav-arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a></li>
+          ))}
+        </ul>
+      </nav>
+    </aside>
   )}
   <main>
     <slot />
@@ -171,5 +207,45 @@ const nav = [
   <script is:inline src="/js/i18n-data.js"></script>
   <script is:inline src="/js/i18n.js"></script>
   <script is:inline src="/js/search.js"></script>
+
+  <script is:inline>
+    // 移动端抽屉导航控制
+    (function () {
+      const toggle = document.querySelector('[data-nav-toggle]');
+      const drawer = document.getElementById('mobile-nav');
+      if (!toggle || !drawer) return;
+      let lastFocused = null;
+
+      function open() {
+        lastFocused = document.activeElement;
+        drawer.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        // 聚焦到第一个链接
+        const firstLink = drawer.querySelector('a, button');
+        setTimeout(() => firstLink?.focus(), 50);
+      }
+      function close() {
+        drawer.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        lastFocused?.focus();
+      }
+
+      toggle.addEventListener('click', () => {
+        if (drawer.hidden) open(); else close();
+      });
+      drawer.querySelectorAll('[data-nav-close]').forEach((el) => {
+        el.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !drawer.hidden) close();
+      });
+      // 抽屉打开时禁止背景滚动
+      drawer.addEventListener('click', (e) => {
+        if (e.target === drawer) close();
+      });
+    })();
+  </script>
 </body>
 </html>

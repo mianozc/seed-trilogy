@@ -1,5 +1,5 @@
 // 由 src/lib/i18n.ts 生成，请勿手动编辑
-// 生成时间: 2026-09-30T06:02:45.832Z
+// 生成时间: 2026-09-30T07:10:59.446Z
 globalThis.SEED_I18N = {
   "zh": {
     "nav.trilogy": "三部曲",
@@ -192,7 +192,20 @@ globalThis.SEED_I18N = {
     "search.hint": "输入关键词开始搜索",
     "search.resultCount": "个结果",
     "search.in": "在",
-    "search.open": "打开"
+    "search.open": "打开",
+    "share.btn": "分享",
+    "share.title": "分享这一页",
+    "share.qrHint": "生成二维码中…",
+    "share.qrTip": "微信扫一扫，在手机上阅读",
+    "share.copy": "复制",
+    "share.copied": "已复制",
+    "share.native": "系统分享",
+    "share.wechat": "微信",
+    "share.weibo": "微博",
+    "share.twitter": "X",
+    "share.wechatTip": "在微信中打开 → 长按识别上方二维码",
+    "appBrowser.tip": "建议在系统浏览器中打开，以获得完整体验（下载、签名提交、外部链接）。",
+    "appBrowser.steps": "右上角 ⋯ → 在浏览器打开"
   },
   "en": {
     "nav.trilogy": "Trilogy",
@@ -385,6 +398,19 @@ globalThis.SEED_I18N = {
     "search.hint": "Type to start searching",
     "search.resultCount": "results",
     "search.in": "in",
-    "search.open": "Open"
+    "search.open": "Open",
+    "share.btn": "Share",
+    "share.title": "Share this page",
+    "share.qrHint": "Generating QR…",
+    "share.qrTip": "Scan with WeChat to read on your phone",
+    "share.copy": "Copy",
+    "share.copied": "Copied",
+    "share.native": "System share",
+    "share.wechat": "WeChat",
+    "share.weibo": "Weibo",
+    "share.twitter": "X",
+    "share.wechatTip": "Open in WeChat → long-press the QR above to identify",
+    "appBrowser.tip": "For the best experience (download, signature, external links), open in your system browser.",
+    "appBrowser.steps": "Top-right ⋯ → Open in browser"
   }
 };

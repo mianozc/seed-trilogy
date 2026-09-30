@@ -1,6 +1,9 @@
 # 环境变量（含审核密码）
 .env
 
+# 凭证清单（含敏感信息，禁止提交）
+docs/credentials.md
+
 # 签名墙数据（运行时生成，不入库）
 data/signatures.json
 

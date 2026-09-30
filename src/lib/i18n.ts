@@ -231,6 +231,23 @@ export const dict: Record<Lang, Record<string, string>> = {
     'search.resultCount': '个结果',
     'search.in': '在',
     'search.open': '打开',
+
+    // —— 分享 ——
+    'share.btn': '分享',
+    'share.title': '分享这一页',
+    'share.qrHint': '生成二维码中…',
+    'share.qrTip': '微信扫一扫，在手机上阅读',
+    'share.copy': '复制',
+    'share.copied': '已复制',
+    'share.native': '系统分享',
+    'share.wechat': '微信',
+    'share.weibo': '微博',
+    'share.twitter': 'X',
+    'share.wechatTip': '在微信中打开 → 长按识别上方二维码',
+
+    // —— 内置浏览器提示 ——
+    'appBrowser.tip': '建议在系统浏览器中打开，以获得完整体验（下载、签名提交、外部链接）。',
+    'appBrowser.steps': '右上角 ⋯ → 在浏览器打开',
   },
 
   en: {
@@ -458,6 +475,23 @@ export const dict: Record<Lang, Record<string, string>> = {
     'search.resultCount': 'results',
     'search.in': 'in',
     'search.open': 'Open',
+
+    // —— Share ——
+    'share.btn': 'Share',
+    'share.title': 'Share this page',
+    'share.qrHint': 'Generating QR…',
+    'share.qrTip': 'Scan with WeChat to read on your phone',
+    'share.copy': 'Copy',
+    'share.copied': 'Copied',
+    'share.native': 'System share',
+    'share.wechat': 'WeChat',
+    'share.weibo': 'Weibo',
+    'share.twitter': 'X',
+    'share.wechatTip': 'Open in WeChat → long-press the QR above to identify',
+
+    // —— In-app browser banner ——
+    'appBrowser.tip': 'For the best experience (download, signature, external links), open in your system browser.',
+    'appBrowser.steps': 'Top-right ⋯ → Open in browser',
   },
 };
 

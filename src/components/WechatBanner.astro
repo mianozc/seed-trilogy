@@ -1,0 +1,89 @@
+---
+// 《种子》三部曲 · 微信/QQ/微博内置浏览器提示条
+// 检测到在内置浏览器中打开时，显示"在浏览器打开"提示
+// 默认隐藏，由客户端脚本检测 UA 后显示
+---
+
+<div class="app-browser-banner" id="app-browser-banner" hidden role="region" aria-live="polite">
+  <div class="app-browser-inner">
+    <svg class="app-browser-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 3v10m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="app-browser-text">
+      <span data-i18n="appBrowser.tip">建议在系统浏览器中打开，以获得完整体验（下载、签名提交、外部链接）。</span>
+      <span class="app-browser-steps" data-i18n="appBrowser.steps">右上角 ⋯ → 在浏览器打开</span>
+    </p>
+    <button class="app-browser-close" type="button" data-app-browser-close aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+        <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style is:global>
+  .app-browser-banner {
+    position: relative;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--red);
+  }
+  .app-browser-banner[hidden] { display: none; }
+  .app-browser-inner {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.6rem var(--gutter);
+    max-width: var(--measure-wide); margin: 0 auto;
+  }
+  .app-browser-icon { color: var(--red); flex-shrink: 0; }
+  .app-browser-text {
+    flex: 1; min-width: 0; line-height: 1.6;
+    display: flex; flex-wrap: wrap; gap: 0.4rem 0.8rem; align-items: baseline;
+  }
+  .app-browser-steps {
+    font-family: var(--mono); font-size: 0.74rem;
+    color: var(--ash-65); letter-spacing: 0.06em;
+  }
+  .app-browser-close {
+    flex-shrink: 0; color: var(--ash-65);
+    padding: 0.2rem; border-radius: 4px;
+    transition: background .2s, color .2s;
+  }
+  .app-browser-close:hover { background: rgba(255,255,255,0.1); color: var(--paper); }
+
+  /* 在暗底页面上 banner 颜色稍调 */
+  .on-dark .app-browser-banner { background: var(--void); }
+
+  @media (max-width: 560px) {
+    .app-browser-inner { padding: 0.55rem 1rem; gap: 0.4rem; }
+    .app-browser-steps { font-size: 0.7rem; }
+  }
+</style>
+
+<script>
+  (function () {
+    const banner = document.getElementById('app-browser-banner');
+    if (!banner) return;
+
+    const ua = navigator.userAgent || '';
+    // 微信、QQ、QQ浏览器、微博、支付宝、钉钉、小红书 等内置浏览器
+    const isAppBrowser = /MicroMessenger|QQ\/|QQBrowser|MicroMsg|WeiBo|AlipayClient|DingTalk|xiaomi\/MiuiBrowser|instagram|fbav|fbsn/i.test(ua)
+      && !/iPad|Tablet/i.test(ua);
+
+    if (!isAppBrowser) return;
+
+    // 已关闭过则不再显示
+    try {
+      if (sessionStorage.getItem('seed-app-banner-dismissed') === '1') return;
+    } catch (e) {}
+
+    banner.hidden = false;
+
+    banner.querySelector('[data-app-browser-close]')?.addEventListener('click', () => {
+      banner.hidden = true;
+      try { sessionStorage.setItem('seed-app-banner-dismissed', '1'); } catch (e) {}
+    });
+  })();
+</script>
