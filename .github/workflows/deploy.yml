@@ -1,6 +1,5 @@
 # 《种子》三部曲 · 自动部署
-# 推送到 main 分支时：构建 → 部署到 Cloudflare Pages
-# EdgeOne Pages 由腾讯云控制台的 Git 集成自动构建部署（无需 Actions 介入）
+# 推送到 main 分支时：构建 → 部署到 Cloudflare Pages（国际）+ Gitee Pages（国内）
 name: Deploy
 
 on:
@@ -29,11 +28,20 @@ jobs:
           PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: npm run build
 
-      # ====== Cloudflare Pages ======
+      # ====== Cloudflare Pages（国际访问） ======
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=seed-trilogy
+
+      # ====== Gitee Pages（国内访问） ======
+      - name: Deploy to Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          gitee-username: miao-zhichun
+          gitee-repo: seed-trilogy
+          gitee-token: ${{ secrets.GITEE_TOKEN }}
+          directory: dist
 
