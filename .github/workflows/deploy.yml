@@ -38,10 +38,20 @@ jobs:
 
       # ====== Gitee Pages（国内访问） ======
       - name: Deploy to Gitee Pages
-        uses: yanglbme/gitee-pages-action@main
-        with:
-          gitee-username: miao-zhichun
-          gitee-repo: seed-trilogy
-          gitee-token: ${{ secrets.GITEE_TOKEN }}
-          directory: dist
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: |
+          cd dist
+          git init
+          git checkout -b pages
+          git config user.name "miao-zhichun"
+          git config user.email "miao-zhichun@users.noreply.gitee.com"
+          git add -A
+          git commit -m "deploy: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push -f "https://miao-zhichun:${GITEE_TOKEN}@gitee.com/miao-zhichun/seed-trilogy.git" pages:pages
+          # 触发 Gitee Pages 重新构建
+          curl -s -X POST "https://gitee.com/api/v5/repos/miao-zhichun/seed-trilogy/pages/builds" \
+            -d "access_token=${GITEE_TOKEN}" \
+            -H "Content-Type: application/x-www-form-urlencoded"
+          echo "Gitee Pages deployed ✓"
 
