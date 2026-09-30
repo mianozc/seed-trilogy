@@ -134,9 +134,9 @@ const cite = {
         <li><span class="a-dot a-done">✓</span> 全文 SHA256 指纹已生成（见各书）</li>
         <li><span class="a-dot a-done">✓</span> OpenTimestamps 链上存证 · 已提交比特币（pending → confirmed，见下表）</li>
         <li><span class="a-dot a-done">✓</span> IPFS 内容寻址 CID 已生成（kubo · raw-leaves · cidv1，见下表）</li>
-        <li><span class="a-dot a-wait">○</span> IPFS 远程固定 · 待用户用 Pinata / Web3.Storage 固定</li>
-        <li><span class="a-dot a-wait">○</span> Arweave 永久存储 · 待上链</li>
-        <li><span class="a-dot a-wait">○</span> Internet Archive 备份 · 待提交</li>
+        <li><span class="a-dot a-wait">○</span> IPFS 远程固定 · 待通过 <a href="https://github.com/mianozc/seed-trilogy/actions/workflows/attest.yml" target="_blank" rel="noopener">Remote Attestation 工作流</a> 执行（需配置 PINATA_JWT）</li>
+        <li><span class="a-dot a-wait">○</span> Arweave 永久存储 · 待上链（需配置 ARWEAVE_WALLET）</li>
+        <li><span class="a-dot a-wait">○</span> Internet Archive 备份 · 待提交（工作流可自动归档，无需密钥）</li>
       </ul>
 
       <div class="ts-wrap">
