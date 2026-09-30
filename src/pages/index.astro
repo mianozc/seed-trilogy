@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import ShareQrCard from '../components/ShareQrCard.astro';
 
 const manifesto = [
   '这不是一个 AI 写的小说网站。',
@@ -73,6 +74,9 @@ const trilogy = [
       <p class="period period--xl period--red" aria-hidden="true">。</p>
       <p class="bloom-sign" data-i18n="home.bloomSign">这，就是你要建的网站。</p>
     </section>
+
+    <!-- ============ 分享二维码（固定展示） ============ -->
+    <ShareQrCard dark />
   </article>
 </Base>
 

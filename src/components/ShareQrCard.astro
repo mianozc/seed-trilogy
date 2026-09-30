@@ -1,0 +1,218 @@
+---
+// 《种子》三部曲 · 首页固定二维码卡片
+// 直接渲染在首页底部，不再弹出
+interface Props {
+  dark?: boolean;
+}
+const { dark = true } = Astro.props;
+---
+
+<section class:list={['share-qr-card', dark && 'on-dark']} aria-label="分享二维码">
+  <div class="sqc-inner">
+    <div class="sqc-text">
+      <p class="sqc-eyebrow" data-i18n="share.qrEyebrow">扫 码 进 入</p>
+      <h2 class="sqc-title" data-i18n="share.qrCardTitle">把这一份留给手机</h2>
+      <p class="sqc-desc" data-i18n="share.qrCardDesc">
+        微信扫一扫，在手机上阅读《种子》三部曲。也可以保存截图，寄给一个你信任的人。
+      </p>
+      <div class="sqc-actions">
+        <button class="sqc-copy" type="button" id="sqc-copy" data-i18n="share.copy">复制链接</button>
+        <button class="sqc-native" type="button" id="sqc-native" hidden data-i18n="share.native">系统分享</button>
+      </div>
+      <p class="sqc-url" id="sqc-url">https://seed-trilogy.com.cn</p>
+    </div>
+    <div class="sqc-qr-wrap">
+      <div class="sqc-qr" id="sqc-qr" aria-live="polite" data-i18n="share.qrHint">生成二维码中…</div>
+      <p class="sqc-qr-tip" data-i18n="share.qrTip">微信扫一扫 · 在手机上阅读</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .share-qr-card {
+    padding: clamp(4rem, 10vh, 7rem) var(--gutter);
+    border-top: 1px solid var(--mute-15);
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .share-qr-card.on-dark {
+    background: var(--void-2);
+    color: var(--paper);
+    border-top-color: var(--ash-15);
+  }
+  .sqc-inner {
+    max-width: 56rem;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .sqc-text { min-width: 0; }
+  .sqc-eyebrow {
+    font-family: var(--sans); font-size: var(--step--1);
+    letter-spacing: 0.32em; color: var(--red);
+    margin-bottom: 1rem;
+  }
+  .on-dark .sqc-eyebrow { color: var(--red); }
+  .sqc-title {
+    font-family: var(--serif); font-weight: 500;
+    font-size: var(--step-2); letter-spacing: 0.04em;
+    margin-bottom: 1rem; line-height: 1.2;
+  }
+  .sqc-desc {
+    font-family: var(--serif); font-size: var(--step-0);
+    line-height: 1.8; color: var(--mute-65);
+    max-width: 32rem;
+  }
+  .on-dark .sqc-desc { color: var(--ash-65); }
+  .sqc-actions {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-top: 1.6rem;
+  }
+  .sqc-copy, .sqc-native {
+    padding: 0.55rem 1rem;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    font-family: var(--sans); font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    transition: background .2s, color .2s;
+    cursor: pointer;
+  }
+  .sqc-copy { color: var(--ink); }
+  .on-dark .sqc-copy { color: var(--paper); border-color: var(--ash-35); }
+  .sqc-copy:hover { background: var(--ink); color: var(--paper); }
+  .on-dark .sqc-copy:hover { background: var(--paper); color: var(--ink); }
+  .sqc-copy.copied { background: var(--red); color: var(--paper); border-color: var(--red); }
+  .sqc-native { color: var(--mute-65); border-color: var(--mute-15); }
+  .on-dark .sqc-native { color: var(--ash-65); border-color: var(--ash-15); }
+
+  .sqc-url {
+    margin-top: 1rem;
+    font-family: var(--mono); font-size: 0.78rem;
+    color: var(--mute-50); word-break: break-all;
+  }
+  .on-dark .sqc-url { color: var(--ash-50); }
+
+  /* 二维码区 */
+  .sqc-qr-wrap { display: grid; place-items: center; gap: 0.6rem; }
+  .sqc-qr {
+    width: clamp(180px, 26vw, 240px);
+    aspect-ratio: 1 / 1;
+    background: #fff;
+    border: 1px solid var(--mute-15);
+    border-radius: 8px;
+    display: grid; place-items: center;
+    overflow: hidden;
+    box-shadow: 0 8px 24px -8px rgba(0,0,0,0.2);
+  }
+  .sqc-qr svg {
+    display: block;
+    width: 100%; height: 100%;
+    max-width: 100%; max-height: 100%;
+  }
+  .sqc-qr-tip {
+    font-family: var(--sans); font-size: var(--step--1);
+    letter-spacing: 0.08em; color: var(--mute-50);
+    text-align: center;
+  }
+  .on-dark .sqc-qr-tip { color: var(--ash-50); }
+
+  /* 小屏：上下堆叠 */
+  @media (max-width: 720px) {
+    .sqc-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 2.4rem;
+    }
+    .sqc-text { text-align: center; }
+    .sqc-desc { margin-inline: auto; }
+    .sqc-actions { justify-content: center; }
+    .sqc-qr-wrap { order: -1; } /* 二维码在上 */
+  }
+</style>
+
+<script>
+  import qrcode from 'qrcode-generator';
+
+  const qrEl = document.getElementById('sqc-qr');
+  const copyBtn = document.getElementById('sqc-copy') as HTMLButtonElement;
+  const nativeBtn = document.getElementById('sqc-native') as HTMLButtonElement;
+  const urlPar = document.getElementById('sqc-url');
+
+  function pageUrl() {
+    // 首页用站点主域名，子页用当前 canonical
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      const href = canonical.getAttribute('href') || '';
+      if (href) return href;
+    }
+    return window.location.href;
+  }
+
+  function renderQR(url: string) {
+    try {
+      const qr = qrcode(0, 'L');
+      qr.addData(url);
+      qr.make();
+      const svg = qr.createSvgTag({ cellSize: 4, margin: 4, scalable: true });
+      qrEl.innerHTML = svg;
+      qrEl.setAttribute('aria-label', '网站二维码');
+    } catch (err) {
+      qrEl.textContent = '二维码生成失败';
+      console.error('QR error:', err);
+    }
+  }
+
+  const url = pageUrl();
+  if (urlPar) urlPar.textContent = url;
+  renderQR(url);
+
+  // 复制
+  copyBtn?.addEventListener('click', async () => {
+    const lang = document.documentElement.getAttribute('data-lang') || 'zh';
+    const dict = (window as any).SEED_I18N || { zh: {}, en: {} };
+    const copiedText = (dict[lang] && dict[lang]['share.copied']) || (lang === 'en' ? 'Copied' : '已复制');
+    const defaultText = (dict[lang] && dict[lang]['share.copy']) || (lang === 'en' ? 'Copy link' : '复制链接');
+    try {
+      await navigator.clipboard.writeText(url);
+      copyBtn.textContent = '✓ ' + copiedText;
+      copyBtn.classList.add('copied');
+      setTimeout(() => {
+        copyBtn.textContent = defaultText;
+        copyBtn.classList.remove('copied');
+      }, 1800);
+    } catch {
+      // 兜底
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        copyBtn.textContent = '✓ ' + copiedText;
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          copyBtn.textContent = defaultText;
+          copyBtn.classList.remove('copied');
+        }, 1800);
+      } catch (e) {}
+    }
+  });
+
+  // 原生分享
+  if (nativeBtn && navigator.share) {
+    nativeBtn.hidden = false;
+    nativeBtn.addEventListener('click', async () => {
+      try {
+        await navigator.share({
+          title: document.title,
+          url,
+        });
+      } catch (err) {
+        if (err.name !== 'AbortError') console.error('Share failed:', err);
+      }
+    });
+  }
+</script>

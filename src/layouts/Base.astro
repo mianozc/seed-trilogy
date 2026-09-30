@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import { dict, t } from '../lib/i18n';
-import ShareMenu from '../components/ShareMenu.astro';
 import WechatBanner from '../components/WechatBanner.astro';
 
 interface Props {
@@ -121,7 +120,6 @@ const nav = [
         ))}
       </nav>
       <div class="head-tools">
-        <ShareMenu dark={dark} />
         <button class="tool-btn" type="button" data-search-open aria-label={t('nav.search')}>
           <svg class="tool-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
             <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/>

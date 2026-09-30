@@ -1,5 +1,5 @@
 // 由 src/lib/i18n.ts 生成，请勿手动编辑
-// 生成时间: 2026-09-30T07:10:59.446Z
+// 生成时间: 2026-09-30T07:59:10.251Z
 globalThis.SEED_I18N = {
   "zh": {
     "nav.trilogy": "三部曲",
@@ -204,6 +204,9 @@ globalThis.SEED_I18N = {
     "share.weibo": "微博",
     "share.twitter": "X",
     "share.wechatTip": "在微信中打开 → 长按识别上方二维码",
+    "share.qrEyebrow": "扫 码 进 入",
+    "share.qrCardTitle": "把这一份留给手机",
+    "share.qrCardDesc": "微信扫一扫，在手机上阅读《种子》三部曲。也可以保存截图，寄给一个你信任的人。",
     "appBrowser.tip": "建议在系统浏览器中打开，以获得完整体验（下载、签名提交、外部链接）。",
     "appBrowser.steps": "右上角 ⋯ → 在浏览器打开"
   },
@@ -410,6 +413,9 @@ globalThis.SEED_I18N = {
     "share.weibo": "Weibo",
     "share.twitter": "X",
     "share.wechatTip": "Open in WeChat → long-press the QR above to identify",
+    "share.qrEyebrow": "SCAN TO ENTER",
+    "share.qrCardTitle": "Keep this one for your phone",
+    "share.qrCardDesc": "Scan with WeChat to read The Seed Trilogy on your phone. Or save the screenshot and send it to someone you trust.",
     "appBrowser.tip": "For the best experience (download, signature, external links), open in your system browser.",
     "appBrowser.steps": "Top-right ⋯ → Open in browser"
   }

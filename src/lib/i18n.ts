@@ -245,6 +245,11 @@ export const dict: Record<Lang, Record<string, string>> = {
     'share.twitter': 'X',
     'share.wechatTip': '在微信中打开 → 长按识别上方二维码',
 
+    // —— 首页二维码卡片 ——
+    'share.qrEyebrow': '扫 码 进 入',
+    'share.qrCardTitle': '把这一份留给手机',
+    'share.qrCardDesc': '微信扫一扫，在手机上阅读《种子》三部曲。也可以保存截图，寄给一个你信任的人。',
+
     // —— 内置浏览器提示 ——
     'appBrowser.tip': '建议在系统浏览器中打开，以获得完整体验（下载、签名提交、外部链接）。',
     'appBrowser.steps': '右上角 ⋯ → 在浏览器打开',
@@ -488,6 +493,11 @@ export const dict: Record<Lang, Record<string, string>> = {
     'share.weibo': 'Weibo',
     'share.twitter': 'X',
     'share.wechatTip': 'Open in WeChat → long-press the QR above to identify',
+
+    // —— Home QR card ——
+    'share.qrEyebrow': 'SCAN TO ENTER',
+    'share.qrCardTitle': 'Keep this one for your phone',
+    'share.qrCardDesc': 'Scan with WeChat to read The Seed Trilogy on your phone. Or save the screenshot and send it to someone you trust.',
 
     // —— In-app browser banner ——
     'appBrowser.tip': 'For the best experience (download, signature, external links), open in your system browser.',
