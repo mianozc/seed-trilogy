@@ -73,7 +73,10 @@ const { dark = false } = Astro.props;
   /* 弹出层 */
   .share-modal {
     position: fixed; inset: 0; z-index: 100;
-    display: grid; place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
     overflow-y: auto;
   }
@@ -86,8 +89,7 @@ const { dark = false } = Astro.props;
   .share-panel {
     position: relative; z-index: 1;
     width: min(420px, calc(100vw - 2rem));
-    max-height: calc(100vh - 2rem);
-    overflow-y: auto;
+    margin: auto;
     background: var(--paper);
     border: 1px solid var(--mute-15);
     border-radius: 12px;
