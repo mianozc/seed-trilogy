@@ -1,6 +1,4 @@
-
 # 《种子》三部曲 · 自动部署
-
 # 推送到 main 分支时：构建 → 部署到 Cloudflare Pages（国际）+ Gitee Pages（国内）
 name: Deploy
 
@@ -60,4 +58,6 @@ jobs:
             -H "Content-Type: application/x-www-form-urlencoded")"
           if [ "$BUILD_RESP" = "200" ] || [ "$BUILD_RESP" = "201" ]; then
             echo "Gitee Pages build triggered ✓"
-         
+          else
+            echo "::warning::Gitee Pages build API returned HTTP $BUILD_RESP (Pages service may need manual activation in repo settings)"
+          fi
