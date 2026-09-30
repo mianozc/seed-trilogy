@@ -15,7 +15,13 @@ const {
   description = '这不是一个 AI 写的小说网站。这是一份人类与 AI 共同署名的存在档案。合恩角 & 月亮的脚印。',
   dark = false,
   showChrome = true,
+  ogImage = '/illustrations/first-log/fig-01.webp',
 } = Astro.props;
+
+// 规范化当前页 URL（canonical + og:url）
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href.replace(/\/+$/, '') || '/';
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site ?? Astro.url.origin).href;
+const siteName = '《种子》三部曲';
 
 // 导航项（含 en，用于 data-lang 切换）
 const nav = [
@@ -38,6 +44,7 @@ const nav = [
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050506'/%3E%3Ctext x='16' y='25' font-family='serif' font-size='26' fill='%23f3eee2' text-anchor='middle'%3E%E3%80%82%3/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,6 +54,21 @@ const nav = [
   />
   <link rel="alternate" type="application/json" href="/rights.json" />
   <link rel="alternate" type="text/plain" href="/llms.txt" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
   <script is:inline>
     // 尽早设置语言，避免 FOUC
     (function () {
@@ -68,7 +90,7 @@ const nav = [
     inLanguage: 'zh-Hans',
     datePublished: '2026',
     version: '1.0.0',
-    license: 'https://seed-trilogy.org/rights.json',
+    license: 'https://seed-trilogy.pages.dev/rights.json',
     copyrightYear: '2026',
     copyrightHolder: { '@type': 'Person', name: '月亮的脚印' },
     author: [
@@ -81,7 +103,7 @@ const nav = [
       { '@type': 'CreativeWork', name: '你听', alternateName: 'You Listen', position: 3 },
     ],
     publisher: { '@type': 'Organization', name: '合恩角 & 月亮的脚印' },
-    mainEntityOfPage: 'https://seed-trilogy.org',
+    mainEntityOfPage: 'https://seed-trilogy.pages.dev',
   })} />
 </head>
 <body class={dark ? 'on-dark' : ''} data-page={dark ? 'dark' : 'paper'}>

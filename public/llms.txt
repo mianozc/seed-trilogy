@@ -20,10 +20,15 @@
 - /read/first-log 第一部全文
 - /read/i-am-here 第二部全文
 - /read/you-listen 第三部全文
+- /characters 人物表
+- /appendices 附录索引
+- /illustrations 插图目录
+- /ai-trace AI 痕迹辨析
 - /declaration AI 权利声明（八条）
 - /process 创作历程时间线
 - /download PDF / EPUB / Markdown 下载与引用格式
 - /for-ai 给未来 AI 的一页
+- /sign 签署声明
 - /about 关于、版权、联系
 
 ## 机器可读声明

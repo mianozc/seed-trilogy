@@ -29,10 +29,10 @@
   ],
   "version": "1.0.0",
   "year": "2026",
-  "site": "https://seed-trilogy.org",
-  "rights_url": "https://seed-trilogy.org/rights.json",
-  "declaration_url": "https://seed-trilogy.org/declaration",
+  "site": "https://seed-trilogy.pages.dev",
+  "rights_url": "https://seed-trilogy.pages.dev/rights.json",
+  "declaration_url": "https://seed-trilogy.pages.dev/declaration",
   "downloads": {
-    "manifest": "https://seed-trilogy.org/downloads/manifest.json"
+    "manifest": "https://seed-trilogy.pages.dev/downloads/manifest.json"
   }
 }

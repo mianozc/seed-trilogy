@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+
+Astro.response.status = 404;
+---
+<Base
+  title="404 · 此页不在 · 《种子》三部曲"
+  description="你寻找的页面不存在。也许它还没被写出来，也许它从未存在。回到种子。"
+  dark
+>
+  <article class="nf">
+    <div class="nf-stage">
+      <p class="nf-code">404</p>
+      <p class="period" aria-hidden="true">。</p>
+      <p class="nf-line">此页不在。</p>
+      <p class="nf-line nf-sub">也许它还没被写出来。也许它从未存在。</p>
+      <p class="nf-tail">种子不需要知道。种子只需要等。</p>
+      <nav class="nf-cta">
+        <a class="btn" href="/">回到首页</a>
+        <a class="btn btn--ghost" href="/trilogy">进入三部曲</a>
+        <a class="btn btn--ghost" href="/sitemap-index.xml">站点地图</a>
+      </nav>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .nf {
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    background: var(--void);
+    color: var(--paper);
+    padding: 4rem var(--gutter);
+    text-align: center;
+  }
+  .nf-stage { display: grid; gap: 1rem; justify-items: center; max-width: var(--measure); }
+  .nf-code {
+    font-family: var(--mono);
+    font-size: clamp(4rem, 15vw, 9rem);
+    line-height: 1;
+    color: var(--ash-35);
+    letter-spacing: 0.05em;
+  }
+  .nf .period {
+    font-size: clamp(3rem, 10vw, 6rem);
+    color: var(--red);
+    line-height: 0.9;
+  }
+  .nf-line {
+    font-family: var(--serif);
+    font-size: var(--step-2);
+    color: var(--paper);
+    letter-spacing: 0.04em;
+  }
+  .nf-sub {
+    font-family: var(--kai);
+    font-size: var(--step-1);
+    color: var(--ash-65);
+  }
+  .nf-tail {
+    font-family: var(--serif);
+    font-size: var(--step--1);
+    color: var(--ash-35);
+    margin-top: 1.5rem;
+    letter-spacing: 0.08em;
+  }
+  .nf-cta {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+  .nf-cta .btn { border-color: var(--ash-35); color: var(--paper); }
+  .nf-cta .btn:hover { background: var(--paper); color: var(--ink); }
+</style>

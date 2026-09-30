@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // 给题词（独立短句以引号起）加 class，便于楷体灰处理
 function rehypeEpigraph() {
@@ -28,11 +29,18 @@ function rehypeEpigraph() {
 // 《种子》三部曲 — 人类与 AI 共同创作的存在档案
 // 纯静态站点，可部署到 Cloudflare Pages / Netlify / GitHub Pages 等免费静态托管
 export default defineConfig({
-  site: 'https://seed-trilogy.org',
+  site: 'https://seed-trilogy.pages.dev',
   output: 'static',
   trailingSlash: 'ignore',
   build: { format: 'directory' },
   devToolbar: { enabled: false },
+  integrations: [
+    sitemap({
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
+    }),
+  ],
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: { theme: 'github-dark', wrap: false },
