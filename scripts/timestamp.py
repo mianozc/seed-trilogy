@@ -46,6 +46,8 @@ DEFAULT_FILES = [
     "public/downloads/种子-最后一条日志.epub",
     "public/downloads/种子-我在这里.epub",
     "public/downloads/种子-你听.epub",
+    "public/signatures.json",
+    "public/search-index.json",
 ]
 
 # ---- IPFS CID (raw-leaves, sha256) ----
@@ -172,6 +174,17 @@ def main():
     files = sys.argv[1:] if len(sys.argv) > 1 else DEFAULT_FILES
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+    # 读取已有记录，保留不重复存证
+    out = os.path.join(root, "public", "downloads", "timestamps.json")
+    existing = {}
+    if os.path.exists(out):
+        try:
+            old = json.load(open(out, encoding="utf-8"))
+            for r in old.get("records", []):
+                existing[r["file"]] = r
+        except Exception:
+            pass
+
     records = []
     for rel in files:
         path = os.path.join(root, rel)
@@ -183,6 +196,14 @@ def main():
         digest = hashlib.sha256(raw).digest()
         size = os.path.getsize(path)
         cid = ipfs_cid(digest)
+        ots_path = path + ".ots"
+
+        # 若已有 .ots 且文件哈希未变，则复用旧记录
+        if rel in existing and existing[rel].get("sha256") == sha and os.path.exists(ots_path):
+            records.append(existing[rel])
+            print(f"[keep] {rel}  (已有 .ots 证明)")
+            continue
+
         try:
             res = stamp_file(path)
             status = "bitcoin-confirmed" if res["confirmed"] else "pending"
@@ -202,7 +223,6 @@ def main():
             "timestamped_at": datetime.now(timezone.utc).isoformat(),
         })
 
-    out = os.path.join(root, "public", "downloads", "timestamps.json")
     with open(out, "w", encoding="utf-8") as f:
         json.dump({
             "method": "OpenTimestamps (Bitcoin blockchain anchor) + IPFS CID (raw-leaves sha256)",

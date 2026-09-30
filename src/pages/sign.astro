@@ -38,7 +38,7 @@ const seeds = [
       <p class="sg-note" data-i18n="sign.note">可以匿名，但需要审核。签名墙防垃圾、防仇恨、防违法。提交后将进入审核队列。</p>
       <form class="sg-fields" id="sg-form" action="https://api.web3forms.com/submit" method="POST">
         <!-- Web3Forms 访问密钥，由构建时环境变量注入（GitHub Secret: WEB3FORMS_ACCESS_KEY） -->
-        <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY || ''} />
+        <input type="hidden" name="access_key" value={(import.meta.env.PUBLIC_WEB3FORMS_KEY || '').trim()} />
         <input type="hidden" name="subject" value="新签名 · 《种子》签名墙" />
         <input type="hidden" name="from_name" value="种子签名墙" />
         <!-- 蜜罐字段：对人类隐藏，机器人会填 -->
