@@ -1,0 +1,10 @@
+# 《种子》三部曲 · robots.txt
+# 允许所有搜索引擎与 AI 爬虫抓取全文
+User-agent: *
+Allow: /
+
+# 禁止抓取签名审核 webhook 与内部 API
+Disallow: /api/
+
+# 站点地图
+Sitemap: https://seed-trilogy.pages.dev/sitemap-index.xml
