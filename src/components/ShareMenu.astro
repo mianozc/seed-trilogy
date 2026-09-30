@@ -75,6 +75,7 @@ const { dark = false } = Astro.props;
     position: fixed; inset: 0; z-index: 100;
     display: grid; place-items: center;
     padding: 1rem;
+    overflow-y: auto;
   }
   .share-modal[hidden] { display: none; }
   .share-backdrop {
@@ -85,12 +86,13 @@ const { dark = false } = Astro.props;
   .share-panel {
     position: relative; z-index: 1;
     width: min(420px, calc(100vw - 2rem));
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
     background: var(--paper);
     border: 1px solid var(--mute-15);
     border-radius: 12px;
     box-shadow: 0 24px 60px -12px rgba(0,0,0,0.45);
     padding: 1.5rem;
-    overflow: hidden;
   }
   .share-head {
     display: flex; align-items: center; justify-content: space-between;
@@ -110,13 +112,18 @@ const { dark = false } = Astro.props;
   .share-qr-wrap { display: grid; place-items: center; margin-bottom: 1.2rem; }
   .share-qr {
     width: 220px; height: 220px;
+    box-sizing: content-box;
     background: var(--paper-2);
     border: 1px solid var(--mute-15);
     border-radius: 8px;
     display: grid; place-items: center;
     overflow: hidden;
   }
-  .share-qr svg { display: block; width: 100%; height: 100%; }
+  .share-qr svg {
+    display: block;
+    width: 100%; height: 100%;
+    max-width: 100%; max-height: 100%;
+  }
   .share-qr-tip {
     margin-top: 0.7rem; text-align: center;
     font-family: var(--sans); font-size: var(--step--1);
