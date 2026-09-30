@@ -7,4 +7,4 @@ Allow: /
 Disallow: /api/
 
 # 站点地图
-Sitemap: https://seed-trilogy.pages.dev/sitemap-index.xml
+Sitemap: https://seed-trilogy.com.cn/sitemap-index.xml

@@ -198,7 +198,7 @@ def main():
     parser.add_argument("--ipfs", action="store_true", help="IPFS 远程固定")
     parser.add_argument("--arweave", action="store_true", help="Arweave 永久存储")
     parser.add_argument("--archive", action="store_true", help="Internet Archive 备份")
-    parser.add_argument("--site-url", default=os.environ.get("SITE_URL", "https://seed-trilogy.pages.dev"))
+    parser.add_argument("--site-url", default=os.environ.get("SITE_URL", "https://seed-trilogy.com.cn"))
     args = parser.parse_args()
 
     if not any([args.ipfs, args.arweave, args.archive]):

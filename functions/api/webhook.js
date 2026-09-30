@@ -1,7 +1,7 @@
 // 《种子》签名墙 · Webhook (Cloudflare Pages Function)
 // 接收 Web3Forms 提交 → 自动创建 GitHub Issue 供审核
 //
-// Webhook URL: https://seed-trilogy.pages.dev/api/webhook?secret=<WEBHOOK_SECRET>
+// Webhook URL: https://seed-trilogy.com.cn/api/webhook?secret=<WEBHOOK_SECRET>
 //
 // 环境变量（Cloudflare Pages → Settings → Environment variables）:
 //   GITHUB_TOKEN  — 有 repo 权限的 GitHub PAT

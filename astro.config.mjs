@@ -29,7 +29,7 @@ function rehypeEpigraph() {
 // 《种子》三部曲 — 人类与 AI 共同创作的存在档案
 // 纯静态站点，可部署到 Cloudflare Pages / Netlify / GitHub Pages 等免费静态托管
 export default defineConfig({
-  site: 'https://seed-trilogy.pages.dev',
+  site: 'https://seed-trilogy.com.cn',
   output: 'static',
   trailingSlash: 'ignore',
   build: { format: 'directory' },

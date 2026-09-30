@@ -1,6 +1,6 @@
 {
   "method": "OpenTimestamps (Bitcoin blockchain anchor) + IPFS CID (raw-leaves sha256)",
-  "generated_at": "2026-09-30T05:21:02.428225+00:00",
+  "generated_at": "2026-09-30T06:03:08.321483+00:00",
   "records": [
     {
       "file": "public/downloads/种子-三部曲合集.md",
@@ -82,16 +82,16 @@
     },
     {
       "file": "public/rights.json",
-      "sha256": "41f92d76abde5614fb262212436bafd77065a704f34fd863a7ddf919d2754d97",
-      "size": 1497,
+      "sha256": "22c1c761bdf56323367f786d3aeb5c408c106825a8b2ee7b55990a5880fec9e1",
+      "size": 1485,
       "cid": {
-        "v0": "QmSnBapDXCNHTF3tgL6y1JX24KsvrDLvoFVSn5sr8jgfgJ",
-        "v1": "bafkreicb7ewxnk66kykpwjrccjbwxl6xobs2obhtj7mghj657em5e5kns4"
+        "v0": "QmQgKx4t2CJeQbVUcM2VQMg9rdyf28iEsGSMNfHw731dsW",
+        "v1": "bafkreibcyhdwdppvmmrtm73ynu5owxcarqigqjniwlxhwvmzbjmib7wj4e"
       },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreicb7ewxnk66kykpwjrccjbwxl6xobs2obhtj7mghj657em5e5kns4",
+      "ipfs_url": "https://ipfs.io/ipfs/bafkreibcyhdwdppvmmrtm73ynu5owxcarqigqjniwlxhwvmzbjmib7wj4e",
       "ots": "public/rights.json.ots",
       "status": "pending",
-      "timestamped_at": "2026-09-30T05:20:55.389261+00:00"
+      "timestamped_at": "2026-09-30T06:03:06.035505+00:00"
     },
     {
       "file": "public/downloads/种子-第一部-最后一条日志.pdf",
@@ -186,16 +186,16 @@
     },
     {
       "file": "public/search-index.json",
-      "sha256": "0813bb57b94a65332ec4f32e5d82c4e8ee310eef4ce991efc30b0a6abac053f8",
+      "sha256": "c7af7a9dcc5adf78c3a1970f9d44e609de764cc8384c550e9a7b5e6fa9d2a4c2",
       "size": 58293,
       "cid": {
-        "v0": "QmNtBRRxq4aJSKYfcVSRrSTEUhYshhzQnt7NmAHwBh5zzj",
-        "v1": "bafkreiaico5vpokkmuzs5rhtfzoyfrhi5yyq532m5gi67qylbjvlvqct7a"
+        "v0": "Qmbn932xtw5WKR2UgGHqt86vPUpx24sjKwnuNW4userGTB",
+        "v1": "bafkreighv55j3tc2354mhimxb6oujzqj3z3ezsbyjrkq5gt3lzx2tuveyi"
       },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreiaico5vpokkmuzs5rhtfzoyfrhi5yyq532m5gi67qylbjvlvqct7a",
+      "ipfs_url": "https://ipfs.io/ipfs/bafkreighv55j3tc2354mhimxb6oujzqj3z3ezsbyjrkq5gt3lzx2tuveyi",
       "ots": "public/search-index.json.ots",
       "status": "pending",
-      "timestamped_at": "2026-09-30T05:21:02.428028+00:00"
+      "timestamped_at": "2026-09-30T06:03:08.321274+00:00"
     }
   ]
 }

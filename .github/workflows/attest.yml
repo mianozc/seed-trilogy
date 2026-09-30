@@ -40,7 +40,7 @@ jobs:
         env:
           PINATA_JWT: ${{ secrets.PINATA_JWT }}
           ARWEAVE_WALLET: ${{ secrets.ARWEAVE_WALLET }}
-          SITE_URL: https://seed-trilogy.pages.dev
+          SITE_URL: https://seed-trilogy.com.cn
         run: |
           ARGS=""
           if [ "${{ inputs.ipfs }}" = "true" ]; then ARGS="$ARGS --ipfs"; fi
