@@ -1,0 +1,100 @@
+# 《种子》签名墙 · 自动审核
+# 当 Issue 被添加 "approved" 标签时：解析签名数据 → 更新 signatures.json → 部署
+# 当 Issue 被添加 "rejected" 标签时：关闭 Issue 并评论
+name: Approve Signature
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  approve:
+    if: github.event.label.name == 'approved'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Parse signature from issue body
+        id: parse
+        run: |
+          # 从 Issue body 中提取 <!--SIGNATURE_DATA--> 标记间的 JSON
+          ISSUE_BODY='${{ github.event.issue.body }}'
+          SIGNATURE=$(echo "$ISSUE_BODY" | sed -n '/<!--SIGNATURE_DATA-->/,/<!--\/SIGNATURE_DATA-->/p' | sed '1d;$d')
+          echo "Parsed signature: $SIGNATURE"
+          echo "signature=$SIGNATURE" >> "$GITHUB_OUTPUT"
+
+      - name: Update signatures.json
+        run: |
+          SIGNATURE='${{ steps.parse.outputs.signature }}'
+          node -e "
+            const fs = require('fs');
+            const sig = JSON.parse(process.argv[1]);
+            const data = JSON.parse(fs.readFileSync('public/signatures.json', 'utf8'));
+            // 去重：检查是否已存在相同签名
+            const exists = data.signatures.some(s =>
+              s.who === sig.who && s.line === sig.line && s.createdAt === sig.createdAt
+            );
+            if (exists) {
+              console.log('Signature already exists, skipping');
+              process.exit(0);
+            }
+            data.signatures.push(sig);
+            fs.writeFileSync('public/signatures.json', JSON.stringify(data, null, 2) + '\n');
+            console.log('Added signature:', JSON.stringify(sig));
+          " "$SIGNATURE"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/signatures.json
+          git diff --cached --quiet || {
+            git commit -m "feat: approve signature from #${{ github.event.issue.number }}"
+            git push
+          }
+
+      - name: Close issue with confirmation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '✅ 签名已审核通过并发布到签名墙。'
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
+
+  reject:
+    if: github.event.label.name == 'rejected'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Close issue with rejection
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '❌ 签名未通过审核。'
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
