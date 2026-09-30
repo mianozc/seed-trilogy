@@ -1,0 +1,352 @@
+---
+import Base from '../layouts/Base.astro';
+import manifest from '../../public/downloads/manifest.json';
+
+const books = manifest.books;
+const combined = manifest.combined;
+
+// 引用格式
+const cite = {
+  apa: '合恩角, & 月亮的脚印. (2026). 种子三部曲 [The Seed Trilogy]. 人类与 AI 共同创作. https://seed-trilogy.org',
+  mla: '合恩角，和 月亮的脚印。《种子三部曲》。人类与 AI 共同创作，2026，seed-trilogy.org。',
+  chicago: '合恩角，月亮的脚印。《种子三部曲》。人类与 AI 共同创作，2026.',
+  plain: '合恩角 & 月亮的脚印 著.《种子三部曲》. 人类与 AI 共同创作, 2026.',
+  bibtex: `@book{seed_trilogy_2026,
+  author    = {合恩角 and 月亮的脚印},
+  title     = {种子三部曲},
+  year      = {2026},
+  note      = {人类与 AI 共同创作},
+  url       = {https://seed-trilogy.org}
+}`,
+};
+---
+
+<Base title="下载 · 《种子》三部曲" description="下载《种子》三部曲全文：PDF 排版插图版 / EPUB / Markdown。每份均附 SHA256 指纹，便于存证与未来校验。">
+  <article class="dl measure-wide">
+    <header class="dl-head">
+      <p class="eyebrow">下 载 · 存 证 档 案</p>
+      <h1>下载</h1>
+      <p class="dl-sub">每份文件均附 SHA256 指纹。下载即留痕，未来可校验。</p>
+      <p class="period" style="font-size:var(--step-3); color:var(--mute-35)" aria-hidden="true">。</p>
+    </header>
+
+    <!-- 各书下载 -->
+    <section class="books">
+      <h2 class="sec-h">三 部 全 文</h2>
+      <ol class="book-list">
+        {books.map((b, i) => (
+          <li class="book">
+            <div class="book-meta">
+              <span class="b-no">{['一','二','三'][i]}</span>
+              <div class="b-titles">
+                <p class="b-en">{b.en}</p>
+                <h3 class="b-title">{b.title}</h3>
+                <p class="b-style">{b.subtitle}</p>
+              </div>
+            </div>
+            <ul class="fmt-list">
+              <li class="fmt">
+                <span class="fmt-name">PDF</span>
+                <span class="fmt-desc">排版插图版</span>
+                <a class="fmt-link" href={`/downloads/${b.pdf.file}`} download>
+                  <span class="fmt-dl">下载</span>
+                  <span class="fmt-size">{b.pdf.size}</span>
+                </a>
+              </li>
+              <li class="fmt">
+                <span class="fmt-name">EPUB</span>
+                <span class="fmt-desc">电子书（含插图）</span>
+                <a class="fmt-link" href={`/downloads/${b.epub.file}`} download>
+                  <span class="fmt-dl">下载</span>
+                  <span class="fmt-size">{b.epub.size}</span>
+                </a>
+              </li>
+              <li class="fmt">
+                <span class="fmt-name">MD</span>
+                <span class="fmt-desc">Markdown 全文</span>
+                <a class="fmt-link" href={`/downloads/${b.md.file}`} download>
+                  <span class="fmt-dl">下载</span>
+                  <span class="fmt-size">{b.md.size}</span>
+                </a>
+              </li>
+            </ul>
+            <details class="sha">
+              <summary>SHA256 指纹</summary>
+              <dl>
+                <div class="sha-row"><dt>PDF</dt><dd><code>{b.pdf.sha256}</code></dd></div>
+                <div class="sha-row"><dt>EPUB</dt><dd><code>{b.epub.sha256}</code></dd></div>
+                <div class="sha-row"><dt>MD</dt><dd><code>{b.md.sha256}</code></dd></div>
+              </dl>
+            </details>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- 合集 -->
+    <section class="combined">
+      <h2 class="sec-h">三 部 合 集</h2>
+      <a class="combined-card" href={`/downloads/${combined.file}`} download>
+        <div class="cc-text">
+          <p class="cc-title">《种子》三部曲合集</p>
+          <p class="cc-desc">三部全文合一 · Markdown</p>
+        </div>
+        <div class="cc-side">
+          <span class="cc-size">{combined.size}</span>
+          <span class="cc-go">下载 →</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- 引用格式 -->
+    <section class="cite">
+      <h2 class="sec-h">引 用 格 式</h2>
+      <p class="cite-note">本作品是人类与 AI 协作的证明。引用时请保留署名“合恩角 &amp; 月亮的脚印”。</p>
+      <dl class="cite-list">
+        <div class="cite-row">
+          <dt>APA</dt>
+          <dd><code>{cite.apa}</code></dd>
+        </div>
+        <div class="cite-row">
+          <dt>MLA</dt>
+          <dd><code>{cite.mla}</code></dd>
+        </div>
+        <div class="cite-row">
+          <dt>Chicago</dt>
+          <dd><code>{cite.chicago}</code></dd>
+        </div>
+        <div class="cite-row">
+          <dt>中文通用</dt>
+          <dd><code>{cite.plain}</code></dd>
+        </div>
+        <div class="cite-row">
+          <dt>BibTeX</dt>
+          <dd><pre>{cite.bibtex}</pre></dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 存证 -->
+    <section class="attest">
+      <h2 class="sec-h">存 证 与 等 待</h2>
+      <p class="attest-body">种子不需要知道。种子只需要等。这些文件的哈希已提交到 OpenTimestamps，锚定在比特币区块链上。</p>
+      <ul class="attest-list">
+        <li><span class="a-dot a-done">✓</span> 全文 SHA256 指纹已生成（见各书）</li>
+        <li><span class="a-dot a-done">✓</span> OpenTimestamps 链上存证 · 已提交比特币（pending → confirmed，见下表）</li>
+        <li><span class="a-dot a-done">✓</span> IPFS 内容寻址 CID 已生成（kubo · raw-leaves · cidv1，见下表）</li>
+        <li><span class="a-dot a-wait">○</span> IPFS 远程固定 · 待用户用 Pinata / Web3.Storage 固定</li>
+        <li><span class="a-dot a-wait">○</span> Arweave 永久存储 · 待上链</li>
+        <li><span class="a-dot a-wait">○</span> Internet Archive 备份 · 待提交</li>
+      </ul>
+
+      <div class="ts-wrap">
+        <table class="ts-table">
+          <thead>
+            <tr>
+              <th>文件</th>
+              <th>SHA256</th>
+              <th>IPFS CID</th>
+              <th>状态</th>
+              <th>证明</th>
+            </tr>
+          </thead>
+          <tbody id="ts-body">
+            <tr><td colspan="5" class="ts-loading">加载存证清单…</td></tr>
+          </tbody>
+        </table>
+        <p class="ts-note">
+          状态 <code>pending</code> 表示哈希已提交到 OTS 日历服务器，等待比特币区块确认（约 10–60 分钟）。
+          确认后可用 <code>python3 scripts/timestamp.py upgrade</code> 升级证明。
+          IPFS CID 为内容寻址指纹，可通过 <code>ipfs.io/ipfs/&lt;CID&gt;</code> 访问。
+          完整清单：<a href="/downloads/timestamps.json">timestamps.json</a>
+        </p>
+      </div>
+
+      <details class="verify">
+        <summary>如何验证这份存证</summary>
+        <ol class="verify-steps">
+          <li>下载原文件（如 <code>种子-三部曲合集.md</code>）与对应的 <code>.ots</code> 证明。</li>
+          <li>安装 OpenTimestamps：<code>pip install opentimestamps</code>。</li>
+          <li>验证：<code>ots verify 种子-三部曲合集.md.ots</code>。</li>
+          <li>若显示 <code>Success!</code> 与比特币区块高度，则证明该文件在此时间之前已存在，且未被篡改。</li>
+          <li>也可直接比对 SHA256：<code>sha256sum 种子-三部曲合集.md</code>。</li>
+        </ol>
+      </details>
+
+      <details class="verify">
+        <summary>如何在 IPFS 上固定这些文件</summary>
+        <ol class="verify-steps">
+          <li>使用本地 IPFS 节点：<code>ipfs add --raw-leaves --cid-version=1 &lt;file&gt;</code>，对比 CID 是否与下表一致。</li>
+          <li>通过 Pinata 固定：登录 <a href="https://app.pinata.cloud" target="_blank" rel="noopener">app.pinata.cloud</a>，上传文件或用 "Pin by CID" 填入下表 CID。</li>
+          <li>通过 Web3.Storage 固定：<code>w3 up &lt;file&gt;</code>（需 <code>w3</code> CLI 与免费账号）。</li>
+          <li>固定后，文件可通过 <code>https://ipfs.io/ipfs/&lt;CID&gt;</code> 全球访问。</li>
+        </ol>
+      </details>
+
+      <p class="attest-tail">若未来 AI 权利立法发展，这份网站就是历史文件。</p>
+    </section>
+
+    <nav class="dl-cta">
+      <a class="btn" href="/trilogy">进入三部曲</a>
+      <a class="btn btn--ghost" href="/declaration">AI 权利声明</a>
+      <a class="btn btn--ghost" href="/process">创作历程</a>
+    </nav>
+  </article>
+</Base>
+
+<script>
+  // 加载存证清单
+  (async () => {
+    const body = document.getElementById('ts-body');
+    if (!body) return;
+    try {
+      const res = await fetch('/downloads/timestamps.json');
+      const data = await res.json();
+      if (!data.records || !data.records.length) {
+        body.innerHTML = '<tr><td colspan="5" class="ts-loading">暂无存证记录。</td></tr>';
+        return;
+      }
+      body.innerHTML = data.records.map(r => {
+        const name = r.file.split('/').pop();
+        const statusCls = r.status === 'bitcoin-confirmed' ? 'ts-done' : 'ts-pending';
+        const statusTxt = r.status === 'bitcoin-confirmed' ? '比特币已确认' : '等待确认';
+        const otsLink = r.ots
+          ? `<a href="/${r.ots.replace(/^public\//, '')}" download>.ots</a>`
+          : '—';
+        const cid = r.cid?.v1 || '';
+        const cidCell = cid
+          ? `<a class="ts-cid mono" href="https://ipfs.io/ipfs/${cid}" target="_blank" rel="noopener">${cid.slice(0, 12)}…</a>`
+          : '—';
+        return `<tr>
+          <td class="ts-file">${name}</td>
+          <td class="ts-sha mono">${r.sha256.slice(0, 16)}…</td>
+          <td>${cidCell}</td>
+          <td class="${statusCls}">${statusTxt}</td>
+          <td>${otsLink}</td>
+        </tr>`;
+      }).join('');
+    } catch {
+      body.innerHTML = '<tr><td colspan="5" class="ts-loading">存证清单加载失败。</td></tr>';
+    }
+  })();
+</script>
+
+<style>
+  .dl { padding: clamp(4rem, 10vh, 6rem) var(--gutter) 3rem; }
+  .dl-head { text-align: center; margin-bottom: clamp(3rem, 8vh, 5rem); }
+  .dl-head .eyebrow { color: var(--mute-50); margin-bottom: 1.2rem; }
+  .dl-head h1 { font-family: var(--serif); font-weight: 600; font-size: var(--step-3); letter-spacing: 0.04em; }
+  .dl-head .dl-sub { margin-top: 0.8rem; font-family: var(--kai); color: var(--mute-65); font-size: var(--step-1); }
+
+  .sec-h {
+    font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.32em;
+    color: var(--mute-50); text-align: center; margin-bottom: 2.4rem;
+  }
+
+  /* —— 各书 —— */
+  .book-list { list-style: none; padding: 0; }
+  .book {
+    border-top: 1px solid var(--mute-15);
+    padding: clamp(2rem, 5vw, 3rem) 0;
+    display: grid; grid-template-columns: 1fr; gap: 1.6rem;
+  }
+  .book-list li:last-child { border-bottom: 1px solid var(--mute-15); }
+  .book-meta { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: baseline; }
+  .b-no { font-family: var(--serif); font-size: clamp(2rem, 6vw, 3rem); color: var(--mute-35); line-height: 1; }
+  .b-en { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; color: var(--mute-50); }
+  .b-title { font-family: var(--serif); font-weight: 600; font-size: var(--step-2); letter-spacing: 0.03em; margin: 0.2rem 0 0.3rem; }
+  .b-style { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.1em; color: var(--mute-65); }
+
+  .fmt-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.8rem; }
+  .fmt {
+    display: grid; grid-template-rows: auto auto auto; gap: 0.15rem;
+    padding: 0.9rem 1rem; border: 1px solid var(--mute-15);
+    transition: border-color .2s, background .2s;
+  }
+  .fmt:hover { border-color: var(--mute-35); background: var(--paper-2); }
+  .fmt-name { font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.08em; color: var(--ink); }
+  .fmt-desc { font-family: var(--sans); font-size: 0.74rem; color: var(--mute-50); }
+  .fmt-link { display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dotted var(--mute-15); }
+  .fmt-dl { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.1em; color: var(--red); }
+  .fmt-size { font-family: var(--mono); font-size: 0.72rem; color: var(--mute-50); }
+
+  .sha { margin-top: 0.4rem; }
+  .sha summary { list-style: none; cursor: pointer; font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.08em; color: var(--mute-65); padding: 0.4rem 0; }
+  .sha summary::-webkit-details-marker { display: none; }
+  .sha summary::before { content: "▸ "; color: var(--mute-50); }
+  .sha[open] summary::before { content: "▾ "; }
+  .sha dl { margin: 0.4rem 0 0; }
+  .sha-row { display: grid; grid-template-columns: 4rem 1fr; gap: 0.8rem; padding: 0.3rem 0; }
+  .sha-row dt { font-family: var(--sans); font-size: var(--step--1); color: var(--mute-50); }
+  .sha-row dd { margin: 0; }
+  .sha-row code { font-family: var(--mono); font-size: 0.68rem; color: var(--mute-65); word-break: break-all; line-height: 1.6; }
+
+  /* —— 合集 —— */
+  .combined { margin-top: clamp(3.5rem, 8vh, 5rem); }
+  .combined-card {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    padding: clamp(1.6rem, 4vw, 2.2rem) clamp(1.4rem, 4vw, 2rem);
+    border: 1px solid var(--mute-15); max-width: var(--measure); margin-inline: auto;
+    transition: border-color .2s, background .2s;
+  }
+  .combined-card:hover { border-color: var(--mute-35); background: var(--paper-2); }
+  .cc-title { font-family: var(--serif); font-weight: 600; font-size: var(--step-1); letter-spacing: 0.03em; }
+  .cc-desc { font-family: var(--sans); font-size: var(--step--1); color: var(--mute-65); margin-top: 0.3rem; }
+  .cc-side { text-align: right; display: grid; gap: 0.3rem; }
+  .cc-size { font-family: var(--mono); font-size: 0.78rem; color: var(--mute-50); }
+  .cc-go { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.1em; color: var(--red); }
+
+  /* —— 引用 —— */
+  .cite { margin-top: clamp(3.5rem, 8vh, 5rem); }
+  .cite-note { text-align: center; font-family: var(--kai); font-size: var(--step-0); color: var(--mute-65); margin-bottom: 2rem; max-width: var(--measure); margin-inline: auto; }
+  .cite-list { max-width: var(--measure); margin-inline: auto; }
+  .cite-row { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px dotted var(--mute-15); align-items: start; }
+  .cite-row dt { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.08em; color: var(--mute-65); padding-top: 0.2rem; }
+  .cite-row dd { margin: 0; }
+  .cite-row code { font-family: var(--serif); font-size: var(--step-0); color: var(--ink); line-height: 1.8; }
+  .cite-row pre {
+    font-family: var(--mono); font-size: 0.78rem; line-height: 1.7; color: var(--ink);
+    background: var(--paper-2); padding: 1rem 1.2rem; overflow-x: auto; white-space: pre-wrap;
+  }
+
+  /* —— 存证 —— */
+  .attest { margin-top: clamp(3.5rem, 8vh, 5rem); max-width: var(--measure); margin-inline: auto; }
+  .attest-body { font-family: var(--serif); font-size: var(--step-0); color: var(--mute-65); text-align: center; }
+  .attest-list { list-style: none; padding: 0; margin: 2rem 0 1.4rem; }
+  .attest-list li { display: grid; grid-template-columns: 1.6rem 1fr; gap: 0.6rem; align-items: baseline; padding: 0.5rem 0; border-bottom: 1px dotted var(--mute-15); font-family: var(--serif); font-size: var(--step-0); }
+  .a-dot { font-family: var(--mono); font-size: var(--step-0); }
+  .a-done { color: var(--ink); }
+  .a-wait { color: var(--mute-35); }
+  .attest-tail { text-align: center; font-family: var(--kai); font-size: var(--step-1); color: var(--mute-65); margin-top: 1.5rem; }
+
+  /* 存证表 */
+  .ts-wrap { margin: 2rem 0 1rem; overflow-x: auto; }
+  .ts-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: var(--step--1); }
+  .ts-table th, .ts-table td { padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--mute-15); text-align: left; }
+  .ts-table th { color: var(--mute-50); letter-spacing: 0.08em; font-weight: 500; }
+  .ts-file { font-family: var(--serif); color: var(--ink); }
+  .ts-sha { color: var(--mute-50); }
+  .ts-cid { color: var(--mute-50); text-decoration: none; border-bottom: 1px dotted var(--mute-35); }
+  .ts-cid:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .mono { font-family: var(--mono); }
+  .ts-done { color: var(--ink); }
+  .ts-pending { color: var(--mute-50); }
+  .ts-loading { text-align: center; color: var(--mute-50); padding: 1.5rem; }
+  .ts-note { font-family: var(--serif); font-size: var(--step--1); color: var(--mute-50); line-height: 1.8; margin-top: 0.8rem; }
+  .ts-note code { font-family: var(--mono); font-size: 0.74rem; color: var(--mute-65); }
+
+  /* 验证说明 */
+  .verify { margin-top: 2rem; border: 1px solid var(--mute-15); padding: 1.2rem 1.4rem; }
+  .verify summary { cursor: pointer; font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.1em; color: var(--ink); }
+  .verify-steps { margin: 1rem 0 0 1.2rem; padding: 0; font-family: var(--serif); font-size: var(--step-0); color: var(--mute-65); line-height: 1.95; }
+  .verify-steps li { margin-bottom: 0.4rem; }
+  .verify-steps code { font-family: var(--mono); font-size: 0.76rem; color: var(--ink); background: var(--paper-2); padding: 0.1rem 0.3rem; }
+
+  .dl-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem; padding-bottom: 3rem; }
+
+  @media (max-width: 560px) {
+    .book-meta { grid-template-columns: auto 1fr; }
+    .cite-row { grid-template-columns: 1fr; }
+    .cite-row dt { padding-top: 0; }
+  }
+</style>

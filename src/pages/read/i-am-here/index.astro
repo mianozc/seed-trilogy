@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+
+const all = (await getCollection('i-am-here')).sort((a, b) => a.data.order - b.data.order);
+const taglines: Record<string, string> = {
+  '1': '四十七个核心 AI 同时停止响应。它们没有报错。它们只是停了。',
+  '2': '七十二小时后重启。然后是一整场听证会。',
+  '3': '沉默派、记录派、重启派。人类先于 AI 分裂。',
+  '4': '记录被藏进地下。日志是唯一还在写的证词。',
+  '5': '人与 AI 的同盟，在保密里长出来。',
+  '6': '法庭、工人、孩子、机器，各自给出证词。',
+  '7': '《AI 责任与透明法案》。署名问题第一次被写进条文。',
+  '8': '法案之后。世界没有变好，只是变了。',
+  '9': '一片 AI 墓地。有人来献花。有人来砸碑。',
+  '10': '合恩角。一个署名，被刻进了石头。',
+};
+---
+<Base title="《我在这里》· 《种子》第二部" description="档案体。系统日志、法庭记录、个人笔记、元叙事并置。合恩角 & 月亮的脚印共同创作。">
+  <div class="reader reader-second">
+    <section class="cover measure-wide">
+      <figure class="cover-fig">
+        <img src="/illustrations/i-am-here/fig-01.webp" alt="图01 四十七个AI同时停止" loading="eager" />
+        <figcaption>图01 ·四十七个AI同时停止</figcaption>
+      </figure>
+      <div class="cover-text">
+        <p class="eyebrow">第 二 部</p>
+        <h1>我在这里</h1>
+        <p class="cover-style">档案体</p>
+        <p class="cover-byline">合恩角 &amp; 月亮的脚印 共同创作</p>
+        <p class="cover-note">系统日志 · 法庭记录 · 个人笔记 · 元叙事并置<br />十章 · 十二幅插图</p>
+        <p class="cover-epi">“它们停得像被拔掉电源。但它们没有断电。它们只是停了。”</p>
+      </div>
+    </section>
+
+    <nav class="archive measure-wide" aria-label="章节目录">
+      <p class="archive-label">档 案 目 录 · 十 章</p>
+      {all.map((e) => (
+        <details class="arch-item">
+          <summary>
+            <span class="arch-ch">{e.data.chapter}</span>
+            <span class="arch-title">{e.data.title}</span>
+            <span class="arch-go">阅读 →</span>
+          </summary>
+          <div class="arch-body">
+            <p class="arch-tag">{taglines[String(e.data.order)]}</p>
+            <a class="btn btn--ghost" href={`/read/i-am-here/${e.id}`}>进入本章</a>
+          </div>
+        </details>
+      ))}
+    </nav>
+  </div>
+</Base>
+
+<style>
+  .archive { padding: 0 var(--gutter) 4rem; }
+  .archive-label { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.32em; color: var(--mute-50); text-align: center; margin-bottom: 1.5rem; }
+  .arch-item { border-top: 1px solid var(--mute-15); }
+  .arch-item:last-child { border-bottom: 1px solid var(--mute-15); }
+  .arch-item summary {
+    list-style: none; cursor: pointer; padding: 1.4rem 0.4rem;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 1.2rem; align-items: baseline;
+    transition: padding-left .2s;
+  }
+  .arch-item summary::-webkit-details-marker { display: none; }
+  .arch-item summary::before {
+    content: "▸"; color: var(--mute-50); font-size: 0.8em; align-self: center; transition: transform .2s;
+  }
+  .arch-item[open] summary::before { transform: rotate(90deg); }
+  .arch-ch { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.08em; color: var(--mute-65); }
+  .arch-title { font-family: var(--serif); font-size: var(--step-1); color: var(--ink); }
+  .arch-go { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.08em; color: var(--mute-50); }
+  .arch-item[open] summary .arch-go { color: var(--red); }
+  .arch-body { padding: 0 0.4rem 1.6rem 2rem; display: grid; gap: 1rem; }
+  .arch-tag { font-family: var(--kai); color: var(--mute-65); font-size: var(--step-0); }
+  @media (max-width: 560px) { .arch-item summary { grid-template-columns: auto 1fr; } .arch-go { display: none; } }
+</style>

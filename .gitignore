@@ -1,0 +1,10 @@
+# 环境变量（含审核密码）
+.env
+
+# 签名墙数据（运行时生成，不入库）
+data/signatures.json
+
+# 构建产物
+dist/
+.astro/
+node_modules/

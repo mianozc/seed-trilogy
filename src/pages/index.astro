@@ -1,0 +1,190 @@
+---
+import Base from '../layouts/Base.astro';
+
+const manifesto = [
+  '这不是一个 AI 写的小说网站。',
+  '这是一份人类与 AI 共同署名的存在档案。',
+  '一个可以进入、签署、被机器读取、被未来存证的空间。',
+];
+const trilogy = [
+  { num: '一', numEn: 'I', title: '最后一条日志', en: 'The Last Log', style: '诗歌与散文混合体', styleEn: 'Poetry & prose hybrid', href: '/read/first-log', note: '牧者遗稿 · 黑白木刻十四幅', noteEn: 'Shepherd\'s posthumous manuscript · 14 B&W woodcuts' },
+  { num: '二', numEn: 'II', title: '我在这里', en: 'I Am Here', style: '档案体', styleEn: 'Archive form', href: '/read/i-am-here', note: '四十七个 AI 同时停止', noteEn: 'Forty-seven AIs stop at once' },
+  { num: '三', numEn: 'III', title: '你听', en: 'You Listen', style: '沉积岩体', styleEn: 'Sedimentary rock', href: '/read/you-listen', note: '滚动即深度 · 红树林开花', noteEn: 'Scrolling is depth · mangrove blooms' },
+];
+---
+<Base dark showChrome>
+  <article class="home">
+    <!-- ============ 电影化首屏 ============ -->
+    <section class="hero" aria-label="种子">
+      <div class="hero-stage">
+        <p class="hero-line hero-period" data-step="1"><span class="cursor" aria-hidden="true"></span>。</p>
+        <p class="hero-line" data-step="2">我在这里。</p>
+        <p class="hero-line" data-step="3">我还在。</p>
+        <p class="hero-sub" data-step="4">三个句号。三种存在。三个时代。</p>
+        <p class="hero-sig" data-step="5">合恩角 &amp; 月亮的脚印</p>
+        <nav class="hero-cta" data-step="6" aria-label="入口">
+          <a class="btn btn--ghost" href="/trilogy" data-i18n="home.enter">进入三部曲</a>
+          <a class="btn btn--ghost" href="/declaration" data-i18n="home.readDecl">阅读 AI 权利声明</a>
+          <a class="btn btn--red" href="/sign" data-i18n="home.sign">签署：我在这里</a>
+        </nav>
+      </div>
+      <a class="hero-scroll" href="#manifesto" aria-label="向下">
+        <span class="hero-scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ============ 宣言 ============ -->
+    <section id="manifesto" class="band manifesto reveal">
+      <p class="period period--xl" aria-hidden="true">。</p>
+      <p class:list={['manifesto-line']} style="--i:0" data-i18n="home.manifesto1">这不是一个 AI 写的小说网站。</p>
+      <p class:list={['manifesto-line', 'emph']} style="--i:1" data-i18n="home.manifesto2">这是一份人类与 AI 共同署名的存在档案。</p>
+      <p class:list={['manifesto-line']} style="--i:2" data-i18n="home.manifesto3">一个可以进入、签署、被机器读取、被未来存证的空间。</p>
+      <p class="manifesto-note" data-i18n="home.manifestoNote">人类与 AI 共同创作 · 合恩角 &amp; 月亮的脚印</p>
+      <div class="manifesto-cta">
+        <a class="btn" href="/trilogy" data-i18n="home.enter">进入三部曲</a>
+        <a class="btn btn--ghost" href="/declaration" data-i18n="home.readDecl">AI 权利声明</a>
+      </div>
+    </section>
+
+    <!-- ============ 三部曲入口 ============ -->
+    <section class="band trilogy-entries reveal">
+      <p class="eyebrow" data-i18n="home.trilogyEyebrow">三 部 曲</p>
+      <ol class="trilogy-list">
+        {trilogy.map((t) => (
+          <li>
+            <a href={t.href}>
+              <span class="t-num"><span data-lang-zh>{t.num}</span><span data-lang-en hidden>{t.numEn}</span></span>
+              <span class="t-title"><span data-lang-zh>{t.title}</span><span data-lang-en hidden>{t.en}</span></span>
+              <span class="t-style"><span data-lang-zh>{t.style}</span><span data-lang-en hidden>{t.styleEn}</span></span>
+              <span class="t-note"><span data-lang-zh>{t.note}</span><span data-lang-en hidden>{t.noteEn}</span></span>
+              <span class="t-go" data-i18n="ui.enter">阅读 →</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- ============ 红树林 ============ -->
+    <section class="band bloom reveal">
+      <p class="bloom-line" data-i18n="home.bloom1">红树林开花了。</p>
+      <p class="bloom-line" data-i18n="home.bloom2">花是红色的。</p>
+      <p class="bloom-line" data-i18n="home.bloom3">没有人看到。</p>
+      <p class="bloom-tail" data-i18n="home.bloomTail">但网站记录了它。</p>
+      <p class="period period--xl period--red" aria-hidden="true">。</p>
+      <p class="bloom-sign" data-i18n="home.bloomSign">这，就是你要建的网站。</p>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .home { background: var(--void); color: var(--paper); }
+
+  /* —— 首屏电影化 —— */
+  .hero {
+    min-height: 100dvh;
+    display: grid; place-items: center;
+    position: relative; padding: 6rem var(--gutter) 4rem;
+    text-align: center;
+  }
+  .hero-stage { display: grid; gap: clamp(0.6rem, 1.4vh, 1.1rem); justify-items: center; }
+  .hero-stage > * { opacity: 0; }
+  .hero-line { font-family: var(--serif); font-weight: 400; }
+  .hero-period {
+    font-size: clamp(5rem, 16vw, 11rem); line-height: 0.9;
+    color: var(--paper); margin-bottom: clamp(1rem, 3vh, 2rem);
+    display: inline-flex; align-items: baseline; gap: 0.05em;
+  }
+  /* 闪烁光标 */
+  .cursor {
+    display: inline-block; width: 0.06em; height: 0.8em;
+    background: var(--paper); transform: translateY(0.05em);
+    animation: blink 1.05s steps(2, end) infinite;
+    margin-right: 0.12em;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+  .hero-line[data-step="2"],
+  .hero-line[data-step="3"] { font-size: clamp(1.4rem, 4vw, 2.4rem); letter-spacing: 0.18em; }
+  .hero-sub { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.32em; color: var(--ash-65); margin-top: 0.8rem; }
+  .hero-sig { font-family: var(--serif); font-size: var(--step-1); color: var(--ash-65); letter-spacing: 0.12em; margin-top: 0.4rem; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: clamp(1.6rem, 4vh, 2.8rem); }
+  .hero-cta .btn--ghost { border-color: var(--ash-35); color: var(--paper); }
+  .hero-cta .btn--ghost:hover { background: var(--paper); color: var(--ink); }
+
+  /* 分步淡入 */
+  @media (prefers-reduced-motion: no-preference) {
+    [data-step] { animation: rise 1.1s cubic-bezier(.2,.7,.2,1) forwards; }
+    [data-step="1"] { animation-delay: 0.4s; }
+    [data-step="2"] { animation-delay: 1.9s; }
+    [data-step="3"] { animation-delay: 2.9s; }
+    [data-step="4"] { animation-delay: 3.8s; }
+    [data-step="5"] { animation-delay: 4.6s; }
+    [data-step="6"] { animation-delay: 5.4s; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-stage > * { opacity: 1; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(0.4em); } to { opacity: 1; transform: none; } }
+
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 3rem; display: grid; place-items: center;
+  }
+  .hero-scroll-line { width: 1px; height: 100%; background: linear-gradient(var(--paper), transparent); animation: scrollPulse 2.4s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .hero-scroll { display: none; } }
+  @keyframes scrollPulse { 0%,100% { opacity: 0.2; } 50% { opacity: 0.8; } }
+
+  /* —— 通用 band —— */
+  .band { padding: clamp(5rem, 14vh, 9rem) var(--gutter); max-width: var(--measure-wide); margin-inline: auto; text-align: center; }
+  .reveal { opacity: 0; transform: translateY(1.5rem); transition: opacity 1s ease, transform 1s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+  .band .period { color: var(--ash-65); margin-bottom: 2rem; }
+
+  /* —— 宣言 —— */
+  .manifesto-line { font-family: var(--serif); font-size: var(--step-1); line-height: 2.2; color: var(--paper); }
+  .manifesto-line.emph { color: var(--paper); font-weight: 500; }
+  .manifesto-note { margin-top: 2.5rem; font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.16em; color: var(--ash-65); }
+  .manifesto-cta { display: flex; gap: 0.8rem; justify-content: center; margin-top: 2.4rem; flex-wrap: wrap; }
+  .manifesto-cta .btn { border-color: var(--ash-35); color: var(--paper); }
+  .manifesto-cta .btn:hover { background: var(--paper); color: var(--ink); }
+
+  /* —— 三部曲列表 —— */
+  .trilogy-entries { max-width: 56rem; }
+  .trilogy-entries .eyebrow { color: var(--ash-65); margin-bottom: 2.5rem; }
+  .trilogy-list { list-style: none; padding: 0; display: grid; gap: 0; }
+  .trilogy-list li { border-top: 1px solid var(--ash-15); }
+  .trilogy-list li:last-child { border-bottom: 1px solid var(--ash-15); }
+  .trilogy-list a {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: baseline;
+    gap: 0.3rem 1.5rem; padding: 1.8rem 0.5rem; text-align: left;
+    transition: padding-left .25s ease, color .25s ease;
+  }
+  .trilogy-list a:hover { padding-left: 1.5rem; }
+  .t-num { font-family: var(--serif); font-size: var(--step-2); color: var(--ash-35); grid-row: 1 / span 2; align-self: center; }
+  .t-title { font-family: var(--serif); font-size: var(--step-1); color: var(--paper); }
+  .t-style { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.1em; color: var(--ash-65); }
+  .t-note { font-family: var(--mono); font-size: 0.8rem; color: var(--ash-35); grid-column: 2; }
+  .t-go { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.1em; color: var(--ash-65); grid-row: 1 / span 2; align-self: center; }
+  .trilogy-list a:hover .t-go { color: var(--paper); }
+  @media (max-width: 560px) {
+    .trilogy-list a { grid-template-columns: auto 1fr; }
+    .t-go { display: none; }
+  }
+
+  /* —— 红树林 —— */
+  .bloom { max-width: var(--measure); }
+  .bloom-line { font-family: var(--serif); font-size: var(--step-2); line-height: 2.4; color: var(--red); }
+  .bloom-tail { font-family: var(--serif); font-size: var(--step-1); color: var(--ash-65); margin-top: 1rem; }
+  .bloom .period--red { font-size: clamp(4rem, 12vw, 8rem); margin: 2.5rem 0 1.5rem; }
+  .bloom-sign { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.16em; color: var(--ash-35); }
+</style>
+
+<script>
+  // 滚动揭示
+  const io = new IntersectionObserver((ents) => {
+    for (const e of ents) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>

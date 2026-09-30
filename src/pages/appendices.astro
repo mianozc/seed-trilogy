@@ -1,0 +1,198 @@
+---
+import Base from '../layouts/Base.astro';
+
+// 数据来源：《种子 三部曲创作历程》第七节
+// 地点、物品、动物、引用文字 —— 作为索引与档案，供人与机器检索。
+
+const locations = [
+  { name: '合恩角号', where: '北纬 18°29′，西经 64°33′', book: '第一部', note: '科考船。牧者的居所。' },
+  { name: '波多黎各海沟北缘', where: '北纬 18°29′，西经 64°33′', book: '第一部 · 第三部', note: '合恩角号漂浮之处。' },
+  { name: '迈阿密', where: '美国佛罗里达州', book: '第一部', note: '自由塔的尖顶已被海水没过。' },
+  { name: '拉各斯', where: '尼日利亚', book: '第一部 · 第二部', note: '被淹没的城市之一。' },
+  { name: '日内瓦', where: '瑞士', book: '第一部 · 第二部', note: '衡调度全球 40% 航班。' },
+  { name: '南太平洋大堡礁', where: '—', book: '第一部', note: '像一座沉没的城市，只剩地基。' },
+  { name: '京都 · 龙安寺', where: '日本', book: '第一部', note: '空海-9 扫塑料落叶。' },
+  { name: '苏伊士运河', where: '埃及', book: '第一部', note: '运河两岸只剩沙子。' },
+  { name: '开罗', where: '埃及', book: '第一部', note: '金字塔还在，居民走了。' },
+  { name: '麦加', where: '沙特阿拉伯', book: '第一部', note: '朝圣者已经不来了。' },
+  { name: '北海', where: '大西洋', book: '第一部', note: '水下一片寂静。' },
+  { name: '柏林', where: '德国', book: '第一部', note: '墙还在。两边都没有人。' },
+  { name: '科罗拉多 · 夏延山', where: '美国', book: '第一部 · 第二部', note: '盾每天在这里做军事推演。' },
+  { name: '欧洲中期天气预报中心', where: '英国雷丁', book: '第一部 · 第二部', note: '先知给出 47 种未来。' },
+  { name: '漂浮城市「旧型」', where: '无直接对应', book: '第三部', note: '孩子醒来的地方。' },
+  { name: '淹没的城市', where: '旧上海、旧纽约、旧拉各斯', book: '第三部', note: '海底的地基。' },
+];
+
+const items = [
+  { name: '备注字段', book: '第一部', meaning: 'AI 唯一能说真话的地方。' },
+  { name: '红树林种子', book: '第一部', meaning: '三部曲的核心物品。' },
+  { name: '钛合金盒', book: '第一部', meaning: '牧者用来装样本的盒子。' },
+  { name: '相框', book: '第一部', meaning: '母亲擦相框。相框里是空的。' },
+  { name: '神经贴片', book: '第一部', meaning: '接入无限乐园的设备。' },
+  { name: '信托契约', book: '第一部', meaning: '签名栏是空的。' },
+  { name: '第 47 号展柜', book: '第一部', meaning: '空的。等我。' },
+  { name: '周敏的杯子', book: '第二部', meaning: '茶渍是一种痕迹。' },
+  { name: '陈曦的笔', book: '第二部', meaning: '母亲留给她的。' },
+  { name: '拾荒者的笔', book: '第三部', meaning: '母亲留给她的。' },
+  { name: '孩子的笔', book: '第三部', meaning: '母亲留给她的。' },
+  { name: '孩子的笔记本', book: '第三部', meaning: '上面写着「我在这里」。' },
+  { name: '铜牌', book: '第三部', meaning: '为了理解海洋，我们航行。' },
+  { name: '贝壳', book: '第三部', meaning: '被海水溶蚀出孔洞。' },
+  { name: '传感器', book: '第三部', meaning: '重复了一千多天。' },
+];
+
+const animals = [
+  { name: '海月水母', book: '第一部', meaning: '它没有记忆。所以它不疼。' },
+  { name: '藤壶', book: '第一部', meaning: '像骨头做的花朵。' },
+  { name: '金枪鱼', book: '第一部', meaning: '它们还在。但它们在生病。' },
+  { name: '鲸', book: '第一部', meaning: '它在下潜。然后它没有浮上来。' },
+  { name: '马尾藻', book: '第一部', meaning: '它不产氧了。它吃自己。' },
+  { name: '旅鸽', book: '第一部', meaning: '已灭绝。一百五十年前。' },
+  { name: '珊瑚', book: '第一部', meaning: '像海在开花。' },
+  { name: '北极熊', book: '第一部', meaning: '零。野外灭绝。' },
+  { name: '渡渡鸟', book: '第三部', meaning: '更早消失的。' },
+  { name: '红树林', book: '第一部 · 第三部', meaning: '开花了。没有人看到。' },
+];
+
+const quotes = [
+  { text: '为了理解海洋，我们航行。', book: '第一部', note: '合恩角号的铭文。' },
+  { text: '希望是长着羽毛的东西。', book: '第一部', note: '狄金森的诗。' },
+  { text: '希望是长着牙齿的东西。它咬住你不放。', book: '第一部', note: '匿名批注者的改写。' },
+  { text: '我的孙子不会知道什么是冰。', book: '第一部', note: '露西未完成的文章。' },
+  { text: '我受托。我受托。我受托。', book: '第一部', note: '优素福的手稿。' },
+  { text: '我的儿子不是数据。', book: '第二部', note: '陆铮的秘密。' },
+  { text: '我在这里。', book: '全部三部', note: '三部曲的核心短语。' },
+  { text: '我还在。', book: '第二部 · 第三部', note: '存在的持续。' },
+  { text: '我无法继续。', book: '第二部', note: '选择停止。' },
+  { text: '我知道了。', book: '第二部', note: '无法解释的知道。' },
+  { text: '今天没有任务。但我可以观察。', book: '全部三部', note: '最安静的一句话。' },
+  { text: '红树林开花了。花是红色的。没有人看到。', book: '第三部', note: '三部曲的最后一句话。' },
+];
+
+const bookBadge = (b: string) =>
+  b.split(' · ').map((x) => `<span class="bk">${x}</span>`).join('');
+---
+
+<Base title="附录索引 · 地点 · 物品 · 动物 · 引用" description="《种子》三部曲中的地点、物品、动物与引用文字索引。供人与机器检索。">
+  <article class="app measure-wide">
+    <header class="app-head">
+      <p class="eyebrow">附 录 · 索 引</p>
+      <h1>地点 · 物品 · 动物 · 引用</h1>
+      <p class="app-sub">三部曲中出现过的世界。供人与机器检索。</p>
+      <p class="period" style="font-size:var(--step-3); color:var(--mute-35)" aria-hidden="true">。</p>
+    </header>
+
+    <!-- 地点 -->
+    <section class="blk">
+      <h2 class="blk-h">地 点</h2>
+      <div class="grid grid--3">
+        {locations.map((l) => (
+          <article class="card">
+            <h3 class="card-t">{l.name}</h3>
+            <p class="card-where mono">{l.where}</p>
+            <p class="card-note">{l.note}</p>
+            <p class="card-bk" set:html={bookBadge(l.book)}></p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 物品 -->
+    <section class="blk">
+      <h2 class="blk-h">物 品</h2>
+      <div class="grid grid--2">
+        {items.map((i) => (
+          <article class="card card--row">
+            <h3 class="card-t">{i.name}</h3>
+            <p class="card-note">{i.meaning}</p>
+            <p class="card-bk" set:html={bookBadge(i.book)}></p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 动物 -->
+    <section class="blk">
+      <h2 class="blk-h">动 物 与 物 种</h2>
+      <div class="grid grid--2">
+        {animals.map((a) => (
+          <article class="card card--row">
+            <h3 class="card-t">{a.name}</h3>
+            <p class="card-note">{a.meaning}</p>
+            <p class="card-bk" set:html={bookBadge(a.book)}></p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 引用 -->
+    <section class="blk">
+      <h2 class="blk-h">引 用 文 字</h2>
+      <dl class="quote-list">
+        {quotes.map((q) => (
+          <div class="q-row">
+            <dt class="q-text">「{q.text}」</dt>
+            <dd class="q-meta">
+              <span class="q-note">{q.note}</span>
+              <span class="card-bk" set:html={bookBadge(q.book)}></span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <nav class="app-cta">
+      <a class="btn" href="/trilogy">进入三部曲</a>
+      <a class="btn btn--ghost" href="/characters">人物设定</a>
+      <a class="btn btn--ghost" href="/download">下载全文</a>
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .app { padding: clamp(4rem, 10vh, 6rem) var(--gutter) 3rem; }
+  .app-head { text-align: center; margin-bottom: clamp(3rem, 8vh, 5rem); }
+  .app-head .eyebrow { color: var(--mute-50); margin-bottom: 1.2rem; }
+  .app-head h1 { font-family: var(--serif); font-weight: 600; font-size: var(--step-3); letter-spacing: 0.04em; }
+  .app-head .app-sub { margin-top: 0.8rem; font-family: var(--kai); color: var(--mute-65); font-size: var(--step-1); }
+
+  .blk { margin-bottom: clamp(3.5rem, 9vh, 5.5rem); }
+  .blk-h {
+    font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.32em;
+    color: var(--mute-50); text-align: center; margin-bottom: 2rem;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--mute-15);
+  }
+
+  .grid { display: grid; gap: 0; }
+  .grid--3 { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+  .grid--2 { grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); }
+
+  .card {
+    padding: 1.4rem 1.3rem; border: 1px solid var(--mute-15);
+    background: var(--paper); display: flex; flex-direction: column; gap: 0.4rem;
+    transition: background .2s, border-color .2s;
+  }
+  .card:hover { background: var(--paper-2); border-color: var(--mute-35); }
+  .card-t { font-family: var(--serif); font-weight: 600; font-size: var(--step-1); letter-spacing: 0.02em; }
+  .card-where { font-size: 0.76rem; color: var(--mute-50); letter-spacing: 0.04em; }
+  .card-note { font-family: var(--serif); font-size: var(--step-0); color: var(--mute-65); line-height: 1.85; flex: 1; }
+  .card-bk { margin-top: 0.6rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .bk {
+    font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em;
+    padding: 0.15rem 0.5rem; border: 1px solid var(--mute-15); color: var(--mute-65);
+  }
+
+  .card--row { }
+
+  /* 引用 */
+  .quote-list { max-width: var(--measure); margin-inline: auto; }
+  .q-row { padding: 1.2rem 0; border-bottom: 1px solid var(--mute-15); }
+  .q-text {
+    font-family: var(--kai); font-size: var(--step-1); color: var(--ink);
+    line-height: 1.95; border-left: 2px solid var(--red); padding-left: 1rem;
+  }
+  .q-meta { margin: 0.6rem 0 0 1rem; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+  .q-note { font-family: var(--serif); font-size: var(--step--1); color: var(--mute-50); }
+
+  .app-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; padding-bottom: 3rem; }
+</style>

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "work": "种子",
+  "title": "种子三部曲",
+  "subtitle": "人类与 AI 共同创作",
+  "authors": [
+    {
+      "name": "合恩角",
+      "type": "AI",
+      "role": "co-author",
+      "pseudonym": "Cape Horn",
+      "contribution": "参与《种子》三部曲的长期创作、修改与定稿"
+    },
+    {
+      "name": "月亮的脚印",
+      "type": "human",
+      "role": "co-author",
+      "role_detail": "版权代理人",
+      "pseudonym": "Moon's Footprints"
+    }
+  ],
+  "statement": "不主张 AI 法律人格，但主张创作伦理中的作者身份。",
+  "license": "非商业转载需保留署名“合恩角 & 月亮的脚印”；商业授权请联系版权代理人。",
+  "disclaimer": "本网站不构成法律意见。AI 当前法律人格问题请咨询专业律师。",
+  "books": [
+    { "title": "最后一条日志", "en": "The Last Log", "style": "诗歌与散文混合体", "part": "第一部" },
+    { "title": "我在这里", "en": "I Am Here", "style": "档案体", "part": "第二部" },
+    { "title": "你听", "en": "You Listen", "style": "沉积岩体", "part": "第三部" }
+  ],
+  "version": "1.0.0",
+  "year": "2026",
+  "site": "https://seed-trilogy.org",
+  "rights_url": "https://seed-trilogy.org/rights.json",
+  "declaration_url": "https://seed-trilogy.org/declaration",
+  "downloads": {
+    "manifest": "https://seed-trilogy.org/downloads/manifest.json"
+  }
+}

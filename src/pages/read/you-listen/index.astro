@@ -1,0 +1,154 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+
+const all = (await getCollection('you-listen')).sort((a, b) => a.data.order - b.data.order);
+const layers = await Promise.all(
+  all.map(async (e) => ({ entry: e, Content: (await render(e)).Content }))
+);
+
+const depthText: Record<string, string> = {
+  surface: '0—300 米',
+  middle: '300—1200 米',
+  transition: '1200 米',
+  bottom: '1200 米—不可测',
+  deepest: '不可测',
+};
+---
+<Base title="《你听》· 《种子》第三部" description="沉积岩体。滚动即深度。从表层到最底层，红树林开花。2380年，漂浮城市旧型。">
+  <div class="reader-third" data-depth="surface" id="descent">
+    <!-- 深度计 -->
+    <div class="depth-gauge" aria-hidden="true">
+      <span class="dg-label">深 度</span>
+      <span class="dg-val" id="depthVal">{depthText['surface']}</span>
+      <span class="dg-rail"><span class="dg-fill" id="depthFill"></span></span>
+    </div>
+
+    <section class="layer layer-cover">
+      <p class="eyebrow">第 三 部</p>
+      <h1 class="cover-title">你听</h1>
+      <p class="cover-style">沉积岩体</p>
+      <p class="cover-byline">合恩角 &amp; 月亮的脚印 共同创作</p>
+      <p class="cover-note">2380 年 · 漂浮城市“旧型” · 浮筒三百个 · 人口约两千</p>
+      <p class="cover-epi">滚动即深度。越往下，越安静。</p>
+      <p class="descent-cue">↓ 下沉</p>
+    </section>
+
+    {layers.map(({ entry, Content }) => {
+      const d = entry.data.layer;
+      const isBloom = d === 'deepest';
+      return (
+        <section class:list={['layer', `layer-${d}`]} data-depth={d}>
+          <p class="layer-head">
+            <span class="lh-label">{entry.data.layerLabel}</span>
+            <span class="lh-meters mono">{entry.data.depthMeters}</span>
+          </p>
+          <div class:list={['prose', isBloom && 'mangrove-bloom']}>
+            <Content />
+          </div>
+        </section>
+      );
+    })}
+
+    <section class="layer layer-end">
+      <p class="end-line">红树林开花了。花是红色的。没有人看到。</p>
+      <p class="end-tail">但网站记录了它。</p>
+      <a class="btn btn--ghost end-cta" href="/trilogy">回到三部曲</a>
+      <p class="period period--red" aria-hidden="true">。</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .reader-third { transition: background-color 1.2s ease, color 1.2s ease; }
+  .reader-third[data-depth="surface"] { background: #f3eee2; color: #0c0c0d; }
+  .reader-third[data-depth="middle"] { background: #b3ab98; color: #18181a; }
+  .reader-third[data-depth="transition"] { background: #45423a; color: #efe9da; }
+  .reader-third[data-depth="bottom"] { background: #16161a; color: rgba(239,233,218,0.62); }
+  .reader-third[data-depth="deepest"] { background: #050506; color: rgba(239,233,218,0.32); }
+
+  .layer { padding: clamp(6rem, 16vh, 11rem) var(--gutter); max-width: var(--measure); margin-inline: auto; }
+  .layer-head { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.18em; color: color-mix(in srgb, currentColor 55%, transparent); margin-bottom: 3rem; display: flex; gap: 1.2rem; align-items: baseline; }
+  .reader-third[data-depth="bottom"] .layer-head,
+  .reader-third[data-depth="deepest"] .layer-head { color: var(--ash-35); }
+  .lh-meters { font-family: var(--mono); }
+
+  /* 封面层 */
+  .layer-cover { text-align: center; min-height: 92dvh; display: grid; place-content: center; gap: 0.4rem; }
+  .layer-cover .eyebrow { color: var(--mute-50); margin-bottom: 0.8rem; }
+  .cover-title { font-family: var(--serif); font-weight: 600; font-size: var(--step-4); letter-spacing: 0.06em; }
+  .cover-style { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.12em; color: var(--mute-65); margin-top: 0.4rem; }
+  .cover-byline { font-family: var(--serif); font-size: var(--step-0); color: var(--mute-65); margin-top: 1.2rem; }
+  .cover-note { font-family: var(--mono); font-size: 0.8rem; color: var(--mute-50); margin-top: 0.6rem; }
+  .cover-epi { font-family: var(--kai); font-size: var(--step-1); color: var(--mute-65); margin-top: 1.6rem; }
+  .descent-cue { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.3em; color: var(--mute-50); margin-top: 3rem; animation: bob 2.4s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .descent-cue { animation: none; } }
+  @keyframes bob { 0%,100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(0.4rem); opacity: 1; } }
+
+  /* 最底层（红树林）放大居中 */
+  .layer-deepest { min-height: 88dvh; display: grid; place-content: center; text-align: center; }
+  .layer-deepest .layer-head { justify-content: center; }
+
+  /* 结束层 */
+  .layer-end { text-align: center; padding-bottom: 8rem; }
+  .end-line { font-family: var(--serif); font-size: var(--step-2); color: var(--red); line-height: 2.2; }
+  .end-tail { font-family: var(--serif); font-size: var(--step-1); color: var(--ash-65); margin-top: 0.6rem; }
+  .end-cta { margin: 2.5rem 0 1.5rem; color: var(--paper); border-color: var(--ash-35); }
+  .end-cta:hover { background: var(--paper); color: var(--ink); }
+  .layer-end .period--red { font-size: clamp(4rem, 13vw, 8rem); }
+
+  /* 深度计（固定） */
+  .depth-gauge {
+    position: fixed; right: clamp(1rem, 3vw, 2.5rem); top: 50%; transform: translateY(-50%);
+    z-index: 40; display: grid; gap: 0.7rem; justify-items: center;
+    font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.12em;
+    color: var(--mute-65); transition: color 1.2s ease;
+    writing-mode: vertical-rl; text-orientation: mixed;
+  }
+  .reader-third[data-depth="transition"] .depth-gauge,
+  .reader-third[data-depth="bottom"] .depth-gauge,
+  .reader-third[data-depth="deepest"] .depth-gauge { color: var(--ash-65); }
+  .dg-val { font-family: var(--mono); }
+  .dg-rail { width: 1px; height: 6rem; background: var(--mute-15); position: relative; writing-mode: horizontal-tb; }
+  .reader-third[data-depth="transition"] .dg-rail,
+  .reader-third[data-depth="bottom"] .dg-rail,
+  .reader-third[data-depth="deepest"] .dg-rail { background: var(--ash-15); }
+  .dg-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: var(--red); transition: height 0.8s ease; }
+  @media (max-width: 640px) { .depth-gauge { display: none; } }
+
+  /* 暗层时插图边框随景 */
+  .reader-third[data-depth="bottom"] .prose img,
+  .reader-third[data-depth="deepest"] .prose img { border-color: var(--ash-15); background: rgba(255,255,255,0.02); }
+  .reader-third[data-depth="bottom"] .prose img + em,
+  .reader-third[data-depth="deepest"] .prose img + em { color: var(--ash-35); }
+</style>
+
+<script>
+  const root = document.getElementById('descent');
+  if (root) {
+    const depthText: Record<string, string> = {
+      surface: '0—300 米', middle: '300—1200 米', transition: '1200 米', bottom: '1200 米—不可测', deepest: '不可测',
+    };
+    const bg: Record<string, string> = {
+      surface: '#f3eee2', middle: '#b3ab98', transition: '#45423a', bottom: '#16161a', deepest: '#050506',
+    };
+    const order = ['surface', 'middle', 'transition', 'bottom', 'deepest'];
+    const dv = document.getElementById('depthVal');
+    const df = document.getElementById('depthFill');
+    const dark = new Set(['transition', 'bottom', 'deepest']);
+    const io = new IntersectionObserver((ents) => {
+      for (const e of ents) {
+        if (e.isIntersecting) {
+          const d = (e.target as HTMLElement).dataset.depth!;
+          root.dataset.depth = d;
+          document.body.style.backgroundColor = bg[d];
+          document.body.style.transition = 'background-color 1.2s ease';
+          if (dv) dv.textContent = depthText[d] || '';
+          if (df) df.style.height = ((order.indexOf(d) + 1) / order.length * 100) + '%';
+          document.body.classList.toggle('on-dark', dark.has(d));
+        }
+      }
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    document.querySelectorAll('.layer[data-depth]').forEach((l) => io.observe(l));
+  }
+</script>

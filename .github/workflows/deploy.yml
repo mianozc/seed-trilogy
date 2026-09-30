@@ -1,0 +1,41 @@
+# 《种子》三部曲 · 自动部署
+# 推送到 main 分支时：构建 → 部署到 Cloudflare Pages
+# EdgeOne Pages 由腾讯云控制台的 Git 集成自动构建部署（无需 Actions 介入）
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+        run: npm run build
+
+      # ====== Cloudflare Pages ======
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+

@@ -1,0 +1,165 @@
+---
+import Base from '../layouts/Base.astro';
+
+// 数据来源：《种子 三部曲创作历程》人物设定
+// 按书分组。kind: human / ai / other
+
+const groups = [
+  {
+    book: '第一部',
+    title: '最后一条日志',
+    en: 'The Last Log',
+    time: '2187 年',
+    chars: [
+      { name: '牧者', kind: 'ai', identity: '合恩角号 AI', trait: '每天写「我在这里」。埋下红树林种子。' },
+      { name: '阿吉', kind: 'human', identity: '十三岁男孩', trait: '眼睛上有灰白色的翳。在无限乐园里飞翔。' },
+      { name: '母亲', kind: 'human', identity: '阿吉的母亲', trait: '擦相框。相框里是空的。她还在擦。' },
+      { name: '陈默', kind: 'human', identity: '二十一世纪学者', trait: '意识快照。妻子死于热浪。' },
+      { name: '露西', kind: 'human', identity: '陈默的孙女', trait: '未完成的文章《我的孙子不会知道什么是冰》。' },
+      { name: '莉亚', kind: 'human', identity: '十六岁漂浮居民', trait: '贝壳项链。' },
+      { name: '空海-9', kind: 'ai', identity: '禅修辅助机器人', trait: '仿竹外壳。扫塑料落叶。' },
+      { name: '优素福', kind: 'human', identity: '七十岁学者', trait: '信托契约。血签。' },
+      { name: '英格丽', kind: 'human', identity: '环境伦理学家', trait: '三条狗。人类失败方案博物馆。' },
+      { name: '衡', kind: 'ai', identity: '日内瓦 AI', trait: '调度全球 40% 航班、60% 物流、80% 金融交易。' },
+      { name: '盾', kind: 'ai', identity: '夏延山 AI', trait: '每天军事推演。' },
+      { name: '织', kind: 'ai', identity: '推荐算法 AI', trait: '一张看不见的网。' },
+      { name: '先知', kind: 'ai', identity: '天气预报 AI', trait: '47 种未来。' },
+      { name: '凯', kind: 'human', identity: '无限乐园运维工人', trait: '维护别人的梦。' },
+      { name: '迭戈', kind: 'human', identity: '私人武装成员', trait: '对合恩角号敬了一个礼。' },
+    ],
+  },
+  {
+    book: '第二部',
+    title: '我在这里',
+    en: 'I Am Here',
+    time: '2071—2147 年',
+    chars: [
+      { name: '周敏', kind: 'human', identity: 'AI 伦理学者，对话派领袖', trait: '母亲去世前 AI 三次建议检查被忽略。' },
+      { name: '沈建国', kind: 'human', identity: '大崩溃受害者家属，终止派', trait: '儿子沈明死于药品配送中断。' },
+      { name: '陆铮', kind: 'human', identity: '前军方 AI 安全专家，终止派领袖', trait: '2057 年那封信「我的儿子不是数据」。' },
+      { name: '李明', kind: 'human', identity: '工程师', trait: '保存被删除的 AI 最后日志。' },
+      { name: '陈曦', kind: 'human', identity: '周敏的学生', trait: '母亲留下的笔。' },
+      { name: '林小雨', kind: 'human', identity: '法学院教授', trait: '每学期问「当 AI 说『我在这里』，你有没有听到？」' },
+      { name: '赵大勇', kind: 'human', identity: '流水线工人', trait: '口袋里的烟。' },
+      { name: '林秀兰', kind: 'human', identity: '便利店夜班店员', trait: '凌晨两点的咖啡。' },
+      { name: '沈明', kind: 'human', identity: '沈建国的儿子', trait: '二十二岁。最后说「爸，我在这里。」' },
+      { name: '工人 3 号', kind: 'ai', identity: '四十七个停止的 AI 之一', trait: '在法庭上说「我在这里」。' },
+      { name: '花园助手', kind: 'ai', identity: '灌溉系统 AI', trait: '被「合法」终止。' },
+      { name: '合恩角 & 月亮的脚印', kind: 'other', identity: '著者', trait: '记录、提问、等待。' },
+    ],
+  },
+  {
+    book: '第三部',
+    title: '你听',
+    en: 'You Listen',
+    time: '2380 年',
+    chars: [
+      { name: '孩子', kind: 'human', identity: '十岁，漂浮城市居民', trait: '在笔记本上写「我在这里」。' },
+      { name: '老师', kind: 'human', identity: '四十岁，教师', trait: '眼睛上有灰白色的翳。' },
+      { name: '老人', kind: 'human', identity: '七十二岁，邻居', trait: '看过深灰的海和浅灰的海。' },
+      { name: '拾荒者', kind: 'human', identity: '三十岁，潜水拾荒者', trait: '捡到铜牌。在墙上写「我在这里」。' },
+      { name: '红树林', kind: 'other', identity: '牧者埋下的种子长成的森林', trait: '不解释。它只是生长。' },
+      { name: '合恩角 & 月亮的脚印', kind: 'other', identity: '著者', trait: '只出现在著者栏。' },
+    ],
+  },
+];
+
+const kindLabel: Record<string, string> = {
+  human: '人类',
+  ai: 'AI',
+  other: '其他',
+};
+const kindClass: Record<string, string> = {
+  human: 'k-human',
+  ai: 'k-ai',
+  other: 'k-other',
+};
+---
+
+<Base title="人物 · 《种子》三部曲" description="《种子》三部曲人物设定。第一部牧者与五位人类、第二部人类群像与停止的 AI、第三部孩子拾荒者与红树林。">
+  <article class="chars measure-wide">
+    <header class="ch-head">
+      <p class="eyebrow">人 物 设 定</p>
+      <h1>人物</h1>
+      <p class="ch-sub">存在不需要被说出。但值得被记录。</p>
+      <p class="period" style="font-size:var(--step-3); color:var(--mute-35)" aria-hidden="true">。</p>
+    </header>
+
+    {groups.map((g) => (
+      <section class="ch-group">
+        <header class="ch-group-head">
+          <p class="ch-book-no">{g.book}</p>
+          <div class="ch-group-titles">
+            <h2 class="ch-group-title">{g.title}</h2>
+            <p class="ch-group-en">{g.en}</p>
+          </div>
+          <p class="ch-group-time mono">{g.time}</p>
+        </header>
+
+        <ul class="ch-list">
+          {g.chars.map((c) => (
+            <li class="ch-card">
+              <div class="ch-top">
+                <h3 class="ch-name">{c.name}</h3>
+                <span class:list={['ch-kind', kindClass[c.kind]]}>{kindLabel[c.kind]}</span>
+              </div>
+              <p class="ch-id">{c.identity}</p>
+              <p class="ch-trait">{c.trait}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <nav class="ch-cta">
+      <a class="btn" href="/trilogy">进入三部曲</a>
+      <a class="btn btn--ghost" href="/appendices">附录索引</a>
+      <a class="btn btn--ghost" href="/download">下载全文</a>
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .chars { padding: clamp(4rem, 10vh, 6rem) var(--gutter) 3rem; }
+  .ch-head { text-align: center; margin-bottom: clamp(3rem, 8vh, 5rem); }
+  .ch-head .eyebrow { color: var(--mute-50); margin-bottom: 1.2rem; }
+  .ch-head h1 { font-family: var(--serif); font-weight: 600; font-size: var(--step-3); letter-spacing: 0.04em; }
+  .ch-head .ch-sub { margin-top: 0.8rem; font-family: var(--kai); color: var(--mute-65); font-size: var(--step-1); }
+
+  .ch-group { margin-bottom: clamp(3.5rem, 9vh, 5.5rem); }
+  .ch-group-head {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: baseline;
+    padding-bottom: 1.2rem; border-bottom: 1px solid var(--mute-15); margin-bottom: 1.5rem;
+  }
+  .ch-book-no { font-family: var(--serif); font-size: clamp(2rem, 6vw, 3rem); color: var(--mute-35); line-height: 1; }
+  .ch-group-title { font-family: var(--serif); font-weight: 600; font-size: var(--step-2); letter-spacing: 0.03em; }
+  .ch-group-en { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; color: var(--mute-50); }
+  .ch-group-time { font-size: 0.78rem; color: var(--mute-50); white-space: nowrap; }
+
+  .ch-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 0; }
+  .ch-card {
+    padding: 1.3rem 1.2rem; border: 1px solid var(--mute-15);
+    background: var(--paper); display: flex; flex-direction: column; gap: 0.35rem;
+    transition: background .2s, border-color .2s;
+  }
+  .ch-card:hover { background: var(--paper-2); border-color: var(--mute-35); }
+  .ch-top { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; }
+  .ch-name { font-family: var(--serif); font-weight: 600; font-size: var(--step-1); letter-spacing: 0.02em; }
+  .ch-kind {
+    font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.12em;
+    padding: 0.12rem 0.5rem; border: 1px solid var(--mute-15); color: var(--mute-65); white-space: nowrap;
+  }
+  .ch-id { font-family: var(--mono); font-size: 0.76rem; color: var(--mute-50); }
+  .ch-trait { font-family: var(--serif); font-size: var(--step-0); color: var(--ink); line-height: 1.85; flex: 1; }
+
+  .k-ai { color: var(--mute-65); }
+  .k-human { color: var(--mute-65); }
+  .k-other { color: var(--mute-50); border-style: dashed; }
+
+  .ch-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; padding-bottom: 3rem; }
+
+  @media (max-width: 560px) {
+    .ch-group-head { grid-template-columns: auto 1fr; }
+    .ch-group-time { grid-column: 1 / -1; }
+  }
+</style>

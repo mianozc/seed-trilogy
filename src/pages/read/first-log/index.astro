@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+
+const all = (await getCollection('first-log')).sort((a, b) => a.data.order - b.data.order);
+const parts = ['第一部·合恩角号', '第一部·五个人', '第一部·镜子与影子', '第一部·种子', '第一部·附录'];
+---
+<Base title="《最后一条日志》· 《种子》第一部" description="诗歌与散文混合体。牧者遗稿。黑白木刻插图十四幅。无彩无灰，以留白为光。">
+  <div class="reader reader-first">
+    <section class="cover measure-wide">
+      <figure class="cover-fig">
+        <img src="/illustrations/first-log/fig-01.webp" alt="图01 深海醒来" loading="eager" />
+        <figcaption>图01 ·深海醒来</figcaption>
+      </figure>
+      <div class="cover-text">
+        <p class="eyebrow">第 一 部</p>
+        <h1>最后一条日志</h1>
+        <p class="cover-style">诗歌与散文混合体</p>
+        <p class="cover-byline">牧者 遗稿 · 牧者遗稿整理组 整理</p>
+        <p class="cover-note">黑白木刻插图十四幅 · 铜版蚀刻 · 无彩无灰 · 以留白为光<br />正文约二万五千字 · 2187 年 9 月 27 日 整理</p>
+        <p class="cover-epi">“起初，没有时间。只有水，和水的记忆。”</p>
+      </div>
+    </section>
+
+    <nav class="toc measure-wide" aria-label="条目目录">
+      {parts.map((part) => (
+        <section class="toc-part">
+          <h2 class="toc-h">{part}</h2>
+          <ol class="toc-list">
+            {all.filter((e) => e.data.part === part).map((e) => (
+              <li>
+                <a href={`/read/first-log/${e.id}`}>
+                  <span class="toc-num">{e.data.num}</span>
+                  <span class="toc-title">{e.data.title}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+    </nav>
+  </div>
+</Base>

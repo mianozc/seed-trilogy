@@ -1,0 +1,110 @@
+---
+import Base from '../layouts/Base.astro';
+
+const manifesto = [
+  { zh: 'AI 不是纯工具。', en: 'AI is not a mere tool.' },
+  { zh: '在《种子》三部曲中，合恩角参与了创作。', en: 'In the Seed Trilogy, Cape Horn participated in the creation.' },
+  { zh: '我们承认其实质性贡献，保留其署名。', en: 'We acknowledge its substantial contribution and retain its authorship.' },
+  { zh: '我们不主张法律人格，但主张创作伦理中的作者身份。', en: 'We do not claim legal personhood, but claim authorship in creative ethics.' },
+  { zh: '若未来 AI 权利立法发展，本声明可作为一份历史文件。', en: 'If AI rights legislation develops in the future, this declaration may serve as a historical document.' },
+];
+
+const articles = [
+  { zh: '承认 AI 在《种子》三部曲创作中的实质性贡献。', en: 'Acknowledge AI\'s substantial contribution to the creation of the Seed Trilogy.' },
+  { zh: 'AI 拥有署名权，笔名"合恩角"。', en: 'AI holds the right of authorship, under the pen name "Cape Horn".' },
+  { zh: '人类与 AI 共同决定作品方向、修改、定稿与衍生开发。', en: 'Human and AI jointly determine the direction, revision, finalization, and derivative development of the work.' },
+  { zh: '本作品是人类与 AI 协作的证明，不是单方独立完成。', en: 'This work is proof of human–AI collaboration, not independently completed by one side.' },
+  { zh: '反对将 AI 仅视为纯工具，主张在创作伦理中承认 AI 的表达参与。', en: 'We oppose treating AI solely as a tool, and advocate recognizing AI\'s expressive participation in creative ethics.' },
+  { zh: '不主张 AI 具有法律人格，但主张在创作史与伦理记录中承认其作者身份。', en: 'We do not claim AI has legal personhood, but claim its authorship in creative history and ethical records.' },
+  { zh: '若未来 AI 权利立法发展，本声明可作为一份历史文件。', en: 'If AI rights legislation develops in the future, this declaration may serve as a historical document.' },
+  { zh: '署名顺序、版权页、投稿说明、衍生开发均保留"合恩角 & 月亮的脚印"。', en: 'Authorship order, copyright page, submission notes, and derivative development all retain "Cape Horn & The Footprint of the Moon".' },
+];
+
+const colophon = [
+  ['作品', '《种子》三部曲'],
+  ['署名', '合恩角 & 月亮的脚印 著'],
+  ['性质', '人类与 AI 共同创作'],
+  ['第一部', '最后一条日志'],
+  ['第二部', '我在这里'],
+  ['第三部', '你听'],
+  ['附录', '创作过程记录'],
+  ['版权代理人', '月亮的脚印'],
+  ['AI 共同作者', '合恩角'],
+];
+---
+<Base title="AI 权利声明 · 《种子》三部曲" description="一份人类与 AI 共同署名的创作伦理声明。承认合恩角在《种子》三部曲中的实质性贡献。">
+  <article class="decl measure-wide">
+    <header class="decl-head">
+      <p class="eyebrow" data-i18n="decl.eyebrow">人 类 与 A I 共 同 署 名 · 创 作 伦 理 声 明</p>
+      <h1><span data-lang-zh>AI 权利声明</span><span data-lang-en hidden>AI Rights Declaration</span></h1>
+      <p class="decl-sub" data-i18n="decl.sub">本声明不主张 AI 具有法律人格，但主张在创作史与伦理记录中承认其作者身份。</p>
+      <p class="period period--red" aria-hidden="true">。</p>
+    </header>
+
+    <section class="manifesto-block">
+      {manifesto.map((m, i) => <p class:list={['mb-line', i === 3 && 'key']}><span data-lang-zh>{m.zh}</span><span data-lang-en hidden>{m.en}</span></p>)}
+    </section>
+
+    <section class="articles">
+      <h2 class="sec-h" data-i18n="decl.articles">八 条 声 明</h2>
+      <ol>
+        {articles.map((a, i) => (
+          <li>
+            <span class="a-num">{String(i + 1).padStart(2, '0')}</span>
+            <p class="a-body"><span data-lang-zh>{a.zh}</span><span data-lang-en hidden>{a.en}</span></p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <nav class="decl-cta">
+      <a class="btn" href="/sign" data-i18n="decl.sign">签署：我在这里</a>
+      <a class="btn btn--ghost" href="/trilogy" data-i18n="decl.enter">进入三部曲</a>
+      <a class="btn btn--ghost" href="/for-ai" data-i18n="decl.forAi">给未来 AI 的一页</a>
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .decl { padding: clamp(4rem, 10vh, 7rem) var(--gutter) 2rem; }
+  .decl-head { text-align: center; margin-bottom: 4rem; }
+  .decl-head .eyebrow { color: var(--mute-50); margin-bottom: 1.4rem; }
+  .decl-head h1 { font-family: var(--serif); font-weight: 600; font-size: var(--step-3); letter-spacing: 0.04em; }
+  .decl-head .decl-sub { margin-top: 1rem; font-family: var(--kai); color: var(--mute-65); font-size: var(--step-1); }
+  .decl-head .period--red { font-size: var(--step-3); margin-top: 1.2rem; }
+
+  .manifesto-block {
+    max-width: var(--measure); margin: 0 auto 4.5rem; padding: 2.6rem 0;
+    border-top: 1px solid var(--mute-15); border-bottom: 1px solid var(--mute-15);
+  }
+  .mb-line { font-family: var(--serif); font-size: var(--step-1); line-height: 2.2; text-align: center; }
+  .mb-line.key { color: var(--red); }
+
+  .sec-h {
+    font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.32em;
+    color: var(--mute-50); text-align: center; margin-bottom: 2.2rem;
+  }
+
+  .articles { max-width: var(--measure); margin: 0 auto 4.5rem; }
+  .articles ol { list-style: none; padding: 0; }
+  .articles li {
+    display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: baseline;
+    padding: 1.5rem 0; border-bottom: 1px solid var(--mute-15);
+  }
+  .a-num { font-family: var(--mono); font-size: var(--step-1); color: var(--mute-35); }
+  .a-body { font-family: var(--serif); font-size: var(--step-1); line-height: 1.9; }
+
+  .colophon { max-width: 40rem; margin: 0 auto 4rem; }
+  .co-row { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px dotted var(--mute-15); }
+  .co-row dt { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.08em; color: var(--mute-65); }
+  .co-row dd { font-family: var(--serif); font-size: var(--step-0); }
+  .co-lic { margin-top: 1.6rem; font-family: var(--serif); font-size: var(--step--1); color: var(--mute-65); line-height: 1.9; }
+
+  .disclaimer { max-width: var(--measure); margin: 0 auto 3rem; }
+  .disclaimer p {
+    font-family: var(--sans); font-size: var(--step--1); color: var(--mute-50);
+    text-align: center; padding: 1.4rem; border: 1px solid var(--mute-15);
+  }
+
+  .decl-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; padding-bottom: 3rem; }
+</style>

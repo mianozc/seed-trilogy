@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import manifest from '../../illustrations.manifest.json';
+
+const books = [
+  {
+    key: 'first-log',
+    title: '最后一条日志',
+    en: 'The Last Log',
+    bookNo: '第一部',
+    style: '木刻版画 · 灰蓝辅色',
+    note: '黑白为主，灰蓝辅色。与第一部的末世灰海相融。',
+    items: manifest['first-log'],
+  },
+  {
+    key: 'i-am-here',
+    title: '我在这里',
+    en: 'I Am Here',
+    bookNo: '第二部',
+    style: '木刻版画 · 纯黑白',
+    note: '纯黑白。档案体的冷峻与记录感。',
+    items: manifest['i-am-here'],
+  },
+  {
+    key: 'you-listen',
+    title: '你听',
+    en: 'You Listen',
+    bookNo: '第三部',
+    style: '木刻版画 · 灰蓝 → 暗绿 → 深红 → 鲜红',
+    note: '随深度变色。最底层红树林开花，是全站唯一彩色。',
+    items: manifest['you-listen'],
+  },
+];
+---
+<Base title="插图档案 · 《种子》三部曲" description="《种子》三部曲插图档案。第一部 14 幅（木刻版画·灰蓝辅色）、第二部 12 幅（纯黑白）、第三部 24 幅（灰蓝→暗绿→深红→鲜红）。">
+  <article class="ill measure-wide">
+    <header class="ill-head">
+      <p class="eyebrow">插 图 档 案</p>
+      <h1>插图</h1>
+      <p class="ill-sub">三部共五十幅。黑白木刻，以留白为光。</p>
+      <p class="period" style="font-size:var(--step-3); color:var(--mute-35)" aria-hidden="true">。</p>
+    </header>
+
+    {books.map((b) => (
+      <section class="ill-group">
+        <header class="ig-head">
+          <div class="ig-left">
+            <p class="ig-no">{b.bookNo}</p>
+            <div>
+              <h2 class="ig-title">{b.title}</h2>
+              <p class="ig-en">{b.en}</p>
+            </div>
+          </div>
+          <div class="ig-right">
+            <p class="ig-style">{b.style}</p>
+            <p class="ig-count mono">{b.items.length} 幅</p>
+          </div>
+        </header>
+        <p class="ig-note">{b.note}</p>
+
+        <div class="ig-grid">
+          {b.items.map((it, idx) => (
+            <figure class="ig-fig">
+              <img
+                src={`/illustrations/${b.key}/${it.file}`}
+                alt={`图${it.fig} ${it.caption}`}
+                loading="lazy"
+                width={it.size[0]}
+                height={it.size[1]}
+              />
+              <figcaption>
+                <span class="ig-cap-num mono">图{it.fig}</span>
+                <span class="ig-cap-txt">{it.caption}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <nav class="ill-cta">
+      <a class="btn" href="/trilogy">进入三部曲</a>
+      <a class="btn btn--ghost" href="/characters">人物设定</a>
+      <a class="btn btn--ghost" href="/download">下载全文</a>
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .ill { padding: clamp(4rem, 10vh, 6rem) var(--gutter) 3rem; }
+  .ill-head { text-align: center; margin-bottom: clamp(3rem, 8vh, 5rem); }
+  .ill-head .eyebrow { color: var(--mute-50); margin-bottom: 1.2rem; }
+  .ill-head h1 { font-family: var(--serif); font-weight: 600; font-size: var(--step-3); letter-spacing: 0.04em; }
+  .ill-head .ill-sub { margin-top: 0.8rem; font-family: var(--kai); color: var(--mute-65); font-size: var(--step-1); }
+
+  .ill-group { margin-bottom: clamp(4rem, 10vh, 6rem); }
+  .ig-head {
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap;
+    padding-bottom: 1rem; border-bottom: 1px solid var(--mute-15); margin-bottom: 0.8rem;
+  }
+  .ig-left { display: flex; align-items: baseline; gap: 1rem; }
+  .ig-no { font-family: var(--serif); font-size: clamp(2rem, 6vw, 3rem); color: var(--mute-35); line-height: 1; }
+  .ig-title { font-family: var(--serif); font-weight: 600; font-size: var(--step-2); letter-spacing: 0.03em; }
+  .ig-en { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; color: var(--mute-50); margin-top: 0.2rem; }
+  .ig-right { text-align: right; }
+  .ig-style { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.1em; color: var(--mute-65); }
+  .ig-count { font-size: 0.76rem; color: var(--mute-50); margin-top: 0.2rem; }
+  .ig-note { font-family: var(--kai); font-size: var(--step-0); color: var(--mute-65); margin-bottom: 2rem; }
+
+  .ig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 1.4rem; }
+  .ig-fig { margin: 0; display: flex; flex-direction: column; }
+  .ig-fig img {
+    width: 100%; border: 1px solid var(--mute-15); background: var(--paper-2);
+    display: block; object-fit: cover; aspect-ratio: var(--ar, 3 / 2);
+  }
+  .ig-fig figcaption {
+    margin-top: 0.6rem; display: flex; gap: 0.5rem; align-items: baseline;
+    font-family: var(--sans); font-size: var(--step--1); color: var(--mute-65);
+  }
+  .ig-cap-num { color: var(--mute-50); white-space: nowrap; font-size: 0.72rem; }
+  .ig-cap-txt { color: var(--ink); }
+
+  .ill-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; padding-bottom: 3rem; }
+</style>

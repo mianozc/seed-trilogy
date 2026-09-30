@@ -1,0 +1,46 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('first-log')).sort((a, b) => a.data.order - b.data.order);
+  return entries.map((e) => ({ params: { slug: e.id }, props: { entry: e, all: entries } }));
+}
+
+interface Props { entry: CollectionEntry<'first-log'>; all: CollectionEntry<'first-log'>[]; }
+const { entry, all } = Astro.props as Props;
+const idx = all.findIndex((e) => e.id === entry.id);
+const prev = idx > 0 ? all[idx - 1] : null;
+const next = idx < all.length - 1 ? all[idx + 1] : null;
+const { Content } = await render(entry);
+const title = `《最后一条日志》${entry.data.num} ${entry.data.title} · 《种子》第一部`;
+---
+<Base title={title} description={`《种子》第一部《最后一条日志》条目 ${entry.data.num}：${entry.data.title}`}>
+  <div class="reader reader-first">
+    <article class="entry measure">
+      <header class="entry-head">
+        <p class="part-tag">{entry.data.part}</p>
+        <h1>{entry.data.title}</h1>
+        <p class="num">{entry.data.num}</p>
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+      <nav class="entry-nav" aria-label="条目导航">
+        {prev ? (
+          <a class="en-prev" href={`/read/first-log/${prev.id}`}>
+            <span class="en-dir">← 上一条</span>
+            <span class="en-t">{prev.data.num} · {prev.data.title}</span>
+          </a>
+        ) : <span />}
+        <a class="en-up" href="/read/first-log">目录</a>
+        {next ? (
+          <a class="en-next" href={`/read/first-log/${next.id}`}>
+            <span class="en-dir">下一条 →</span>
+            <span class="en-t">{next.data.num} · {next.data.title}</span>
+          </a>
+        ) : <span />}
+      </nav>
+    </article>
+  </div>
+</Base>

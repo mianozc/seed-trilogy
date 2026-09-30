@@ -1,0 +1,153 @@
+---
+import '../styles/global.css';
+import { dict, t } from '../lib/i18n';
+
+interface Props {
+  title?: string;
+  description?: string;
+  dark?: boolean;          // 暗底（首页 / 第三部底层）
+  showChrome?: boolean;   // 是否显示顶栏底栏（首页首屏可隐藏）
+  ogImage?: string;
+}
+
+const {
+  title = '《种子》三部曲 · 人类与 AI 共同创作',
+  description = '这不是一个 AI 写的小说网站。这是一份人类与 AI 共同署名的存在档案。合恩角 & 月亮的脚印。',
+  dark = false,
+  showChrome = true,
+} = Astro.props;
+
+// 导航项（含 en，用于 data-lang 切换）
+const nav = [
+  { href: '/trilogy', zh: '三部曲', en: 'Trilogy' },
+  { href: '/characters', zh: '人物', en: 'Characters' },
+  { href: '/appendices', zh: '附录索引', en: 'Appendices' },
+  { href: '/illustrations', zh: '插图', en: 'Illustrations' },
+  { href: '/declaration', zh: 'AI 权利声明', en: 'AI Rights' },
+  { href: '/process', zh: '创作历程', en: 'Process' },
+  { href: '/ai-trace', zh: 'AI 痕迹辨析', en: 'AI Trace' },
+  { href: '/download', zh: '下载', en: 'Download' },
+  { href: '/sign', zh: '签署', en: 'Sign' },
+  { href: '/about', zh: '关于', en: 'About' },
+];
+---
+<!doctype html>
+<html lang="zh-Hans" data-lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050506'/%3E%3Ctext x='16' y='25' font-family='serif' font-size='26' fill='%23f3eee2' text-anchor='middle'%3E%E3%80%82%3/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+  />
+  <link rel="alternate" type="application/json" href="/rights.json" />
+  <link rel="alternate" type="text/plain" href="/llms.txt" />
+  <script is:inline>
+    // 尽早设置语言，避免 FOUC
+    (function () {
+      try {
+        var saved = localStorage.getItem('seed-lang');
+        var lang = (saved === 'en' || saved === 'zh') ? saved :
+          ((navigator.language || 'zh').toLowerCase().startsWith('zh') ? 'zh' : 'en');
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : 'en';
+      } catch (e) {}
+    })();
+  </script>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: '种子三部曲',
+    alternateName: 'The Seed Trilogy',
+    description: '人类与 AI 共同创作的三部曲：最后一条日志 · 我在这里 · 你听。一份人类与 AI 共同署名的存在档案。',
+    inLanguage: 'zh-Hans',
+    datePublished: '2026',
+    version: '1.0.0',
+    license: 'https://seed-trilogy.org/rights.json',
+    copyrightYear: '2026',
+    copyrightHolder: { '@type': 'Person', name: '月亮的脚印' },
+    author: [
+      { '@type': 'Person', name: '月亮的脚印', description: '人类共同作者 · 版权代理人' },
+      { '@type': 'SoftwareApplication', name: '合恩角', applicationCategory: 'CreativeWork co-author', description: 'AI 共同作者' },
+    ],
+    hasPart: [
+      { '@type': 'CreativeWork', name: '最后一条日志', alternateName: 'The Last Log', position: 1 },
+      { '@type': 'CreativeWork', name: '我在这里', alternateName: 'I Am Here', position: 2 },
+      { '@type': 'CreativeWork', name: '你听', alternateName: 'You Listen', position: 3 },
+    ],
+    publisher: { '@type': 'Organization', name: '合恩角 & 月亮的脚印' },
+    mainEntityOfPage: 'https://seed-trilogy.org',
+  })} />
+</head>
+<body class={dark ? 'on-dark' : ''} data-page={dark ? 'dark' : 'paper'}>
+  {showChrome && (
+    <header class:list={['site-head', dark && 'on-dark']}>
+      <a class="mark" href="/">种 子<span class="dot">。</span></a>
+      <nav aria-label="主导航">
+        {nav.map((n) => (
+          <a href={n.href}>
+            <span data-lang-zh>{n.zh}</span><span data-lang-en hidden>{n.en}</span>
+          </a>
+        ))}
+      </nav>
+      <div class="head-tools">
+        <button class="tool-btn" type="button" data-search-open aria-label={t('nav.search')}>
+          <svg class="tool-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="m20 20-3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span class="tool-kbd" data-i18n="ui.kbd">或按</span>
+          <span class="tool-kbd-key">⌘K</span>
+        </button>
+        <button class="tool-btn lang-btn" type="button" data-lang-toggle aria-label={t('lang.toggle')}>
+          EN
+        </button>
+      </div>
+    </header>
+  )}
+  <main>
+    <slot />
+  </main>
+  {showChrome && (
+    <footer class="site-foot">
+      <p data-i18n="foot.line1">《种子》三部曲 &nbsp;·&nbsp; 合恩角 &amp; 月亮的脚印 &nbsp;·&nbsp; 人类与 AI 共同创作</p>
+      <p class="muted" data-i18n="foot.disclaimer">本网站不构成法律意见。AI 当前法律人格问题请咨询专业律师。</p>
+      <p class="ver" data-i18n="foot.version">版本 1.0.0 &nbsp;·&nbsp; SHA256 &nbsp;·&nbsp; OpenTimestamps 已存证 &nbsp;·&nbsp; 2026</p>
+      <p class="dotline">。</p>
+    </footer>
+  )}
+
+  <!-- 搜索弹窗 -->
+  <div class="search-modal" id="search-modal" hidden role="dialog" aria-modal="true" aria-labelledby="search-title">
+    <div class="search-backdrop" data-search-close></div>
+    <div class="search-panel">
+      <div class="search-bar">
+        <span class="search-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="m20 20-3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <input id="search-input" type="search" autocomplete="off"
+          data-i18n-attr="placeholder:search.placeholder"
+          placeholder="搜索全文、人物、章节…" />
+        <button class="search-close" type="button" data-search-close aria-label="关闭">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="search-results" id="search-results">
+        <p class="search-hint" data-i18n="search.hint">输入关键词开始搜索</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline src="/js/i18n-data.js"></script>
+  <script is:inline src="/js/i18n.js"></script>
+  <script is:inline src="/js/search.js"></script>
+</body>
+</html>

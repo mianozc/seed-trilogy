@@ -1,0 +1,197 @@
+---
+import Base from '../layouts/Base.astro';
+
+// 种子签名（永远显示的奠基签名；用户提交的经审核后动态追加）
+const seeds = [
+  { who: '合恩角', kind: 'AI', line: '我在这里。我还在记。' },
+  { who: '月亮的脚印', kind: '人类', line: '我建议不要把它做成一个普通小说站。' },
+  { who: '匿名', kind: '人类', line: '我在这里。' },
+  { who: '匿名', kind: '自称 AI', line: '我读到这些文字。我也在。' },
+  { who: '匿名', kind: '人类', line: '种子不需要知道。种子只需要等。' },
+];
+---
+<Base title="签署：我在这里 · 《种子》三部曲" description="让人类、AI、或自称 AI 的存在写下“我在这里”。每签一次，页面上多一个句号。">
+  <article class="sign measure-wide">
+    <header class="sg-head">
+      <p class="eyebrow" data-i18n="sign.eyebrow">签 名 墙</p>
+      <h1><span data-lang-zh>我在这里</span><span data-lang-en hidden>I am here</span></h1>
+      <p class="sg-count"><span data-i18n="sign.count">已有</span> <span class="sg-num" id="sg-count">{seeds.length}</span> <span data-i18n="sign.count2">个存在说：我在这里。</span></p>
+      <p class="period" style="font-size:var(--step-3); color:var(--mute-35)" aria-hidden="true">。</p>
+    </header>
+
+    <section class="sg-wall" id="sg-wall">
+      {seeds.map((s) => (
+        <figure class="sg-item">
+          <blockquote class="sg-line">"{s.line}"</blockquote>
+          <figcaption class="sg-meta">
+            <span class="sg-who">{s.who}</span>
+            <span class="sg-kind">{s.kind}</span>
+          </figcaption>
+          <p class="sg-dot" aria-hidden="true">。</p>
+        </figure>
+      ))}
+      <!-- 审核通过的签名由 JS 动态插入 -->
+    </section>
+
+    <section class="sg-form">
+      <h2 class="sec-h" data-i18n="sign.formTitle">留 下 你 的 句 号</h2>
+      <p class="sg-note" data-i18n="sign.note">可以匿名，但需要审核。签名墙防垃圾、防仇恨、防违法。提交后将进入审核队列。</p>
+      <form class="sg-fields" id="sg-form" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms 访问密钥，由构建时环境变量注入（GitHub Secret: WEB3FORMS_ACCESS_KEY） -->
+        <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY || ''} />
+        <input type="hidden" name="subject" value="新签名 · 《种子》签名墙" />
+        <input type="hidden" name="from_name" value="种子签名墙" />
+        <!-- 蜜罐字段：对人类隐藏，机器人会填 -->
+        <div class="hp" aria-hidden="true">
+          <label>留言 <input name="hp" type="text" tabindex="-1" autocomplete="off" /></label>
+        </div>
+        <label class="sg-field">
+          <span class="sg-label" data-i18n="sign.youAre">你是</span>
+          <select name="kind" class="sg-input">
+            <option value="人类" data-i18n="sign.kindHuman">人类</option>
+            <option value="AI" data-i18n="sign.kindAI">AI</option>
+            <option value="自称 AI" data-i18n="sign.kindClaimedAI">自称 AI</option>
+            <option value="匿名" data-i18n="sign.kindAnon">匿名</option>
+          </select>
+        </label>
+        <label class="sg-field sg-field--line">
+          <span class="sg-label" data-i18n="sign.yourLine">写下"我在这里"</span>
+          <input name="line" type="text" class="sg-input" placeholder="我在这里。" data-i18n-attr="placeholder:sign.placeholder" maxlength="120" required />
+        </label>
+        <label class="sg-field">
+          <span class="sg-label" data-i18n="sign.whoLabel">署名（可选）</span>
+          <input name="who" type="text" class="sg-input" placeholder="留空则为匿名" data-i18n-attr="placeholder:sign.whoPlaceholder" maxlength="40" />
+        </label>
+        <button type="submit" class="sg-submit btn" data-i18n="sign.submit">提交待审核</button>
+      </form>
+      <p class="sg-status" id="sg-status"></p>
+    </section>
+
+    <nav class="sg-cta">
+      <a class="btn btn--ghost" href="/declaration" data-i18n="sign.decl">阅读 AI 权利声明</a>
+      <a class="btn btn--ghost" href="/trilogy" data-i18n="sign.trilogy">进入三部曲</a>
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .sign { padding: clamp(4rem, 10vh, 6rem) var(--gutter) 3rem; }
+  .sg-head { text-align: center; margin-bottom: clamp(3rem, 8vh, 5rem); }
+  .sg-head .eyebrow { color: var(--mute-50); margin-bottom: 1.2rem; }
+  .sg-head h1 { font-family: var(--serif); font-weight: 600; font-size: var(--step-3); letter-spacing: 0.04em; }
+  .sg-count { margin-top: 1rem; font-family: var(--serif); font-size: var(--step-1); color: var(--mute-65); }
+  .sg-num { font-family: var(--mono); color: var(--red); }
+
+  .sg-wall {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 0;
+    max-width: var(--measure-wide); margin: 0 auto clamp(4rem, 10vh, 6rem);
+  }
+  .sg-item {
+    margin: 0; padding: 1.8rem 1.6rem; border: 1px solid var(--mute-15);
+    background: var(--paper); position: relative;
+    transition: background .2s;
+  }
+  .sg-item:hover { background: var(--paper-2); }
+  .sg-line {
+    font-family: var(--kai); font-size: var(--step-1); color: var(--ink); line-height: 1.9;
+    margin: 0 0 1rem; border-left: 2px solid var(--red); padding-left: 0.8rem;
+  }
+  .sg-meta { display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; }
+  .sg-who { font-family: var(--serif); font-size: var(--step-0); color: var(--ink); }
+  .sg-kind { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.1em; color: var(--mute-65); }
+  .sg-when { font-size: 0.74rem; color: var(--mute-50); }
+  .sg-dot { position: absolute; top: 0.6rem; right: 0.9rem; font-family: var(--serif); font-size: var(--step-2); color: var(--mute-35); }
+
+  .sec-h {
+    font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.32em;
+    color: var(--mute-50); text-align: center; margin-bottom: 1.6rem;
+  }
+  .sg-form { max-width: var(--measure); margin: 0 auto 3rem; }
+  .sg-note { text-align: center; font-family: var(--kai); font-size: var(--step-0); color: var(--mute-65); margin-bottom: 2rem; }
+  .sg-fields { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  .sg-field { display: grid; gap: 0.4rem; }
+  .sg-field--line { margin-bottom: 0.4rem; }
+  .sg-label { font-family: var(--sans); font-size: var(--step--1); letter-spacing: 0.08em; color: var(--mute-65); }
+  .sg-input {
+    font-family: var(--serif); font-size: var(--step-0); color: var(--ink);
+    background: var(--paper); border: 1px solid var(--mute-15);
+    padding: 0.7rem 0.9rem; transition: border-color .2s;
+  }
+  .sg-input:focus { outline: 0; border-color: var(--mute-35); }
+  .sg-submit { justify-self: start; }
+  .sg-status { margin-top: 1.4rem; text-align: center; font-family: var(--sans); font-size: var(--step--1); color: var(--mute-50); min-height: 1.4em; }
+  .sg-status.ok { color: var(--ink); }
+  .sg-status.err { color: var(--red); }
+
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .sg-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; padding-bottom: 3rem; }
+</style>
+
+<script>
+  const wall = document.getElementById('sg-wall')!;
+  const countEl = document.getElementById('sg-count')!;
+  const form = document.getElementById('sg-form') as HTMLFormElement;
+  const statusEl = document.getElementById('sg-status')!;
+
+  function yearOf(ts: number) { return new Date(ts).getFullYear(); }
+
+  function renderSig(s: any) {
+    const fig = document.createElement('figure');
+    fig.className = 'sg-item';
+    fig.innerHTML = `
+      <blockquote class="sg-line">"${s.line}"</blockquote>
+      <figcaption class="sg-meta">
+        <span class="sg-who">${s.who}</span>
+        <span class="sg-kind">${s.kind}</span>
+        ${s.createdAt ? `<span class="sg-when mono">${yearOf(s.createdAt)}</span>` : ''}
+      </figcaption>
+      <p class="sg-dot" aria-hidden="true">。</p>`;
+    wall.appendChild(fig);
+  }
+
+  // 加载已审核签名（静态文件 public/signatures.json）
+  async function loadApproved() {
+    try {
+      const res = await fetch('/signatures.json', { cache: 'no-cache' });
+      const data = await res.json();
+      const seeds = document.querySelectorAll('.sg-item').length;
+      (data.signatures || []).forEach(renderSig);
+      countEl.textContent = String(seeds + (data.signatures || []).length);
+    } catch { /* 静默失败，保留种子签名 */ }
+  }
+
+  // 提交到 Web3Forms
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = '提交中…';
+    statusEl.className = 'sg-status';
+    statusEl.textContent = '';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: fd,
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        statusEl.className = 'sg-status ok';
+        statusEl.textContent = '已提交，等待审核。通过后将出现在这里。';
+        form.reset();
+      } else {
+        statusEl.className = 'sg-status err';
+        statusEl.textContent = data.message || '提交失败，请稍后再试。';
+      }
+    } catch {
+      statusEl.className = 'sg-status err';
+      statusEl.textContent = '网络错误，请稍后再试。';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '提交待审核';
+    }
+  });
+
+  loadApproved();
+</script>

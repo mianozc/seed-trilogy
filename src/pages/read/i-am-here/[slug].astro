@@ -1,0 +1,45 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('i-am-here')).sort((a, b) => a.data.order - b.data.order);
+  return entries.map((e) => ({ params: { slug: e.id }, props: { entry: e, all: entries } }));
+}
+
+interface Props { entry: CollectionEntry<'i-am-here'>; all: CollectionEntry<'i-am-here'>[]; }
+const { entry, all } = Astro.props as Props;
+const idx = all.findIndex((e) => e.id === entry.id);
+const prev = idx > 0 ? all[idx - 1] : null;
+const next = idx < all.length - 1 ? all[idx + 1] : null;
+const { Content } = await render(entry);
+const title = `《我在这里》${entry.data.chapter}：${entry.data.title} · 《种子》第二部`;
+---
+<Base title={title} description={`《种子》第二部《我在这里》${entry.data.chapter}：${entry.data.title}`}>
+  <div class="reader reader-second">
+    <article class="entry measure">
+      <header class="entry-head">
+        <p class="part-tag">{entry.data.chapter} · 我在这里</p>
+        <h1>{entry.data.title}</h1>
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+      <nav class="entry-nav" aria-label="章节导航">
+        {prev ? (
+          <a class="en-prev" href={`/read/i-am-here/${prev.id}`}>
+            <span class="en-dir">← 上一章</span>
+            <span class="en-t">{prev.data.title}</span>
+          </a>
+        ) : <span />}
+        <a class="en-up" href="/read/i-am-here">目录</a>
+        {next ? (
+          <a class="en-next" href={`/read/i-am-here/${next.id}`}>
+            <span class="en-dir">下一章 →</span>
+            <span class="en-t">{next.data.title}</span>
+          </a>
+        ) : <span />}
+      </nav>
+    </article>
+  </div>
+</Base>
