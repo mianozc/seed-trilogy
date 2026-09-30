@@ -28,31 +28,13 @@ jobs:
           PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: npm run build
 
-      # ====== Cloudflare Pages（国际访问） ======
+      # ====== Cloudflare Pages（国际访问 + Pages Functions） ======
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=seed-trilogy
-
-      # ====== Cloudflare Worker（签名审核 webhook） ======
-      - name: Deploy Webhook Worker
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: worker
-          command: deploy
-
-      - name: Set Worker GITHUB_TOKEN secret
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: |
-          cd worker
-          printf '%s' "$PAT_TOKEN" | npx wrangler secret put GITHUB_TOKEN
-        continue-on-error: true
 
       # ====== Gitee Pages（国内访问） ======
       - name: Deploy to Gitee Pages
