@@ -1,7 +1,7 @@
 ---
 title: 动物与物种
 num: "附录I"
-part: 参考附录
+part: 第一部·附录
 order: 31
 style: 参考资料
 book: first-log

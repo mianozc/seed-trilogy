@@ -1,7 +1,7 @@
 ---
 title: Seed 舱（装船 2071，检查 116 次）
 num: "附录P"
-part: 参考附录
+part: 第一部·附录
 order: 38
 style: 参考资料
 book: first-log

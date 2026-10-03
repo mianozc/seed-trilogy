@@ -1,7 +1,7 @@
 ---
 title: 引用文字
 num: "附录J"
-part: 参考附录
+part: 第一部·附录
 order: 32
 style: 参考资料
 book: first-log

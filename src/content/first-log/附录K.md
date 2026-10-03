@@ -1,7 +1,7 @@
 ---
 title: 名物索引（按出现顺序）
 num: "附录K"
-part: 参考附录
+part: 第一部·附录
 order: 33
 style: 参考资料
 book: first-log

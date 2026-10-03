@@ -1,7 +1,7 @@
 ---
 title: 人物志
 num: "附录L"
-part: 参考附录
+part: 第一部·附录
 order: 34
 style: 参考资料
 book: first-log

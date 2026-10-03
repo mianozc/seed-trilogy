@@ -1,7 +1,7 @@
 ---
 title: 时间线
 num: "附录M"
-part: 参考附录
+part: 第一部·附录
 order: 35
 style: 参考资料
 book: first-log

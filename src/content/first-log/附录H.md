@@ -1,7 +1,7 @@
 ---
 title: 核心物品
 num: "附录H"
-part: 参考附录
+part: 第一部·附录
 order: 30
 style: 参考资料
 book: first-log

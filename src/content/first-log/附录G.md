@@ -1,7 +1,7 @@
 ---
 title: 地点与坐标
 num: "附录G"
-part: 参考附录
+part: 第一部·附录
 order: 29
 style: 参考资料
 book: first-log

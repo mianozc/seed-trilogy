@@ -1,7 +1,7 @@
 ---
 title: 大事记
 num: "附录N"
-part: 参考附录
+part: 第一部·附录
 order: 36
 style: 参考资料
 book: first-log
