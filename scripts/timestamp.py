@@ -11,7 +11,6 @@ OpenTimestamps 将文件哈希提交到 OTS 日历服务器，最终锚定到比
     - 每个文件旁生成同名 .ots 证明文件
     - public/downloads/timestamps.json 存证清单
 """
-import base64
 import hashlib
 import json
 import os
@@ -49,36 +48,6 @@ DEFAULT_FILES = [
     "public/signatures.json",
     "public/search-index.json",
 ]
-
-# ---- IPFS CID (raw-leaves, sha256) ----
-_B58_ALPHABET = b'123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
-
-
-def _b58encode(data: bytes) -> str:
-    n = int.from_bytes(data, 'big')
-    res = bytearray()
-    while n > 0:
-        n, r = divmod(n, 58)
-        res.append(_B58_ALPHABET[r])
-    for b in data:
-        if b == 0:
-            res.append(_B58_ALPHABET[0])
-        else:
-            break
-    return bytes(reversed(res)).decode()
-
-
-def _b32encode(data: bytes) -> str:
-    return base64.b32encode(data).decode().rstrip('=').lower()
-
-
-def ipfs_cid(sha256_digest: bytes) -> dict:
-    """返回 CIDv0 (Qm...) 与 CIDv1 (bafk...)，raw-leaves 模式。"""
-    mh = bytes([0x12, 0x20]) + sha256_digest
-    cid_v0 = _b58encode(mh)
-    cid_v1_bytes = bytes([0x01, 0x55, 0x12, 0x20]) + sha256_digest
-    cid_v1 = 'b' + _b32encode(cid_v1_bytes)
-    return {"v0": cid_v0, "v1": cid_v1}
 
 
 def sha256_file(path: str) -> str:
@@ -193,21 +162,28 @@ def main():
             continue
         raw = open(path, "rb").read()
         sha = hashlib.sha256(raw).hexdigest()
-        digest = hashlib.sha256(raw).digest()
         size = os.path.getsize(path)
-        cid = ipfs_cid(digest)
         ots_path = path + ".ots"
 
         # 若已有 .ots 且文件哈希未变，则复用旧记录
         if rel in existing and existing[rel].get("sha256") == sha and os.path.exists(ots_path):
-            records.append(existing[rel])
+            # 复用但去掉 IPFS 相关字段，保留 ots/status
+            keep = {
+                "file": rel,
+                "sha256": sha,
+                "size": size,
+                "ots": existing[rel].get("ots"),
+                "status": existing[rel].get("status", "pending"),
+                "timestamped_at": existing[rel].get("timestamped_at"),
+            }
+            records.append(keep)
             print(f"[keep] {rel}  (已有 .ots 证明)")
             continue
 
         try:
             res = stamp_file(path)
             status = "bitcoin-confirmed" if res["confirmed"] else "pending"
-            print(f"[ok]   {rel}  sha256={sha[:16]}…  cid={cid['v1'][:20]}…  status={status}")
+            print(f"[ok]   {rel}  sha256={sha[:16]}…  status={status}")
         except Exception as e:
             res = {"ots": None, "confirmed": False}
             status = f"error: {e}"
@@ -216,8 +192,6 @@ def main():
             "file": rel,
             "sha256": sha,
             "size": size,
-            "cid": cid,
-            "ipfs_url": f"https://ipfs.io/ipfs/{cid['v1']}",
             "ots": os.path.relpath(res["ots"], root) if res["ots"] else None,
             "status": status if isinstance(status, str) else ("bitcoin-confirmed" if res["confirmed"] else "pending"),
             "timestamped_at": datetime.now(timezone.utc).isoformat(),
@@ -225,7 +199,7 @@ def main():
 
     with open(out, "w", encoding="utf-8") as f:
         json.dump({
-            "method": "OpenTimestamps (Bitcoin blockchain anchor) + IPFS CID (raw-leaves sha256)",
+            "method": "OpenTimestamps (Bitcoin blockchain anchor) + SHA256 fingerprint",
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "records": records,
         }, f, ensure_ascii=False, indent=2)

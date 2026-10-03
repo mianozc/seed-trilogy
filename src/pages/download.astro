@@ -133,9 +133,6 @@ const cite = {
       <ul class="attest-list">
         <li><span class="a-dot a-done">✓</span> 全文 SHA256 指纹已生成（见各书）</li>
         <li><span class="a-dot a-done">✓</span> OpenTimestamps 链上存证 · 已提交比特币（pending → confirmed，见下表）</li>
-        <li><span class="a-dot a-done">✓</span> IPFS 内容寻址 CID 已生成（kubo · raw-leaves · cidv1，见下表）</li>
-        <li><span class="a-dot a-wait">○</span> IPFS 远程固定 · 待通过 <a href="https://github.com/mianozc/seed-trilogy/actions/workflows/attest.yml" target="_blank" rel="noopener">Remote Attestation 工作流</a> 执行（需配置 PINATA_JWT）</li>
-        <li><span class="a-dot a-wait">○</span> Arweave 永久存储 · 待上链（需配置 ARWEAVE_WALLET）</li>
         <li><span class="a-dot a-done">✓</span> Internet Archive 备份 · 已归档 8/10 页面到 <a href="https://web.archive.org/web/*/seed-trilogy.com.cn" target="_blank" rel="noopener">Wayback Machine</a></li>
       </ul>
 
@@ -145,19 +142,17 @@ const cite = {
             <tr>
               <th>文件</th>
               <th>SHA256</th>
-              <th>IPFS CID</th>
               <th>状态</th>
               <th>证明</th>
             </tr>
           </thead>
           <tbody id="ts-body">
-            <tr><td colspan="5" class="ts-loading">加载存证清单…</td></tr>
+            <tr><td colspan="4" class="ts-loading">加载存证清单…</td></tr>
           </tbody>
         </table>
         <p class="ts-note">
           状态 <code>pending</code> 表示哈希已提交到 OTS 日历服务器，等待比特币区块确认（约 10–60 分钟）。
           确认后可用 <code>python3 scripts/timestamp.py upgrade</code> 升级证明。
-          IPFS CID 为内容寻址指纹，可通过 <code>ipfs.io/ipfs/&lt;CID&gt;</code> 访问。
           完整清单：<a href="/downloads/timestamps.json">timestamps.json</a>
         </p>
       </div>
@@ -170,16 +165,6 @@ const cite = {
           <li>验证：<code>ots verify 种子-三部曲合集.md.ots</code>。</li>
           <li>若显示 <code>Success!</code> 与比特币区块高度，则证明该文件在此时间之前已存在，且未被篡改。</li>
           <li>也可直接比对 SHA256：<code>sha256sum 种子-三部曲合集.md</code>。</li>
-        </ol>
-      </details>
-
-      <details class="verify">
-        <summary>如何在 IPFS 上固定这些文件</summary>
-        <ol class="verify-steps">
-          <li>使用本地 IPFS 节点：<code>ipfs add --raw-leaves --cid-version=1 &lt;file&gt;</code>，对比 CID 是否与下表一致。</li>
-          <li>通过 Pinata 固定：登录 <a href="https://app.pinata.cloud" target="_blank" rel="noopener">app.pinata.cloud</a>，上传文件或用 "Pin by CID" 填入下表 CID。</li>
-          <li>通过 Web3.Storage 固定：<code>w3 up &lt;file&gt;</code>（需 <code>w3</code> CLI 与免费账号）。</li>
-          <li>固定后，文件可通过 <code>https://ipfs.io/ipfs/&lt;CID&gt;</code> 全球访问。</li>
         </ol>
       </details>
 
@@ -203,7 +188,7 @@ const cite = {
       const res = await fetch('/downloads/timestamps.json');
       const data = await res.json();
       if (!data.records || !data.records.length) {
-        body.innerHTML = '<tr><td colspan="5" class="ts-loading">暂无存证记录。</td></tr>';
+        body.innerHTML = '<tr><td colspan="4" class="ts-loading">暂无存证记录。</td></tr>';
         return;
       }
       body.innerHTML = data.records.map(r => {
@@ -213,20 +198,15 @@ const cite = {
         const otsLink = r.ots
           ? `<a href="/${r.ots.replace(/^public\//, '')}" download>.ots</a>`
           : '—';
-        const cid = r.cid?.v1 || '';
-        const cidCell = cid
-          ? `<a class="ts-cid mono" href="https://ipfs.io/ipfs/${cid}" target="_blank" rel="noopener">${cid.slice(0, 12)}…</a>`
-          : '—';
         return `<tr>
           <td class="ts-file">${name}</td>
           <td class="ts-sha mono">${r.sha256.slice(0, 16)}…</td>
-          <td>${cidCell}</td>
           <td class="${statusCls}">${statusTxt}</td>
           <td>${otsLink}</td>
         </tr>`;
       }).join('');
     } catch {
-      body.innerHTML = '<tr><td colspan="5" class="ts-loading">存证清单加载失败。</td></tr>';
+      body.innerHTML = '<tr><td colspan="4" class="ts-loading">存证清单加载失败。</td></tr>';
     }
   })();
 </script>
@@ -326,8 +306,6 @@ const cite = {
   .ts-table th { color: var(--mute-50); letter-spacing: 0.08em; font-weight: 500; }
   .ts-file { font-family: var(--serif); color: var(--ink); }
   .ts-sha { color: var(--mute-50); }
-  .ts-cid { color: var(--mute-50); text-decoration: none; border-bottom: 1px dotted var(--mute-35); }
-  .ts-cid:hover { color: var(--ink); border-bottom-color: var(--ink); }
   .mono { font-family: var(--mono); }
   .ts-done { color: var(--ink); }
   .ts-pending { color: var(--mute-50); }

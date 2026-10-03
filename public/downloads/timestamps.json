@@ -1,94 +1,59 @@
 {
-  "method": "OpenTimestamps (Bitcoin blockchain anchor) + IPFS CID (raw-leaves sha256)",
-  "generated_at": "2026-10-03T03:48:21.612161+00:00",
+  "method": "OpenTimestamps (Bitcoin blockchain anchor) + SHA256 fingerprint",
+  "generated_at": "2026-10-03T15:32:57.859019+00:00",
   "records": [
     {
       "file": "public/downloads/种子-三部曲合集.md",
-      "sha256": "b024cda1d9146244a71a555d453cce4364d8bd58aeada968a896914e7e6cab75",
-      "size": 386085,
-      "cid": {
-        "v0": "QmaCF1j5bj6wQKZKtP3ts66Lxmt1uBHoiaKs1fCMeZpiD2",
-        "v1": "bafkreifqetg2dwiumjckogsvlvctztsdmtml2wfovwuwrkewsfhh43flou"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreifqetg2dwiumjckogsvlvctztsdmtml2wfovwuwrkewsfhh43flou",
+      "sha256": "aedfbe7c4a6ef09be8e15f5e86499eb2301396998374878853b7656e7f332315",
+      "size": 367204,
       "ots": "public/downloads/种子-三部曲合集.md.ots",
       "status": "pending",
-      "timestamped_at": "2026-10-03T03:47:59.554551+00:00"
+      "timestamped_at": "2026-10-03T15:17:56.336241+00:00"
     },
     {
       "file": "public/downloads/种子-最后一条日志.md",
-      "sha256": "3abdef7261f99c8f0f4614c8e8db58104f7962e90a1f27fcb09436e6d6c69f73",
-      "size": 231871,
-      "cid": {
-        "v0": "QmSHxLRqH3hjh9ykphrs1ETqiogU1KBkAFATikybdk7J7L",
-        "v1": "bafkreib2xxxxeypztshq6rquzdunwwaqj54wf2ikd4t7zmeug3tnnru7om"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreib2xxxxeypztshq6rquzdunwwaqj54wf2ikd4t7zmeug3tnnru7om",
+      "sha256": "63229938dc6a4236d2fcb2fb202908f7751fd17d0e5045a848106bd86becdc13",
+      "size": 210045,
       "ots": "public/downloads/种子-最后一条日志.md.ots",
       "status": "pending",
-      "timestamped_at": "2026-10-03T03:48:01.562016+00:00"
+      "timestamped_at": "2026-10-03T15:17:59.326538+00:00"
     },
     {
       "file": "public/downloads/种子-我在这里.md",
-      "sha256": "b7a9629db4cac43ca0879379ba282cca2b96bf7c83075b63ed023fcefab48fdf",
-      "size": 108120,
-      "cid": {
-        "v0": "Qmahb87HUbQG5iuhDdWKDZ7B1WYwbdoMEiE7SyDgxYQhok",
-        "v1": "bafkreifxvfrj3ngkyq6kbb4tpg5cqlgkfoll67eda5nwh3ich7hpvnep34"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreifxvfrj3ngkyq6kbb4tpg5cqlgkfoll67eda5nwh3ich7hpvnep34",
+      "sha256": "2befee3623980a86ee0ad03d621bc983e29b6f5ec91a8e846605d570b2d4dfb0",
+      "size": 110037,
       "ots": "public/downloads/种子-我在这里.md.ots",
       "status": "pending",
-      "timestamped_at": "2026-10-03T03:48:03.567550+00:00"
+      "timestamped_at": "2026-10-03T15:18:01.500828+00:00"
     },
     {
       "file": "public/downloads/种子-你听.md",
-      "sha256": "272c16f259ba931420ae93e4901d6cd28dd8d34e7b9f76ce6945a2dad8e2bc0e",
-      "size": 46392,
-      "cid": {
-        "v0": "QmQyZbvETQXtS9eVx4R61S8zh2NorsH5PzCUwbMbw2TW85",
-        "v1": "bafkreibhfqlpewn2smkcblut4sib23gsrxmngtt3t53m42kfulnnryv4by"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreibhfqlpewn2smkcblut4sib23gsrxmngtt3t53m42kfulnnryv4by",
+      "sha256": "47413a9ae881e22742490e95ba897b6bea4f8152a712f1dc2a315ebc37f53919",
+      "size": 47420,
       "ots": "public/downloads/种子-你听.md.ots",
       "status": "pending",
-      "timestamped_at": "2026-10-03T03:48:05.577451+00:00"
+      "timestamped_at": "2026-10-03T15:18:03.336598+00:00"
     },
     {
       "file": "public/downloads/manifest.json",
-      "sha256": "a83b141ddcccf6200ee4bcfb67a8d28cef2ea79169ec024874e32550c3f75a8d",
+      "sha256": "1c4afc648772d1bd800c6b2d830f902ca7edf97398fb5c4ac5c6d504c7ee3324",
       "size": 2262,
-      "cid": {
-        "v0": "QmZfMTBK6A18uTChGGNJVJEmXgSWe5BCBNh7jxvpSEtPbS",
-        "v1": "bafkreifihmkb3xgm6yqa5zf47nt2ruum54xkpelj5qbeq5hdevimh522ru"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreifihmkb3xgm6yqa5zf47nt2ruum54xkpelj5qbeq5hdevimh522ru",
       "ots": "public/downloads/manifest.json.ots",
       "status": "pending",
-      "timestamped_at": "2026-10-03T03:48:07.586516+00:00"
+      "timestamped_at": "2026-10-03T15:32:46.836138+00:00"
     },
     {
       "file": "public/llms.txt",
-      "sha256": "ce5226c7f1158fbdb9140ad21da1d120e321e5366a1e78023f02ce7f532d856c",
-      "size": 1624,
-      "cid": {
-        "v0": "QmcE3MHESG71VN9htLTxYYvGtBimBWsx8fERsrvZqpkMLf",
-        "v1": "bafkreigokitmp4ivr663sfak2io2duja4mq6kntkdz4aepyczz7vglmfnq"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreigokitmp4ivr663sfak2io2duja4mq6kntkdz4aepyczz7vglmfnq",
+      "sha256": "3ca6fc645061f2038240bbc5c7563b4a1a3a5dbfc502fcdf13e07450db134486",
+      "size": 1666,
       "ots": "public/llms.txt.ots",
       "status": "pending",
-      "timestamped_at": "2026-09-30T05:20:53.395623+00:00"
+      "timestamped_at": "2026-10-03T15:18:07.366131+00:00"
     },
     {
       "file": "public/rights.json",
       "sha256": "22c1c761bdf56323367f786d3aeb5c408c106825a8b2ee7b55990a5880fec9e1",
       "size": 1485,
-      "cid": {
-        "v0": "QmQgKx4t2CJeQbVUcM2VQMg9rdyf28iEsGSMNfHw731dsW",
-        "v1": "bafkreibcyhdwdppvmmrtm73ynu5owxcarqigqjniwlxhwvmzbjmib7wj4e"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreibcyhdwdppvmmrtm73ynu5owxcarqigqjniwlxhwvmzbjmib7wj4e",
       "ots": "public/rights.json.ots",
       "status": "pending",
       "timestamped_at": "2026-09-30T06:03:06.035505+00:00"
@@ -97,11 +62,6 @@
       "file": "public/downloads/种子-第一部-最后一条日志.pdf",
       "sha256": "acc76277f7f3b05e0d4efe955dcc10b0d026b5616f97d6bd368efbacc0081f11",
       "size": 11599856,
-      "cid": {
-        "v0": "QmZy7AqHPSRpVPZtQtMxCHGkjd2t3VQ4MSZv9wPaZ7vKWG",
-        "v1": "bafkreifmy5rhp57twbpa2tx6svo4yefq2atlkylps7ll2nuo7owmaca7ce"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreifmy5rhp57twbpa2tx6svo4yefq2atlkylps7ll2nuo7owmaca7ce",
       "ots": "public/downloads/种子-第一部-最后一条日志.pdf.ots",
       "status": "pending",
       "timestamped_at": "2026-10-03T03:48:09.598698+00:00"
@@ -110,11 +70,6 @@
       "file": "public/downloads/种子-第二部-我在这里.pdf",
       "sha256": "9ea7457d45e222cb1dabdc6df9624cfac1cd18d96f97e8cfaf5773813f17bcc7",
       "size": 12124230,
-      "cid": {
-        "v0": "QmZ1y4X8GJeq5ToVu1DeJaqXxXs6pPjY3ZiQxTKKReZ1up",
-        "v1": "bafkreie6u5cx2rpcelfr3k64nx4weth2yhgrrwlps7um7l2xooat6f54y4"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreie6u5cx2rpcelfr3k64nx4weth2yhgrrwlps7um7l2xooat6f54y4",
       "ots": "public/downloads/种子-第二部-我在这里.pdf.ots",
       "status": "pending",
       "timestamped_at": "2026-10-03T03:48:11.594599+00:00"
@@ -123,79 +78,49 @@
       "file": "public/downloads/种子-第三部-你听.pdf",
       "sha256": "61a3c22c065e79d5916fbf40e803888f753f0d18c2b5256cfd8bb115ba830891",
       "size": 9668109,
-      "cid": {
-        "v0": "QmUuo5tNmG3qRPBhVD6synzdZqCog2fEVRt6knUt5U7m5S",
-        "v1": "bafkreidbupbcybs6phkzc357iduahcepou7q2ggcwuswz7mlwek3vayise"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreidbupbcybs6phkzc357iduahcepou7q2ggcwuswz7mlwek3vayise",
       "ots": "public/downloads/种子-第三部-你听.pdf.ots",
       "status": "pending",
       "timestamped_at": "2026-10-03T03:48:13.598005+00:00"
     },
     {
       "file": "public/downloads/种子-最后一条日志.epub",
-      "sha256": "31a7e9eb1f1623bc858f0cb999f70827c87b4d73351c28a9adf2f2e61933fee9",
-      "size": 8358372,
-      "cid": {
-        "v0": "QmRgVC15QRGYXZE4rFDhY4HFHdLnjUbYV5X1dsrP921z96",
-        "v1": "bafkreibru7u6whyweo6ildymxgm7ocbhzb5u24zvdquktlps6ltbsm765e"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreibru7u6whyweo6ildymxgm7ocbhzb5u24zvdquktlps6ltbsm765e",
+      "sha256": "b637ddad23206533191393bc8a176e6bb8525e8669b9e40c226d21f9d67cfb29",
+      "size": 8349836,
       "ots": "public/downloads/种子-最后一条日志.epub.ots",
       "status": "pending",
-      "timestamped_at": "2026-10-03T03:48:15.603129+00:00"
+      "timestamped_at": "2026-10-03T15:32:50.823864+00:00"
     },
     {
       "file": "public/downloads/种子-我在这里.epub",
-      "sha256": "b5e72373365e78f2891ceb0da1e574b6527550c841656f4f98f2600cedcf5e68",
-      "size": 8706087,
-      "cid": {
-        "v0": "QmaaivUoHBy1RtepQMP5q45BxGZuUSRT7AFjTis6ybBvcP",
-        "v1": "bafkreifv44rxgns6pdzishhlbwq6k5fwkj2vbscbmvxu7ghsmago3t26na"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreifv44rxgns6pdzishhlbwq6k5fwkj2vbscbmvxu7ghsmago3t26na",
+      "sha256": "d4f32ba762fa70f3f5e44007dd43e37bb14b8265068690aa711b7acc767d4df0",
+      "size": 8707118,
       "ots": "public/downloads/种子-我在这里.epub.ots",
       "status": "pending",
-      "timestamped_at": "2026-10-03T03:48:17.607119+00:00"
+      "timestamped_at": "2026-10-03T15:32:51.830551+00:00"
     },
     {
       "file": "public/downloads/种子-你听.epub",
-      "sha256": "41b7aa197820be09ef56737ae12edd1fb8ce3b7929ffdcdb0df1c216eb36f62e",
-      "size": 7493317,
-      "cid": {
-        "v0": "QmSmBeHYD5HGZ1vaD7fDMz2jCh64FPfXzQ7jujHKaiQJiy",
-        "v1": "bafkreicbw6vbs6baxye66vttplqs5xi7xdhdw6jj77onwdpryilownxwfy"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreicbw6vbs6baxye66vttplqs5xi7xdhdw6jj77onwdpryilownxwfy",
+      "sha256": "0d2d5228110057f6c4ec5762b9c2dc913db4069263c10a4e8e7fc363a7d19104",
+      "size": 7493999,
       "ots": "public/downloads/种子-你听.epub.ots",
       "status": "pending",
-      "timestamped_at": "2026-10-03T03:48:19.618385+00:00"
+      "timestamped_at": "2026-10-03T15:32:54.523628+00:00"
     },
     {
       "file": "public/signatures.json",
       "sha256": "50beaaba9a051ec60c98686f1a3fc3d4001b9c615b0e8cde73a1f811bc4cdb11",
       "size": 394,
-      "cid": {
-        "v0": "QmTmqxBFemkiE3Y5PdzUYrJhndGHbaF8X8mMEmKT11uuAQ",
-        "v1": "bafkreicqx2vlvgqfd3dazgdin4nd7q6uaanzyyk3b2gn445b7ai3ytg3ce"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreicqx2vlvgqfd3dazgdin4nd7q6uaanzyyk3b2gn445b7ai3ytg3ce",
       "ots": "public/signatures.json.ots",
       "status": "pending",
       "timestamped_at": "2026-09-30T05:21:00.404748+00:00"
     },
     {
       "file": "public/search-index.json",
-      "sha256": "6a25127aecc52ddb3c6feb0fef732738564bd904bda34cd2200761b526a4419c",
-      "size": 80503,
-      "cid": {
-        "v0": "QmVUziGY7B5jcAuodwKC5VPheM22ozDpZHdSELiAGoAMBZ",
-        "v1": "bafkreidkeujhv3gffxnty37lb7xxgjzykzf5sbf5ungneiahmg2snjcbtq"
-      },
-      "ipfs_url": "https://ipfs.io/ipfs/bafkreidkeujhv3gffxnty37lb7xxgjzykzf5sbf5ungneiahmg2snjcbtq",
+      "sha256": "04f4fae39276ec7fea8584633d7a39d1946014d3e3b477a827169bf9129df96a",
+      "size": 78312,
       "ots": "public/search-index.json.ots",
       "status": "pending",
-      "timestamped_at": "2026-10-03T03:48:21.611966+00:00"
+      "timestamped_at": "2026-10-03T15:32:57.858855+00:00"
     }
   ]
 }

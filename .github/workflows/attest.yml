@@ -3,14 +3,6 @@ name: Remote Attestation
 on:
   workflow_dispatch:
     inputs:
-      ipfs:
-        description: "IPFS 远程固定（Pinata）"
-        type: boolean
-        default: true
-      arweave:
-        description: "Arweave 永久存储"
-        type: boolean
-        default: false
       archive:
         description: "Internet Archive 备份"
         type: boolean
@@ -31,19 +23,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install arweave-python-client 2>/dev/null || true
-
       - name: Run attestation
         env:
-          PINATA_JWT: ${{ secrets.PINATA_JWT }}
-          ARWEAVE_WALLET: ${{ secrets.ARWEAVE_WALLET }}
           SITE_URL: https://seed-trilogy.com.cn
         run: |
           ARGS=""
-          if [ "${{ inputs.ipfs }}" = "true" ]; then ARGS="$ARGS --ipfs"; fi
-          if [ "${{ inputs.arweave }}" = "true" ]; then ARGS="$ARGS --arweave"; fi
           if [ "${{ inputs.archive }}" = "true" ]; then ARGS="$ARGS --archive"; fi
           python3 scripts/attest.py $ARGS
