@@ -11,3 +11,4 @@ data/signatures.json
 dist/
 .astro/
 node_modules/
+.tmp-epub/
