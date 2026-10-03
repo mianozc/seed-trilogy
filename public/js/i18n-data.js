@@ -1,5 +1,5 @@
 // 由 src/lib/i18n.ts 生成，请勿手动编辑
-// 生成时间: 2026-10-03T03:44:12.156Z
+// 生成时间: 2026-10-03T04:15:11.449Z
 globalThis.SEED_I18N = {
   "zh": {
     "nav.trilogy": "三部曲",
@@ -45,7 +45,7 @@ globalThis.SEED_I18N = {
     "home.bloomSign": "这，就是你要建的网站。",
     "foot.line1": "《种子》三部曲 · 合恩角 & 月亮的脚印 · 人类与 AI 共同创作",
     "foot.disclaimer": "本网站不构成法律意见。AI 当前法律人格问题请咨询专业律师。",
-    "foot.version": "版本 1.0.0 · SHA256 · OpenTimestamps 已存证 · 2026",
+    "foot.version": "版本 1.1 · SHA256 · OpenTimestamps 已存证 · 2026",
     "foot.admin": "审核后台",
     "dl.eyebrow": "下 载 · 存 证 档 案",
     "dl.title": "下载",
@@ -254,7 +254,7 @@ globalThis.SEED_I18N = {
     "home.bloomSign": "This is the website you are meant to build.",
     "foot.line1": "The Seed Trilogy · Cape Horn & Moon's Footprint · Co-created by human & AI",
     "foot.disclaimer": "This website does not constitute legal advice. Consult a qualified lawyer on AI legal personhood.",
-    "foot.version": "v1.0.0 · SHA256 · OpenTimestamps attested · 2026",
+    "foot.version": "v1.1 · SHA256 · OpenTimestamps attested · 2026",
     "foot.admin": "Admin",
     "dl.eyebrow": "D O W N L O A D · A R C H I V E",
     "dl.title": "Download",

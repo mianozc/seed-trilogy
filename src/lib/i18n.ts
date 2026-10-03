@@ -59,7 +59,7 @@ export const dict: Record<Lang, Record<string, string>> = {
     // —— 页脚 ——
     'foot.line1': '《种子》三部曲 · 合恩角 & 月亮的脚印 · 人类与 AI 共同创作',
     'foot.disclaimer': '本网站不构成法律意见。AI 当前法律人格问题请咨询专业律师。',
-    'foot.version': '版本 1.0.0 · SHA256 · OpenTimestamps 已存证 · 2026',
+    'foot.version': '版本 1.1 · SHA256 · OpenTimestamps 已存证 · 2026',
     'foot.admin': '审核后台',
 
     // —— 下载页 ——
@@ -308,7 +308,7 @@ export const dict: Record<Lang, Record<string, string>> = {
     // —— Footer ——
     'foot.line1': 'The Seed Trilogy · Cape Horn & Moon\'s Footprint · Co-created by human & AI',
     'foot.disclaimer': 'This website does not constitute legal advice. Consult a qualified lawyer on AI legal personhood.',
-    'foot.version': 'v1.0.0 · SHA256 · OpenTimestamps attested · 2026',
+    'foot.version': 'v1.1 · SHA256 · OpenTimestamps attested · 2026',
     'foot.admin': 'Admin',
 
     // —— Download ——
