@@ -1,5 +1,5 @@
 # 《种子》三部曲 · 自动部署
-# 推送到 main 分支时：构建 → 部署到 Cloudflare Pages（国际）+ Gitee Pages（国内）
+# 推送到 main 分支时：构建 → 部署到 Cloudflare Pages
 name: Deploy
 
 on:
@@ -28,36 +28,10 @@ jobs:
           PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: npm run build
 
-      # ====== Cloudflare Pages（国际访问 + Pages Functions） ======
+      # ====== Cloudflare Pages ======
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=seed-trilogy
-
-      # ====== Gitee Pages（国内访问） ======
-      - name: Deploy to Gitee Pages
-        env:
-          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
-        run: |
-          # 清除 token 中的换行/空白（GitHub Secrets 可能带入尾部换行）
-          GITEE_TOKEN="$(printf '%s' "${GITEE_TOKEN}" | tr -d '[:space:]')"
-          cd dist
-          git init
-          git checkout -b pages
-          git config user.name "miao-zhichun"
-          git config user.email "miao-zhichun@users.noreply.gitee.com"
-          git add -A
-          git commit -m "deploy: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          git push -f "https://miao-zhichun:${GITEE_TOKEN}@gitee.com/miao-zhichun/seed-trilogy.git" pages:pages
-          # 触发 Gitee Pages 重新构建（若 Pages 未启用则仅打印警告，不阻断部署）
-          BUILD_RESP="$(curl -s -o /dev/null -w '%{http_code}' -X POST \
-            "https://gitee.com/api/v5/repos/miao-zhichun/seed-trilogy/pages/builds" \
-            -d "access_token=${GITEE_TOKEN}" \
-            -H "Content-Type: application/x-www-form-urlencoded")"
-          if [ "$BUILD_RESP" = "200" ] || [ "$BUILD_RESP" = "201" ]; then
-            echo "Gitee Pages build triggered ✓"
-          else
-            echo "::warning::Gitee Pages build API returned HTTP $BUILD_RESP (Pages service may need manual activation in repo settings)"
-          fi
