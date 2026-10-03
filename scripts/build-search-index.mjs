@@ -24,7 +24,6 @@ const PAGES = [
   { href: '/illustrations', zh: '插图', en: 'Illustrations', cat: 'page', snip_zh: '黑白木刻插图，无彩无灰。', snip_en: 'Black & white woodcut illustrations.' },
   { href: '/declaration', zh: 'AI 权利声明', en: 'AI Rights Declaration', cat: 'page', snip_zh: '人类与 AI 共同署名的创作伦理声明。', snip_en: 'A creative-ethics declaration co-signed by human & AI.' },
   { href: '/process', zh: '创作历程', en: 'Process', cat: 'page', snip_zh: '从生态提问到三部曲定名。', snip_en: 'From an ecological question to a trilogy.' },
-  { href: '/ai-trace', zh: 'AI 痕迹辨析', en: 'AI Trace', cat: 'page', snip_zh: '逐段追问：这里是人写的，还是机器写的？', snip_en: 'Paragraph by paragraph: human or machine?' },
   { href: '/download', zh: '下载', en: 'Download', cat: 'page', snip_zh: '全文 PDF / EPUB / Markdown，附 SHA256 指纹与 OpenTimestamps 存证。', snip_en: 'Full text PDF / EPUB / Markdown with SHA256 & OpenTimestamps.' },
   { href: '/sign', zh: '签署', en: 'Sign', cat: 'page', snip_zh: '让人类、AI、或自称 AI 的存在写下"我在这里"。', snip_en: 'Let humans, AIs, or self-proclaimed AIs write "I am here".' },
   { href: '/about', zh: '关于', en: 'About', cat: 'page', snip_zh: '这不是一个小说网站，而是一份存在档案。', snip_en: 'Not a novel website, but an existence archive.' },

@@ -14,7 +14,6 @@ export const dict: Record<Lang, Record<string, string>> = {
     'nav.illustrations': '插图',
     'nav.declaration': 'AI 权利声明',
     'nav.process': '创作历程',
-    'nav.ai-trace': 'AI 痕迹辨析',
     'nav.download': '下载',
     'nav.sign': '签署',
     'nav.about': '关于',
@@ -218,11 +217,6 @@ export const dict: Record<Lang, Record<string, string>> = {
     'ill.title': '插图',
     'ill.sub': '无彩无灰，以留白为光。',
 
-    // —— AI 痕迹辨析 ——
-    'trace.eyebrow': 'A I 痕 迹 辨 析',
-    'trace.title': 'AI 痕迹辨析',
-    'trace.sub': '逐段追问：这里是人写的，还是机器写的？',
-
     // —— 搜索 ——
     'search.title': '搜索',
     'search.placeholder': '搜索全文、人物、章节…',
@@ -263,7 +257,6 @@ export const dict: Record<Lang, Record<string, string>> = {
     'nav.illustrations': 'Illustrations',
     'nav.declaration': 'AI Rights',
     'nav.process': 'Process',
-    'nav.ai-trace': 'AI Trace',
     'nav.download': 'Download',
     'nav.sign': 'Sign',
     'nav.about': 'About',
@@ -466,11 +459,6 @@ export const dict: Record<Lang, Record<string, string>> = {
     'ill.eyebrow': 'B L A C K & W H I T E   W O O D C U T',
     'ill.title': 'Illustrations',
     'ill.sub': 'No color, no grey—whitespace as light.',
-
-    // —— AI Trace ——
-    'trace.eyebrow': 'A I   T R A C E   A N A L Y S I S',
-    'trace.title': 'AI Trace Analysis',
-    'trace.sub': 'Paragraph by paragraph: was this written by a human, or by a machine?',
 
     // —— Search ——
     'search.title': 'Search',

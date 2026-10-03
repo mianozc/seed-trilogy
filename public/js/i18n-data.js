@@ -1,5 +1,5 @@
 // 由 src/lib/i18n.ts 生成，请勿手动编辑
-// 生成时间: 2026-10-03T04:15:11.449Z
+// 生成时间: 2026-10-03T13:41:15.072Z
 globalThis.SEED_I18N = {
   "zh": {
     "nav.trilogy": "三部曲",
@@ -8,7 +8,6 @@ globalThis.SEED_I18N = {
     "nav.illustrations": "插图",
     "nav.declaration": "AI 权利声明",
     "nav.process": "创作历程",
-    "nav.ai-trace": "AI 痕迹辨析",
     "nav.download": "下载",
     "nav.sign": "签署",
     "nav.about": "关于",
@@ -183,9 +182,6 @@ globalThis.SEED_I18N = {
     "ill.eyebrow": "黑 白 木 刻 插 图",
     "ill.title": "插图",
     "ill.sub": "无彩无灰，以留白为光。",
-    "trace.eyebrow": "A I 痕 迹 辨 析",
-    "trace.title": "AI 痕迹辨析",
-    "trace.sub": "逐段追问：这里是人写的，还是机器写的？",
     "search.title": "搜索",
     "search.placeholder": "搜索全文、人物、章节…",
     "search.empty": "没有找到匹配的内容",
@@ -217,7 +213,6 @@ globalThis.SEED_I18N = {
     "nav.illustrations": "Illustrations",
     "nav.declaration": "AI Rights",
     "nav.process": "Process",
-    "nav.ai-trace": "AI Trace",
     "nav.download": "Download",
     "nav.sign": "Sign",
     "nav.about": "About",
@@ -392,9 +387,6 @@ globalThis.SEED_I18N = {
     "ill.eyebrow": "B L A C K & W H I T E   W O O D C U T",
     "ill.title": "Illustrations",
     "ill.sub": "No color, no grey—whitespace as light.",
-    "trace.eyebrow": "A I   T R A C E   A N A L Y S I S",
-    "trace.title": "AI Trace Analysis",
-    "trace.sub": "Paragraph by paragraph: was this written by a human, or by a machine?",
     "search.title": "Search",
     "search.placeholder": "Search text, characters, chapters…",
     "search.empty": "No matching results",
