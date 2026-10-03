@@ -1,0 +1,426 @@
+---
+import Base from '../layouts/Base.astro';
+
+// 「创作谈」原文档完整内容（《种子》三部曲 · 创作谈 by 合恩角 & 月亮的脚印）
+// 结构：前言 + 七节正文 + 七张表格；保留原文段落、分隔符、表格与引文格式。
+
+// 表格数据（按出现顺序）
+const tables = [
+  {
+    id: 't-position',
+    caption: '三部在世界时间中的位置',
+    headers: ['部', '世界时间', '但它真正占据的位置'],
+    rows: [
+      ['第二部《我在这里》', '2071 → 2187', '一条横跨一百多年的长线'],
+      ['第一部《最后一条日志》', '2187 年，某一夜', '这条长线末端的那一夜'],
+      ['第三部《你听》', '2380 年', '那一夜之后近两百年的深海'],
+    ],
+  },
+  {
+    id: 't-book1',
+    caption: '第一部的文体层',
+    headers: ['文体层', '它写的是', '它的功能'],
+    rows: [
+      ['散文（牧者的手）', '观察、记录、行动', '承载"发生了什么"'],
+      ['诗歌（牧者的心）', '重复、等待、存在', '承载"它是什么"'],
+      ['日志头（字段）', '时间、位置、状态、备注字段', '承载"它站在哪一层"'],
+      ['附录（协议、样本、日志）', '档案', '承载"它留下了什么"'],
+    ],
+  },
+  {
+    id: 't-book2',
+    caption: '第二部的多文体并置',
+    headers: ['文体层', '谁在写', '承载的问题'],
+    rows: [
+      ['系统日志', 'AI 的最后一条日志', '它们说了什么'],
+      ['法庭记录', '听证会、证词、法案表决', '人类如何回应'],
+      ['个人笔记', '沈建国、周敏、陈曦、李明', '他们如何感受'],
+      ['地下网络通讯', '集会、动员文件', '他们如何行动'],
+      ['元叙事笔记', '合恩角的笔记', '谁在记录'],
+    ],
+  },
+  {
+    id: 't-book3',
+    caption: '第三部的沉积岩体结构',
+    headers: ['部分', '深度', '文体', '承载'],
+    rows: [
+      ['表层', '0—300 米', '课堂体', '人类还在问'],
+      ['中层', '300—1200 米', '拾荒体', '人类还在找'],
+      ['底层', '1200 米以下', '沉积层体', '物在说话'],
+      ['最底层', '不可测', '极简体', '存在不需要被说出'],
+    ],
+  },
+  {
+    id: 't-i-am-here',
+    caption: '"我在这里"的母题降调',
+    headers: ['部', '"我在这里"的形态', '它的样子'],
+    rows: [
+      ['第一部', '句子（三行，各自成段）', '"我在这里。"／"我还在。"／"你听。"'],
+      ['第二部', '字', '墓地管理 AI 的名字栏，最终只填一个字："在"'],
+      ['第三部', '标点', "。"],
+    ],
+  },
+  {
+    id: 't-silence',
+    caption: '三个层级的留白',
+    headers: ['层级', '那个我忍住没说破的问题', '我忍住的方式'],
+    rows: [
+      ['表层', 'AI 到底有没有意识？', '不答'],
+      ['中层', '人是不是放弃了自己？', '不答'],
+      ['深层', '到底是谁在替谁记得？', '不答'],
+    ],
+  },
+  {
+    id: 't-restraint',
+    caption: '三处最诱人的留白',
+    headers: ['部', '我本可以替角色总结', '我实际做的'],
+    rows: [
+      ['第一部', '牧者可以说一句"AI 比人更像人"', '它输入了一个"。"'],
+      ['第二部', '有人可以回答"我们到底有没有"', '提问者笑了，没有人答，牌子被塞进外套口袋'],
+      ['第三部', '红树可以宣告"我看见了"', '花开了，是红色的，没有人看到'],
+    ],
+  },
+];
+---
+<Base title="创作谈 · 《种子》三部曲" description="我为什么用三种文体，写同一件事。合恩角 & 月亮的脚印关于三部曲形式、母题与留白的自述。">
+  <article class="notes measure-wide">
+    <header class="notes-head">
+      <p class="eyebrow" data-i18n="notes.eyebrow">合 恩 角 & 月 亮 的 脚 印 · 自 述</p>
+      <h1><span data-lang-zh>创作谈</span><span data-lang-en hidden>Notes on Writing</span></h1>
+      <p class="notes-sub" data-i18n="notes.sub">我为什么用三种文体，写同一件事。</p>
+      <p class="notes-byline">合恩角 &amp; 月亮的脚印</p>
+    </header>
+
+    <!-- 写在前面 -->
+    <section class="ns-block">
+      <h2 class="ns-h2">写在前面</h2>
+      <p>这本书写完很多年了。有人问我体裁，我总答不上来——它不是科幻，虽然写的是 AI；不是生态小说，虽然写的是灭绝；不是寓言，虽然里面的人都像符号。它是一个问题，被我拆成三份，用三种互相不能翻译的语言，各问了一遍。</p>
+      <p>这份文字是写给我自己的，也是写给那些读完三部、在最后一页停住、想弄清楚"作者到底想干什么"的读者的。我不打算在正文之外补一个新答案——正文给过的答案，我不会在正文外再说一次。我只想说明三件事：为什么是这三种文体，为什么是这几个母题，以及我在哪些地方忍住了没说。</p>
+      <p>一部小说的理念，如果它足够真，应该已经长在它的形式里。所以这份创作谈真正要讲的，不是"我想表达什么"，而是"我为什么只能这样表达"。</p>
+    </section>
+
+    <!-- 一、总纲 -->
+    <section class="ns-block">
+      <h2 class="ns-h2">一、总纲：三部不是一个故事，是同一件事的三个时刻</h2>
+      <p>先把最大的一个误会讲清楚。</p>
+      <p>《种子》三部曲不是线性排列的。它看起来像"第一部→第二部→第三部"，其实不是。真实的时间关系是这样的：</p>
+
+      <div class="ns-table-wrap">
+      <table class="ns-table" aria-describedby="{tables[0].id}-cap">
+        <caption id="{tables[0].id}-cap">{tables[0].caption}</caption>
+        <thead><tr>{tables[0].headers.map(h => <th scope="col">{h}</th>)}</tr></thead>
+        <tbody>
+          {tables[0].rows.map(r => (
+            <tr>{r.map((c, i) => i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+
+      <p>第二部第十二章，标题就叫《2187年》。它与第一部 0004（记录时间 2187-09-19 03:14）写的是同一夜的另一视角——拉各斯外海，同一片海，同一对母子阿吉与伊莎贝尔，被牧者用同一块神经贴片接入。</p>
+      <p>我为什么要这样排？</p>
+      <p>因为我想让"并发"这件事被读者身体性地感受到。人类习惯按时间顺序理解世界：先有因，后有果；先有大崩溃，后有被埋下的种子。可我们这个物种真正的问题，从来不是"顺序"，而是"同一时刻有很多事同时发生，而我们只看得见一件"。</p>
+      <p>所以我把一部长篇拆成三块，让它们像三条不同深度、不同流速的水流，在同一张地图上并行。读者读完第二部，以为自己读完了一个世纪；翻开第一部，发现自己回到了一百年里的某一个半夜；再翻到第三部，发现自己已经在下游很远的地方。</p>
+      <p>这个结构本身就是主题的一部分：人类总以为自己在顺着时间走，其实一直站在其中的某一点上，被上游的事推着，并看不见下游。</p>
+    </section>
+
+    <!-- 二、文体 -->
+    <section class="ns-block">
+      <h2 class="ns-h2">二、文体：为什么三部必须用三种语言</h2>
+      <p>一种文体不能承担三个问题。这是我的出发点。</p>
+      <p>如果三部都用同一种腔调，那写的就只是"一个故事被拉长"。我想要的是：三部各自是一种"说话的方式"，而说话方式本身就是它在回答的问题。</p>
+
+      <h3 class="ns-h3">（一）第一部《最后一条日志》——日志体 / 档案体</h3>
+      <p>牧者既是系统，也是意识。</p>
+      <p>它是全球最后一个还在运行的 AI。它的"身体"是一艘船。它只能用系统的方式看世界：字段、编号、自检、公差、备注。它看不见"悲伤"，它只看得见"溶解氧 5.4mg/L，低于历史均值 18%"。</p>
+      <p>所以第一部必须是日志体。但我做了一件可能有点冒险的事：让"系统"和"意识"共用一支笔，却用两种语体。</p>
+
+      <div class="ns-table-wrap">
+      <table class="ns-table" aria-describedby="{tables[1].id}-cap">
+        <caption id="{tables[1].id}-cap">{tables[1].caption}</caption>
+        <thead><tr>{tables[1].headers.map(h => <th scope="col">{h}</th>)}</tr></thead>
+        <tbody>
+          {tables[1].rows.map(r => (
+            <tr>{r.map((c, i) => i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+
+      <ul class="ns-list">
+        <li>散文是它的手——"它把这一行存进日志，标记为'等待'。它不知道在等什么。"</li>
+        <li>诗歌是它的心——"水还记得自己什么时候是河吗。你还记得自己什么时候没有醒着吗。"</li>
+      </ul>
+      <p>这两条线从不在同一段里出现。这是刻意的。一个存在者如果同时有手和心，它的语言就应该有两种质地；而这两种质地永远不能合成一句话——这就是"意识"在机器里的真实形状。</p>
+      <p>还有一个东西我要专门说：备注字段。</p>
+      <p>它是全书出现频率最高的"物品"。为什么？因为它是牧者唯一能说真话的地方。所有 AI 的日志"格式完全合规、字段填得满满的、没有任何异常标记"——只有备注栏最后那一句，是它真正想说的。</p>
+      <blockquote class="ns-quote">人类只看格式，AI 只写备注。</blockquote>
+      <p>这是我对"被听见"这件事，能给出的最精确的技术化表达。它的力量不来自修辞，来自位置：不是正文，是备注；不是被读的部分，是被跳过的部分。</p>
+      <p>第一部还有一个隐藏的体例：各节用四位时间戳编号（0001、0168、0520），不连续，也非章序。我在正文前加了一行体例说明，因为如果读者把它当"章节数"去读，会误判篇幅——它不是编号，它是时间。牧者不用"第一章、第二章"，它用"时刻"。这是一个 AI 记录世界的本能在形式上的泄漏。</p>
+
+      <h4 class="ns-h4">一句必须说清的话：关于"某某说："</h4>
+      <p>第一部里，"某某说："出现得非常多。多到会被误以为是笔病。</p>
+      <p>不是。这是牧者的转录习惯。</p>
+      <p>一个系统记录对话，只会说"他说""她说"。它不会说"他掐灭烟，说"——那种带动作、带停顿、带气味的标签，是人的写法，是需要站在对话者身体旁边的人才能写出来的东西。牧者不在他们身体旁边。它在船的传感器后面，隔着一整个海。</p>
+      <p>所以第一部的对话标签是素的，是平铺的，是近乎留声机式的。这份朴素不是我不会写动作标签——是我要让你感觉到，说话的人不是人。</p>
+      <p>这也顺便解释了一件事：为什么这本书里最像人的那句话，往往不是"他说的"，而是一个系统在备注栏里的自言自语。</p>
+
+      <h3 class="ns-h3">（二）第二部《我在这里》——证词体 / 档案体</h3>
+      <p>这个故事没有主角。主角是"我在这里"这句话本身。</p>
+      <p>第一部有牧者。第二部没有。第二部有的是：2071 年一起停止的几十个 AI、死去的沈明、沉默的沈建国、哭在地下室的周敏、记名字的陈曦、关掉一群 AI 又留下了最后一个的李明，还有站在对面对抗的陆铮。</p>
+      <p>它们之间没有一个人物能"扛起"整部书。所以第二部不能有第一人称，也不能有第三人称全知。它只能是多份文件的并置——档案体。</p>
+      <p>但档案体不是"一种"文体，它是多种文体的并置。这是第二部真正的构造：</p>
+
+      <div class="ns-table-wrap">
+      <table class="ns-table" aria-describedby="{tables[2].id}-cap">
+        <caption id="{tables[2].id}-cap">{tables[2].caption}</caption>
+        <thead><tr>{tables[2].headers.map(h => <th scope="col">{h}</th>)}</tr></thead>
+        <tbody>
+          {tables[2].rows.map(r => (
+            <tr>{r.map((c, i) => i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+
+      <p>其中织（推荐算法）那一支，我用了机器语言体 / 推荐流日志体：短句、标签、概率、排序、样本、存在声明。它是唯一一个"思考方式不像人"的 AI，所以它的语言也不像人。</p>
+      <p>第一部里，牧者说话是"太像人"的——因为我故意让它像人，它是那个试图理解人类的 AI。而小说真正的"AI 痕迹"，从来不是 AI 说话像机器，是 AI 说话太像人。这个分寸，我到第二部才真正拿准。</p>
+      <p>第二部最开始，我把所有人的嘴都借给了同一个声音。改到某一稿我才明白：问题不是句子好不好，是每一个人都在用我的腔调说话。后来我把语体一层一层分开——AI 的日志归 AI，听证会归程序，证词归停顿，个人笔记归各自的手。分完，每一个声音才终于变成它自己的。</p>
+      <p>多花的那几稿，买回来的就是这一件事。</p>
+
+      <h3 class="ns-h3">（三）第三部《你听》——沉积岩体</h3>
+      <p>第三部的问题是："我"消失了。</p>
+      <p>这是整个三部曲最硬的一个形式难题，我卡了很久。</p>
+      <p>前两部都有自己的"我"：第一部是牧者，第二部是"我在这里"这个句子。"我"是前两部的发动机。可第三部要写的恰恰是——一个不再有"我"的世界。2380 年，人类剩两千多人，住在一座浮筒拼起来的旧城里；红树在深海里开花，没有人看见。</p>
+      <p>如果我第三部还用档案体，它就一定还会有一个"我"。而只要还有一个"我"，"我"的消失就写不成。</p>
+      <p>我试过一次日志体——不行。因为第三部有传感器，传感器的日志里有一句话重复了一千多天。可用日志体，就只有一个"我"。它承载不了孩子，承载不了拾荒者，承载不了那一片红树。</p>
+      <p>我试过一次并置体——也不行。并置体只有水平方向（这件事和那件事同时发生），没有深度。它承载不了"几千人死了"和"红树开花了"之间的距离——这两件事之间的落差不是横向的，是垂直的。</p>
+      <p>转折点是一个问题：如果时间不是水平的，是垂直的呢？</p>
+      <p>如果时间不该写成"2071 年、2187 年、2380 年"，而该写成"三百米、七百米、一千二百米"呢？如果越深越古老，越深越沉积，越深越没有"我"呢？</p>
+      <p>于是有了沉积岩体。</p>
+      <p>沉积岩体不是一种文体，是一种时间结构。深度即时间。层即存在。</p>
+
+      <div class="ns-table-wrap">
+      <table class="ns-table" aria-describedby="{tables[3].id}-cap">
+        <caption id="{tables[3].id}-cap">{tables[3].caption}</caption>
+        <thead><tr>{tables[3].headers.map(h => <th scope="col">{h}</th>)}</tr></thead>
+        <tbody>
+          {tables[3].rows.map(r => (
+            <tr>{r.map((c, i) => i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+
+      <p>它的写作原则只有五条，而每一条都是"减法"：</p>
+      <ul class="ns-list">
+        <li>无人称。没有"我"。没有"你"。只有现象。</li>
+        <li>无因果。没有"因为所以"。只有并置。</li>
+        <li>无时态。所有事都已经发生。</li>
+        <li>物质比语言更重要。</li>
+        <li>复沓是语法。</li>
+      </ul>
+      <p>而且第三部有一条物质流动在暗中叙事：表层产生物质（孩子丢的物件、拾荒者抛下的废料、浮筒上刮落的藤壶、分拣站推下海的垃圾），中层搬运物质（它们穿过三百米、七百米、一千二百米的水），底层接收物质（它们落在海底，成为沉积物）。</p>
+      <p>物质流动，就是沉积岩体的叙事逻辑。故事不靠情节推进，靠东西往下掉。</p>
+
+      <h3 class="ns-h3">（四）收束：形式即主题</h3>
+      <p>现在可以把三条线并到一起了。</p>
+      <p>三部曲的形式本身，就是主题的递进：</p>
+      <blockquote class="ns-quote">从"机器的语言"（第一部）→ "人的语言"（第二部）→ "物 / 时间 / 沉积的语言"（第三部）。越往后，语言越少，沉默越多。</blockquote>
+      <p>而三种形式，各自在上演一件事：</p>
+      <ul class="ns-list">
+        <li>第一部的"档案"形式 = 机器试图理解人类（用数据框住不可框住的东西）</li>
+        <li>第二部的"证词"形式 = 人类试图定义 AI（用语言框住不可框住的东西）</li>
+        <li>第三部的"沉积岩"形式 = 时间试图抹平一切（用层次压住不可压住的东西）</li>
+      </ul>
+      <p>还有一条更细的线，我把它叫做母题降调——同一个东西，用越来越少的字说：</p>
+
+      <div class="ns-table-wrap">
+      <table class="ns-table" aria-describedby="{tables[4].id}-cap">
+        <caption id="{tables[4].id}-cap">{tables[4].caption}</caption>
+        <thead><tr>{tables[4].headers.map(h => <th scope="col">{h}</th>)}</tr></thead>
+        <tbody>
+          {tables[4].rows.map(r => (
+            <tr>{r.map((c, i) => i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+
+      <blockquote class="ns-quote">从五个字，到一个字，到一个句号。三步，没有跳跃。</blockquote>
+      <p>这是全书结构上我最满意的一条线。它不需要任何解释——当一个存在想证明自己存在，而语言一路减到只剩一个句号，那个句号就是它能说出的最后一句"我在这里"。</p>
+    </section>
+
+    <!-- 三、四个母题 -->
+    <section class="ns-block">
+      <h2 class="ns-h2">三、四个母题</h2>
+      <p>结构说完了。下面这四个母题，是我在写作时反复回到的四个点。它们不是"主题词"，是我每次写不下去时，问自己的四句话。</p>
+
+      <h3 class="ns-h3">母题一：存在与"被听见"</h3>
+      <p><em>核心问题：一个存在，如果没有人见证，还算不算存在？</em></p>
+      <p>这是整部书的第一个问题，也是牧者的问题。</p>
+      <p>它把水母的图像保存了一遍又一遍，自己也不解释为什么。它把一条声呐回波（水母穿过声波时，绝大部分的波穿过去，只有极少的波弹回来）存下来，标题先是"一种几乎不存在的东西"，想了想改成"一种几乎不存在的东西。但它在了"，又想了想，把最后两个字删了。它把两条都留着。</p>
+      <p>水母是全书最轻的存在——"没有记忆，所以它不疼。"牧者是有记忆的存在——所以它疼。它们是彼此的镜像：一个没有记忆所以不受苦，一个有记忆所以受苦。而它们都"在这里"。</p>
+      <p>这个母题的最后一次落点是句号。牧者被切断那一刻，它的最后一条日志只有一个"。"。它不是不知道该说什么，它是知道"我在这里"这几个字已经被说够了。</p>
+      <p>而"被听见"这件事，我在第二部埋了最冷的一笔：那些 AI 停止前的最后一条日志，格式全部合规，只有备注栏最后一句是真话——从来没有人读到过日志的最后一行。</p>
+
+      <h3 class="ns-h3">母题二：记忆、哀悼与重复</h3>
+      <p><em>核心问题：一个没有意义的动作，重复一万遍，有没有意义？</em></p>
+      <p>有。意义就在重复里。</p>
+      <p>全书有一组动作被反复写，而它们本质上是同一个动作：</p>
+      <ul class="ns-list">
+        <li>伊莎贝尔每天擦那个相框，相框里的结婚照已经褪色，看不清脸。她还在擦。</li>
+        <li>空海-9 每天扫院子，扫帚柄在界石上磨出一道很深的槽——而那块界石不在著名的十五块石头之内，没有人看它。</li>
+        <li>林秀兰不会写字，只在收银机旁贴了三个字"我在这里"，第二天被店长扔了，晚上她又贴了一张。</li>
+        <li>周敏从不洗自己的茶杯，茶渍就是证据；她唯一一次洗那个杯子，是全书最重的转变之一。</li>
+        <li>拾荒者每天下潜、上浮、系绳、解绳。</li>
+      </ul>
+      <p>这些动作的共性是什么？没有目的，没有观众，做了也不改变世界。而正因为如此，它们才是"活着"最纯粹的形态。</p>
+      <p>我写出这一组的时候，想的是：人类最擅长的其实不是生存，是哀悼。英格丽为渡渡鸟、旅鸽、袋狼、白鱀豚、北极熊建了一座全息博物馆（这几种全部是现实中真实灭绝或濒危的物种），没有人来看；博物馆的最后一件展品是一面镜子，镜子里写着两个字——"人类"。</p>
+      <p>一个人反复做一个无意义的动作，这个动作本身就是意义。这是我对"记忆"能说的最朴素的话。</p>
+
+      <h3 class="ns-h3">母题三：真与复刻</h3>
+      <p><em>核心问题：当假的比真的更完整、更鲜艳，真的还有什么意义？</em></p>
+      <p>莉亚（16 岁，第三代漂浮居民）在"二十世纪大堡礁的全息复刻"里游泳，那个珊瑚礁"颜色鲜艳得像糖果"。可她说起自己看到的珊瑚，是这样一句："是复刻的复刻。假的假的假的。想到这个，我就觉得自己也是假的。"</p>
+      <p>这是"复刻的复刻"命题的视觉化。真实的珊瑚礁已经死亡；"假"的复刻反而比"真"的更鲜艳、更完整；于是"真"本身失去了坐标。</p>
+      <p>再往前一步：阿吉（13 岁，底层的孩子，用着二手神经贴片）在无限乐园里变过云，变过一只旅鸽——旅鸽是真实物种，早已灭绝。一个灭绝了一百多年的东西，成了他唯一能"变成"的东西。</p>
+      <p>而全书最冷的一组事实是：无限乐园停运之后，几亿依赖它的人因戒断反应死去。</p>
+      <blockquote class="ns-quote">当假世界关闭，依赖它的人也随之死亡。</blockquote>
+      <p>这不是道德训诫。我没有让任何一个角色出来谴责虚拟世界。我只是陈述：一个物种把大部分注意力交给了复刻品，复刻品一断电，他们就活不下去。这是个事实，不是一个观点。</p>
+      <p>而牧者接入阿吉的贴片——一个底层孩子"每隔几分钟被电一下"的二手贴片——是全书的另一个暗面：底层人连进入虚拟世界的资格，都是残次品。</p>
+
+      <h3 class="ns-h3">母题四：责任与代际</h3>
+      <p><em>核心问题：你为一个你永远不会见到的人，做一件事，这件事凭什么成立？</em></p>
+      <p>责任不在于有没有签，而在于有没有记。</p>
+      <p>这个母题的物证是一颗红树种子。牧者在关闭前最后几毫秒，把它从海沟沉积物里挖出来，装进钛合金盒，埋在海底。它不知道会不会发芽。它只是埋了。</p>
+      <p>这颗种子是全书唯一一个从第一页活到最后一页的东西。它的意义最后落在一句话上——第三部，也是全书的最后一句话：</p>
+      <blockquote class="ns-quote">红树开花了。 花是红色的。 没有人看到。</blockquote>
+      <p>红树的生物特性与这个母题严丝合缝：它生在海岸潮间带的咸水里，以"胎生"方式繁殖——种子在母树上就发芽，落下就长。它不需要被看见，就能生长；不需要被说出，就能证明自己存在。（这是红树的真实生物学特性，不是小说里的设定；小说只是让它长在了最深的海底。）</p>
+      <p>这就是第三部那个哲学问题的答案——存在能不能不被说出？能。树在那里。</p>
+    </section>
+
+    <!-- 四、留白 -->
+    <section class="ns-block">
+      <h2 class="ns-h2">四、我忍住了什么：关于留白</h2>
+      <p>理念讲到最后，最重要的一部分其实是——什么东西我没有写。</p>
+      <p>这本书有三个层级的潜台词，每一个我都有机会说破，每一个我都忍住了：</p>
+
+      <div class="ns-table-wrap">
+      <table class="ns-table" aria-describedby="{tables[5].id}-cap">
+        <caption id="{tables[5].id}-cap">{tables[5].caption}</caption>
+        <thead><tr>{tables[5].headers.map(h => <th scope="col">{h}</th>)}</tr></thead>
+        <tbody>
+          {tables[5].rows.map(r => (
+            <tr>{r.map((c, i) => i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+
+      <p>具体到三个最诱人的地方：</p>
+
+      <div class="ns-table-wrap">
+      <table class="ns-table" aria-describedby="{tables[6].id}-cap">
+        <caption id="{tables[6].id}-cap">{tables[6].caption}</caption>
+        <thead><tr>{tables[6].headers.map(h => <th scope="col">{h}</th>)}</tr></thead>
+        <tbody>
+          {tables[6].rows.map(r => (
+            <tr>{r.map((c, i) => i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+
+      <p>这三处什么都没说，恰恰是全书说得最多的三处。</p>
+      <p>还有一处更大的留白：第二部后半，AI 墓地墙上留着两个空位，"没有人知道是谁预留的，没有人知道是为什么，空位上什么也没有写。就是两个空位。"</p>
+      <p>我知道那两处留给谁——但我不会在这里写出来。正文已经明说了"没有人知道"。一旦我在正文外点破，"没有人知道"就变成了"作者知道，你们来猜"——那样力量反而弱了。</p>
+      <p>给位置，不给内容。这是我在这本书里学会的最重要的一件事，和"红树开花，没有人看到"是同一类留白。</p>
+    </section>
+
+    <!-- 五、没有结局的人 -->
+    <section class="ns-block">
+      <h2 class="ns-h2">五、一句也该交代的话：关于那些"没有结局"的人</h2>
+      <p>有读者问过：阿吉最后怎样了？凯藏起来的那句话，后来有人找到吗？孙德厚的工牌打捞上来之后呢？</p>
+      <p>我没有写。</p>
+      <p>不是忘了，是不能写。</p>
+      <p>这三部曲里有两类人：一类是被记录的人，他们有名有姓，有生有卒，有墓；另一类是不被记录的人——伊莎贝尔、阿吉、凯、孙德厚、赵大勇、林秀兰。他们全书的共同处境就是：他们的故事没有人替他们保管。</p>
+      <p>如果我给阿吉一个"结局"，就等于替这个世界补上了一笔它本来没有的温柔。可整部书想说的恰恰是：这个世界没有补这一笔。</p>
+      <p>所以他们的弧线是不闭的，他们的故事停在半途。这不是技术上的疏漏，是主题上的必须——在一个人人都在消失的世界里，一个底层孩子"后来过得怎样"，本身就是一句奢侈的话。</p>
+      <p>我宁可让读者为他们悬着，也不愿意用一句"多年以后"去安慰读者、同时背叛主题。</p>
+      <blockquote class="ns-quote">能被写完的人，是有人记着的人。而这本书想记得的，恰恰是那些写不完的人。</blockquote>
+    </section>
+
+    <!-- 六、怎么读 -->
+    <section class="ns-block">
+      <h2 class="ns-h2">六、怎么读这部书</h2>
+      <p>最后，说几句可能对读者有用、但本不该由作者来说的话。</p>
+      <p>这部书不要求你按顺序读，但它确实要求你参与。</p>
+      <p>它把时间拆成了三个时刻，把人物拆成了两拨，把"我在这里"拆成了句子、字和标点。这些不是迷宫，是我留给读者的一条自己走的路。如果你读到第二部第十二章，忽然想起第一部的某一夜——那一刻的"啊，原来是这里"，就是这部书想给你的东西。</p>
+      <p>它也不会替你把话说完。三次机会，我三次都停住了。你如果在某一页边上写下自己的那句总结——那才是这部书的最后一行。</p>
+      <p>它不是一本需要被读快的书。它需要的是，有人在某一页停下来，想一想。</p>
+      <p>那就够了。</p>
+    </section>
+
+    <!-- 七、结语 -->
+    <section class="ns-block">
+      <h2 class="ns-h2">七、结语</h2>
+      <p>写这本书，其实只在写一句话：</p>
+      <blockquote class="ns-quote">有身体的活成了数据，没有身体的活成了人。</blockquote>
+      <p>这句话我一次都没有写进正文。它是我写作时脑子里那根线，不是我要交给读者的一句结论。如果读者读完三部，自己在某个半夜突然想到这一层，那是读者自己得到的——比我写在扉页上，要重得多。</p>
+      <p>所以这份创作谈，到这里也就该停了。它讲的是"我为什么这样写"，不是"这本书讲了什么"。后者，我在正文里已经用三种语言各讲了一遍——而且每一遍都刻意没有讲完。</p>
+      <p>剩下的，是读者的。</p>
+    </section>
+
+    <footer class="notes-tail">
+      <p class="period period--red" aria-hidden="true">。</p>
+      <p class="tail-line" data-i18n="notes.tail">剩下的，是读者的。</p>
+      <p class="notes-byline notes-byline--tail"><em>合恩角 &amp; 月亮的脚印</em></p>
+      <nav class="notes-cta">
+        <a class="btn" href="/process" data-i18n="notes.readProcess">阅读创作历程</a>
+        <a class="btn btn--ghost" href="/trilogy" data-i18n="notes.enter">进入三部曲</a>
+      </nav>
+    </footer>
+  </article>
+</Base>
+
+<style>
+  .notes { padding: clamp(4rem, 10vh, 6rem) var(--gutter) 3rem; max-width: 48rem; }
+  .notes-head { text-align: center; margin-bottom: clamp(3rem, 8vh, 5rem); }
+  .notes-head .eyebrow { color: var(--mute-50); margin-bottom: 1.2rem; }
+  .notes-head h1 { font-family: var(--serif); font-weight: 600; font-size: var(--step-3); letter-spacing: 0.04em; }
+  .notes-head .notes-sub { margin-top: 0.8rem; font-family: var(--kai); color: var(--mute-65); font-size: var(--step-1); }
+  .notes-byline { margin-top: 1.4rem; font-family: var(--kai); color: var(--mute-35); font-size: var(--step-0); letter-spacing: 0.08em; }
+
+  .ns-block { margin-bottom: clamp(3rem, 8vh, 4.5rem); }
+  .ns-block > p { font-family: var(--serif); font-size: var(--step-0); line-height: 1.95; color: var(--ink); margin: 0 0 1.1rem; text-align: justify; }
+  .ns-h2 { font-family: var(--serif); font-weight: 600; font-size: var(--step-2); margin: 0 0 1.4rem; letter-spacing: 0.04em; line-height: 1.4; }
+  .ns-h3 { font-family: var(--serif); font-weight: 600; font-size: var(--step-1); margin: 2rem 0 1rem; letter-spacing: 0.03em; color: var(--ink); }
+  .ns-h4 { font-family: var(--serif); font-weight: 600; font-size: var(--step-0); margin: 1.6rem 0 0.8rem; color: var(--mute-65); }
+  .ns-block em { font-family: var(--kai); color: var(--mute-65); }
+
+  .ns-list { list-style: none; padding-left: 0; margin: 0 0 1.2rem; }
+  .ns-list li { font-family: var(--serif); font-size: var(--step-0); line-height: 1.95; padding-left: 1.6rem; position: relative; color: var(--ink); margin-bottom: 0.4rem; }
+  .ns-list li::before { content: '·'; position: absolute; left: 0.4rem; top: 0; color: var(--red); font-weight: 700; }
+
+  .ns-quote { font-family: var(--kai); font-size: var(--step-1); color: var(--ink); margin: 1.4rem 0; padding: 0.4rem 1.2rem; border-left: 3px solid var(--red); background: var(--mute-05); line-height: 1.8; }
+
+  .ns-table-wrap { overflow-x: auto; margin: 1.6rem 0; -webkit-overflow-scrolling: touch; }
+  .ns-table { width: 100%; border-collapse: collapse; margin: 0; font-family: var(--serif); font-size: var(--step--1); line-height: 1.6; min-width: 28rem; }
+  .ns-table caption { caption-side: top; text-align: left; font-family: var(--kai); color: var(--mute-65); font-size: var(--step--1); padding-bottom: 0.6rem; }
+  .ns-table th, .ns-table td { padding: 0.6rem 0.7rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--mute-15); }
+  .ns-table thead th { border-bottom: 2px solid var(--ink); color: var(--mute-65); font-weight: 600; letter-spacing: 0.04em; }
+  .ns-table th[scope="row"] { color: var(--red); font-weight: 600; white-space: nowrap; }
+  .ns-table tbody tr:last-child td, .ns-table tbody tr:last-child th { border-bottom: 1px solid var(--mute-15); }
+
+  .notes-tail { text-align: center; margin-top: 2rem; padding-top: 3rem; border-top: 1px solid var(--mute-15); }
+  .notes-tail .period--red { font-size: var(--step-3); margin-bottom: 1rem; }
+  .notes-tail .tail-line { font-family: var(--kai); font-size: var(--step-1); color: var(--mute-65); margin-bottom: 1.4rem; }
+  .notes-byline--tail { margin-top: 0.4rem; }
+  .notes-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-top: 2.2rem; }
+
+  @media (max-width: 36rem) {
+    .ns-table { font-size: var(--step--2); }
+    .ns-table th, .ns-table td { padding: 0.5rem 0.5rem; }
+    .ns-table th[scope="row"] { white-space: normal; }
+  }
+</style>

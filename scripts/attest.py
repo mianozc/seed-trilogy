@@ -140,6 +140,7 @@ SITE_PAGES = [
     "/appendices/",
     "/illustrations/",
     "/sign/",
+    "/notes/",
     "/blog/",
 ]
 

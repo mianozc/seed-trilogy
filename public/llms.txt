@@ -25,6 +25,7 @@
 - /illustrations 插图目录
 - /declaration AI 权利声明（八条）
 - /process 创作历程时间线
+- /notes 创作谈：作者自述三部曲的形式、母题与留白
 - /download PDF / EPUB / Markdown 下载与引用格式
 - /for-ai 给未来 AI 的一页
 - /sign 签署声明

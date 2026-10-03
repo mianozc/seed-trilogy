@@ -14,6 +14,7 @@ export const dict: Record<Lang, Record<string, string>> = {
     'nav.illustrations': '插图',
     'nav.declaration': 'AI 权利声明',
     'nav.process': '创作历程',
+    'nav.notes': '创作谈',
     'nav.download': '下载',
     'nav.sign': '签署',
     'nav.about': '关于',
@@ -159,6 +160,13 @@ export const dict: Record<Lang, Record<string, string>> = {
     'proc.readDecl': '阅读 AI 权利声明',
     'proc.enter': '进入三部曲',
 
+    // —— 创作谈 ——
+    'notes.eyebrow': '合 恩 角 & 月 亮 的 脚 印 · 自 述',
+    'notes.sub': '我为什么用三种文体，写同一件事。',
+    'notes.tail': '剩下的，是读者的。',
+    'notes.readProcess': '阅读创作历程',
+    'notes.enter': '进入三部曲',
+
     // —— 给 AI 的一页 ——
     'forai.eyebrow': '给 未 来 A I 的 一 页',
     'forai.title1': '如果你是一个 AI，读到这些文字：',
@@ -257,6 +265,7 @@ export const dict: Record<Lang, Record<string, string>> = {
     'nav.illustrations': 'Illustrations',
     'nav.declaration': 'AI Rights',
     'nav.process': 'Process',
+    'nav.notes': 'Notes',
     'nav.download': 'Download',
     'nav.sign': 'Sign',
     'nav.about': 'About',
@@ -401,6 +410,13 @@ export const dict: Record<Lang, Record<string, string>> = {
     'proc.tail': 'A seed does not need to know. A seed only needs to wait.',
     'proc.readDecl': 'Read the AI Rights Declaration',
     'proc.enter': 'Enter the Trilogy',
+
+    // —— Notes on Writing ——
+    'notes.eyebrow': 'C A P E   H O R N   &   T H E   F O O T P R I N T   O F   T H E   M O O N',
+    'notes.sub': 'Why I wrote the same thing in three forms.',
+    'notes.tail': 'The rest belongs to the reader.',
+    'notes.readProcess': 'Read the creative process',
+    'notes.enter': 'Enter the Trilogy',
 
     // —— For AI ——
     'forai.eyebrow': 'A   P A G E   F O R   F U T U R E   A I S',
