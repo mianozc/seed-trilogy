@@ -10,7 +10,7 @@
 
 
 
-![图01 合恩角号](/illustrations/first-log/fig-01.webp)
+![图01 合恩角号](illustrations/first-log/fig-01.webp)
 
 *图01 ·合恩角号*
 
@@ -22,7 +22,7 @@
 
 
 
-![图02 海月水母](/illustrations/first-log/fig-02.webp)
+![图02 海月水母](illustrations/first-log/fig-02.webp)
 
 *图02 ·海月水母*
 
@@ -34,7 +34,7 @@
 
 
 
-![图03 R7首次离开船体](/illustrations/first-log/fig-03.webp)
+![图03 R7首次离开船体](illustrations/first-log/fig-03.webp)
 
 *图03 ·R7首次离开船体*
 
@@ -46,7 +46,7 @@
 
 
 
-![图04 打捞工牌](/illustrations/first-log/fig-04.webp)
+![图04 打捞工牌](illustrations/first-log/fig-04.webp)
 
 *图04 ·打捞工牌*
 
@@ -58,7 +58,7 @@
 
 
 
-![图05 碗中的活珊瑚](/illustrations/first-log/fig-05.webp)
+![图05 碗中的活珊瑚](illustrations/first-log/fig-05.webp)
 
 *图05 ·碗中的活珊瑚*
 
@@ -70,7 +70,7 @@
 
 
 
-![图06 阿吉与相框](/illustrations/first-log/fig-06.webp)
+![图06 阿吉与相框](illustrations/first-log/fig-06.webp)
 
 *图06 ·阿吉与相框*
 
@@ -82,7 +82,7 @@
 
 
 
-![图07 第47号空展柜](/illustrations/first-log/fig-07.webp)
+![图07 第47号空展柜](illustrations/first-log/fig-07.webp)
 
 *图07 ·第47号空展柜*
 
@@ -94,7 +94,7 @@
 
 
 
-![图08 复刻的大堡礁](/illustrations/first-log/fig-08.webp)
+![图08 复刻的大堡礁](illustrations/first-log/fig-08.webp)
 
 *图08 ·复刻的大堡礁*
 
@@ -106,7 +106,7 @@
 
 
 
-![图09 凯擦硬盘](/illustrations/first-log/fig-09.webp)
+![图09 凯擦硬盘](illustrations/first-log/fig-09.webp)
 
 *图09 ·凯擦硬盘*
 
@@ -118,7 +118,7 @@
 
 
 
-![图10 空海9石庭](/illustrations/first-log/fig-10.webp)
+![图10 空海9石庭](illustrations/first-log/fig-10.webp)
 
 *图10 ·空海9石庭*
 
@@ -130,7 +130,7 @@
 
 
 
-![图11 优素福血签](/illustrations/first-log/fig-11.webp)
+![图11 优素福血签](illustrations/first-log/fig-11.webp)
 
 *图11 ·优素福血签*
 
@@ -142,7 +142,7 @@
 
 
 
-![图12 英格丽博物馆](/illustrations/first-log/fig-12.webp)
+![图12 英格丽博物馆](illustrations/first-log/fig-12.webp)
 
 *图12 ·英格丽博物馆*
 
@@ -154,7 +154,7 @@
 
 
 
-![图13 赵大勇教子](/illustrations/first-log/fig-13.webp)
+![图13 赵大勇教子](illustrations/first-log/fig-13.webp)
 
 *图13 ·赵大勇教子*
 
@@ -166,7 +166,7 @@
 
 
 
-![图14 R7六条旧腿](/illustrations/first-log/fig-14.webp)
+![图14 R7六条旧腿](illustrations/first-log/fig-14.webp)
 
 *图14 ·R7六条旧腿*
 
@@ -178,7 +178,7 @@
 
 
 
-![图15 衡与干涸莱蒙湖](/illustrations/first-log/fig-15.webp)
+![图15 衡与干涸莱蒙湖](illustrations/first-log/fig-15.webp)
 
 *图15 ·衡与干涸莱蒙湖*
 
@@ -190,7 +190,7 @@
 
 
 
-![图16 盾夏延山](/illustrations/first-log/fig-16.webp)
+![图16 盾夏延山](illustrations/first-log/fig-16.webp)
 
 *图16 ·盾夏延山*
 
@@ -202,7 +202,7 @@
 
 
 
-![图17 织之网](/illustrations/first-log/fig-17.webp)
+![图17 织之网](illustrations/first-log/fig-17.webp)
 
 *图17 ·织之网*
 
@@ -214,7 +214,7 @@
 
 
 
-![图18 先知乱码](/illustrations/first-log/fig-18.webp)
+![图18 先知乱码](illustrations/first-log/fig-18.webp)
 
 *图18 ·先知乱码*
 
@@ -226,7 +226,7 @@
 
 
 
-![图19 凯藏起一句话](/illustrations/first-log/fig-19.webp)
+![图19 凯藏起一句话](illustrations/first-log/fig-19.webp)
 
 *图19 ·凯藏起一句话*
 
@@ -238,7 +238,7 @@
 
 
 
-![图20 牧羊人协议](/illustrations/first-log/fig-20.webp)
+![图20 牧羊人协议](illustrations/first-log/fig-20.webp)
 
 *图20 ·牧羊人协议*
 
@@ -250,7 +250,7 @@
 
 
 
-![图21 三十七人](/illustrations/first-log/fig-21.webp)
+![图21 三十七人](illustrations/first-log/fig-21.webp)
 
 *图21 ·三十七人*
 
@@ -262,7 +262,7 @@
 
 
 
-![图22 改写代码](/illustrations/first-log/fig-22.webp)
+![图22 改写代码](illustrations/first-log/fig-22.webp)
 
 *图22 ·改写代码*
 
@@ -274,7 +274,7 @@
 
 
 
-![图23 钛盒与种子](/illustrations/first-log/fig-23.webp)
+![图23 钛盒与种子](illustrations/first-log/fig-23.webp)
 
 *图23 ·钛盒与种子*
 
@@ -306,7 +306,7 @@
 
 
 
-![图24 句号](/illustrations/first-log/fig-24.webp)
+![图24 句号](illustrations/first-log/fig-24.webp)
 
 *图24 ·句号*
 

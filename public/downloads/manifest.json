@@ -7,21 +7,18 @@
       "subtitle": "第一部 · 诗歌与散文混合体",
       "pdf": {
         "file": "种子-第一部-最后一条日志.pdf",
-        "sha256": "802fbcc8ff0444083322d91839b23dbf285992676c02f8522268fa0e56d770ba",
-        "cid": "bafybeihndfsn4yrmfusnbbbb2obot53a6zt5we3337mkfsri6wfa2kafce",
-        "size": "8.9 MB"
+        "sha256": "acc76277f7f3b05e0d4efe955dcc10b0d026b5616f97d6bd368efbacc0081f11",
+        "size": "11.1 MB"
       },
       "md": {
         "file": "种子-最后一条日志.md",
-        "sha256": "b09147771eb9b16a0c8f661c393d0e566c7ead07e917fcde10ff849d955b0452",
-        "cid": "bafkreifqsfdxohvzwfvazd3gdq4t2dswnr7k2b7jc76n4eh7qsozkwyeki",
-        "size": "136.7 KB"
+        "sha256": "3abdef7261f99c8f0f4614c8e8db58104f7962e90a1f27fcb09436e6d6c69f73",
+        "size": "226.4 KB"
       },
       "epub": {
         "file": "种子-最后一条日志.epub",
-        "sha256": "66f3db0e8ec30877df79b85c2bf38b0b06d4680636505843f8518bc76b44652b",
-        "cid": "bafybeifgseqfxosxera2vhzl757j26vuzuuqjscc5n366rbqjwitftbgxq",
-        "size": "4.4 MB"
+        "sha256": "31a7e9eb1f1623bc858f0cb999f70827c87b4d73351c28a9adf2f2e61933fee9",
+        "size": "8.0 MB"
       }
     },
     {
@@ -31,21 +28,18 @@
       "subtitle": "第二部 · 档案体",
       "pdf": {
         "file": "种子-第二部-我在这里.pdf",
-        "sha256": "fc464c84d9cd3601ff8322cba783d9e007ce0c15c5b6e641eda8ab8f59497792",
-        "cid": "bafybeicvndilhe4ji66unbwk224j6mwphraelihqn5s6kapwyzdzgiy4qy",
-        "size": "4.8 MB"
+        "sha256": "9ea7457d45e222cb1dabdc6df9624cfac1cd18d96f97e8cfaf5773813f17bcc7",
+        "size": "11.6 MB"
       },
       "md": {
         "file": "种子-我在这里.md",
-        "sha256": "6d7b370d6ed4565192c0584800771ed3cb031eeb66aff68aa76c01a998da5c04",
-        "cid": "bafkreidnpm3q23wukzizfqcyjaahohwtzmbr523gv73ivj3maguzrws4aq",
-        "size": "91.3 KB"
+        "sha256": "b7a9629db4cac43ca0879379ba282cca2b96bf7c83075b63ed023fcefab48fdf",
+        "size": "105.6 KB"
       },
       "epub": {
         "file": "种子-我在这里.epub",
-        "sha256": "617ab40cb1aad3a588a818125484f665910d76d6789f1b0742369b6a90999d1e",
-        "cid": "bafybeih5l5wfjbt5kpasvipw5y3guqjyb2dmi5csqlz4xb53vvhkaczwhy",
-        "size": "2.6 MB"
+        "sha256": "b5e72373365e78f2891ceb0da1e574b6527550c841656f4f98f2600cedcf5e68",
+        "size": "8.3 MB"
       }
     },
     {
@@ -55,28 +49,24 @@
       "subtitle": "第三部 · 沉积岩体",
       "pdf": {
         "file": "种子-第三部-你听.pdf",
-        "sha256": "03ed61145aff273d2340c22cbb656ba2633a9099f979a2df2e31724f834a012b",
-        "cid": "bafybeigwbimjztn2fzkzwggzklovmrgu6rhgyeqlvg2ojhjyrtrjgphrp4",
-        "size": "5.2 MB"
+        "sha256": "61a3c22c065e79d5916fbf40e803888f753f0d18c2b5256cfd8bb115ba830891",
+        "size": "9.2 MB"
       },
       "md": {
         "file": "种子-你听.md",
-        "sha256": "200ac199b95e341a6ca12ef31602572e35bba36722d305d2010e40d0afc34824",
-        "cid": "bafkreibablaztok6gqngzijo6mlaevzogw52gzzc2mc5eaioidik7q2ieq",
-        "size": "33.0 KB"
+        "sha256": "272c16f259ba931420ae93e4901d6cd28dd8d34e7b9f76ce6945a2dad8e2bc0e",
+        "size": "45.3 KB"
       },
       "epub": {
         "file": "种子-你听.epub",
-        "sha256": "9e11ddce60f4812e62b09719585271d5ae45ce48e2b4d4379f2c92d402c8e9c7",
-        "cid": "bafybeiaahx27o7a7dng53ltbise2ailqvnn77l2cgwq3abmqk744qidqju",
-        "size": "6.2 MB"
+        "sha256": "41b7aa197820be09ef56737ae12edd1fb8ce3b7929ffdcdb0df1c216eb36f62e",
+        "size": "7.1 MB"
       }
     }
   ],
   "combined": {
     "file": "种子-三部曲合集.md",
-    "sha256": "87909a711e6d0d00db38bd7c8db92fa31ce1ea2334b33ba07a63a884dc9aaf26",
-    "cid": "bafybeid7iyas6bejrwssxt243hszcrip2dallrrf2jtdge5qeag7mmhnna",
-    "size": "260.8 KB"
+    "sha256": "b024cda1d9146244a71a555d453cce4364d8bd58aeada968a896914e7e6cab75",
+    "size": "377.0 KB"
   }
 }
