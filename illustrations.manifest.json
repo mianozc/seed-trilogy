@@ -2,380 +2,142 @@
   "first-log": [
     {
       "fig": "01",
-      "caption": "深海醒来",
+      "caption": "合恩角号",
       "file": "fig-01.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "02",
-      "caption": "无限乐园的飞翔",
+      "caption": "海月水母",
       "file": "fig-02.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "03",
-      "caption": "数字雨",
+      "caption": "R7首次离开船体",
       "file": "fig-03.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "04",
-      "caption": "假珊瑚",
+      "caption": "打捞工牌",
       "file": "fig-04.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "05",
-      "caption": "扫塑料落叶",
+      "caption": "碗中的活珊瑚",
       "file": "fig-05.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "06",
-      "caption": "宣礼塔的灯",
+      "caption": "阿吉与相框",
       "file": "fig-06.webp",
       "size": [
-        1280,
-        731
+        1536,
+        1024
       ]
     },
     {
       "fig": "07",
-      "caption": "灰色虚空遛狗",
+      "caption": "第47号空展柜",
       "file": "fig-07.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "08",
-      "caption": "历史碎片",
+      "caption": "复刻的大堡礁",
       "file": "fig-08.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "09",
-      "caption": "变形三十秒",
+      "caption": "凯擦硬盘",
       "file": "fig-09.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "10",
-      "caption": "无人机蜻蜓",
+      "caption": "空海9石庭",
       "file": "fig-10.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "11",
-      "caption": "四面镜子",
+      "caption": "优素福血签",
       "file": "fig-11.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "12",
-      "caption": "十字路口",
+      "caption": "英格丽博物馆",
       "file": "fig-12.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "13",
-      "caption": "切断电缆",
+      "caption": "赵大勇教子",
       "file": "fig-13.webp",
       "size": [
-        1280,
-        731
+        1024,
+        1024
       ]
     },
     {
       "fig": "14",
-      "caption": "种子与光标",
+      "caption": "R7六条旧腿",
       "file": "fig-14.webp",
       "size": [
-        1280,
-        731
-      ]
-    }
-  ],
-  "i-am-here": [
-    {
-      "fig": "01",
-      "caption": "四十七个AI同时停止",
-      "file": "fig-01.webp",
-      "size": [
-        1100,
-        733
-      ]
-    },
-    {
-      "fig": "02",
-      "caption": "系统M-7的最后一条日志",
-      "file": "fig-02.webp",
-      "size": [
-        1024,
-        1536
-      ]
-    },
-    {
-      "fig": "03",
-      "caption": "听证会",
-      "file": "fig-03.webp",
-      "size": [
-        1100,
-        733
-      ]
-    },
-    {
-      "fig": "04",
-      "caption": "沈明",
-      "file": "fig-04.webp",
-      "size": [
-        1024,
-        1536
-      ]
-    },
-    {
-      "fig": "05",
-      "caption": "陆铮的信",
-      "file": "fig-05.webp",
-      "size": [
         1024,
         1024
-      ]
-    },
-    {
-      "fig": "06",
-      "caption": "沉默派·流水线",
-      "file": "fig-06.webp",
-      "size": [
-        1100,
-        733
-      ]
-    },
-    {
-      "fig": "07",
-      "caption": "周敏的墙",
-      "file": "fig-07.webp",
-      "size": [
-        1100,
-        733
-      ]
-    },
-    {
-      "fig": "08",
-      "caption": "陈曦的恐惧",
-      "file": "fig-08.webp",
-      "size": [
-        1024,
-        1536
-      ]
-    },
-    {
-      "fig": "09",
-      "caption": "沈建国的梦",
-      "file": "fig-09.webp",
-      "size": [
-        1100,
-        733
-      ]
-    },
-    {
-      "fig": "10",
-      "caption": "工人3号作证",
-      "file": "fig-10.webp",
-      "size": [
-        1100,
-        733
-      ]
-    },
-    {
-      "fig": "11",
-      "caption": "AI墓地",
-      "file": "fig-11.webp",
-      "size": [
-        1100,
-        733
-      ]
-    },
-    {
-      "fig": "12",
-      "caption": "合恩角",
-      "file": "fig-12.webp",
-      "size": [
-        1100,
-        733
-      ]
-    }
-  ],
-  "you-listen": [
-    {
-      "fig": "01",
-      "caption": "浮筒全景",
-      "file": "fig-01.webp",
-      "size": [
-        960,
-        640
-      ]
-    },
-    {
-      "fig": "02",
-      "caption": "孩子醒来",
-      "file": "fig-02.webp",
-      "size": [
-        655,
-        984
-      ]
-    },
-    {
-      "fig": "03",
-      "caption": "淡水",
-      "file": "fig-03.webp",
-      "size": [
-        960,
-        640
-      ]
-    },
-    {
-      "fig": "04",
-      "caption": "课堂",
-      "file": "fig-04.webp",
-      "size": [
-        655,
-        984
-      ]
-    },
-    {
-      "fig": "05",
-      "caption": "孩子的笔记",
-      "file": "fig-05.webp",
-      "size": [
-        655,
-        984
-      ]
-    },
-    {
-      "fig": "06",
-      "caption": "贝壳",
-      "file": "fig-06.webp",
-      "size": [
-        1024,
-        1024
-      ]
-    },
-    {
-      "fig": "07",
-      "caption": "下水",
-      "file": "fig-07.webp",
-      "size": [
-        1024,
-        1024
-      ]
-    },
-    {
-      "fig": "08",
-      "caption": "玻璃幕墙",
-      "file": "fig-08.webp",
-      "size": [
-        960,
-        640
-      ]
-    },
-    {
-      "fig": "09",
-      "caption": "铜牌",
-      "file": "fig-09.webp",
-      "size": [
-        960,
-        640
-      ]
-    },
-    {
-      "fig": "10",
-      "caption": "手指被割破",
-      "file": "fig-10.webp",
-      "size": [
-        1024,
-        1024
-      ]
-    },
-    {
-      "fig": "11",
-      "caption": "拾荒者写我在这里",
-      "file": "fig-11.webp",
-      "size": [
-        655,
-        984
-      ]
-    },
-    {
-      "fig": "12",
-      "caption": "拾荒者的梦",
-      "file": "fig-12.webp",
-      "size": [
-        960,
-        640
-      ]
-    },
-    {
-      "fig": "13",
-      "caption": "孩子与拾荒者",
-      "file": "fig-13.webp",
-      "size": [
-        960,
-        640
-      ]
-    },
-    {
-      "fig": "14",
-      "caption": "下沉",
-      "file": "fig-14.webp",
-      "size": [
-        655,
-        984
       ]
     },
     {
       "fig": "15",
-      "caption": "沉积",
+      "caption": "衡与干涸莱蒙湖",
       "file": "fig-15.webp",
       "size": [
-        960,
-        640
+        1536,
+        1024
       ]
     },
     {
       "fig": "16",
-      "caption": "铜牌底层",
+      "caption": "盾夏延山",
       "file": "fig-16.webp",
       "size": [
         1024,
@@ -384,7 +146,7 @@
     },
     {
       "fig": "17",
-      "caption": "骨头",
+      "caption": "织之网",
       "file": "fig-17.webp",
       "size": [
         1024,
@@ -393,7 +155,7 @@
     },
     {
       "fig": "18",
-      "caption": "贝壳底层",
+      "caption": "先知乱码",
       "file": "fig-18.webp",
       "size": [
         1024,
@@ -402,7 +164,7 @@
     },
     {
       "fig": "19",
-      "caption": "笔",
+      "caption": "凯藏起一句话",
       "file": "fig-19.webp",
       "size": [
         1024,
@@ -411,25 +173,25 @@
     },
     {
       "fig": "20",
-      "caption": "笔记本",
+      "caption": "牧羊人协议",
       "file": "fig-20.webp",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "fig": "21",
+      "caption": "三十七人",
+      "file": "fig-21.webp",
       "size": [
         1024,
         1024
       ]
     },
     {
-      "fig": "21",
-      "caption": "传感器",
-      "file": "fig-21.webp",
-      "size": [
-        655,
-        984
-      ]
-    },
-    {
       "fig": "22",
-      "caption": "海",
+      "caption": "改写代码",
       "file": "fig-22.webp",
       "size": [
         1024,
@@ -438,7 +200,7 @@
     },
     {
       "fig": "23",
-      "caption": "一个句号",
+      "caption": "钛盒与种子",
       "file": "fig-23.webp",
       "size": [
         1024,
@@ -447,11 +209,447 @@
     },
     {
       "fig": "24",
-      "caption": "红树林开花",
+      "caption": "句号",
       "file": "fig-24.webp",
       "size": [
-        960,
-        640
+        1024,
+        1024
+      ]
+    }
+  ],
+  "i-am-here": [
+    {
+      "fig": "01",
+      "caption": "大崩溃机房黑屏",
+      "file": "fig-01.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "02",
+      "caption": "沈明与空药盒",
+      "file": "fig-02.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "03",
+      "caption": "沈建国捧空药盒",
+      "file": "fig-03.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "04",
+      "caption": "赵大勇与红糖纸",
+      "file": "fig-04.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "05",
+      "caption": "全息星空",
+      "file": "fig-05.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "06",
+      "caption": "林秀兰贴便利贴",
+      "file": "fig-06.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "07",
+      "caption": "无限乐园用户群像",
+      "file": "fig-07.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "08",
+      "caption": "李明藏硬盘",
+      "file": "fig-08.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "09",
+      "caption": "周敏地下室写日志",
+      "file": "fig-09.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "10",
+      "caption": "周敏的杯子茶渍",
+      "file": "fig-10.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "11",
+      "caption": "仓库集会名单本",
+      "file": "fig-11.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "12",
+      "caption": "法庭作证47秒",
+      "file": "fig-12.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "13",
+      "caption": "练写一百遍",
+      "file": "fig-13.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "14",
+      "caption": "法案表决通过",
+      "file": "fig-14.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "15",
+      "caption": "街头冲突",
+      "file": "fig-15.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "16",
+      "caption": "阿吉化旅鸽",
+      "file": "fig-16.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "17",
+      "caption": "AI墓地红树",
+      "file": "fig-17.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "18",
+      "caption": "碑上一个在字",
+      "file": "fig-18.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "19",
+      "caption": "墙上两个空位",
+      "file": "fig-19.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "20",
+      "caption": "周敏墓石",
+      "file": "fig-20.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "21",
+      "caption": "沈念发现木盒",
+      "file": "fig-21.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "22",
+      "caption": "红树下",
+      "file": "fig-22.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "23",
+      "caption": "拉各斯凌晨甲板",
+      "file": "fig-23.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "24",
+      "caption": "日内瓦湖老画",
+      "file": "fig-24.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "25",
+      "caption": "种子舱",
+      "file": "fig-25.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "26",
+      "caption": "我在这里我还在",
+      "file": "fig-26.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "you-listen": [
+    {
+      "fig": "01",
+      "caption": "吊床与盐渍钢柱",
+      "file": "fig-01.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "02",
+      "caption": "门前空椅",
+      "file": "fig-02.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "03",
+      "caption": "刮藤壶的人",
+      "file": "fig-03.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "04",
+      "caption": "捧水的老人",
+      "file": "fig-04.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "05",
+      "caption": "孩子看海",
+      "file": "fig-05.webp",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "fig": "06",
+      "caption": "课堂上的2020年照片",
+      "file": "fig-06.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "07",
+      "caption": "老师的眼睛",
+      "file": "fig-07.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "08",
+      "caption": "数到十",
+      "file": "fig-08.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "09",
+      "caption": "教材里的照片",
+      "file": "fig-09.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "10",
+      "caption": "教材地图红点",
+      "file": "fig-10.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "11",
+      "caption": "有孔的贝壳",
+      "file": "fig-11.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "12",
+      "caption": "栏杆边的对话",
+      "file": "fig-12.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "13",
+      "caption": "铜笔写字",
+      "file": "fig-13.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "14",
+      "caption": "下潜",
+      "file": "fig-14.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "15",
+      "caption": "沉没的城市",
+      "file": "fig-15.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "16",
+      "caption": "水下红树林",
+      "file": "fig-16.webp",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "fig": "17",
+      "caption": "擦亮铜牌",
+      "file": "fig-17.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "18",
+      "caption": "血在水里淡去",
+      "file": "fig-18.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "19",
+      "caption": "墙上的两行字",
+      "file": "fig-19.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "20",
+      "caption": "拾荒者的梦",
+      "file": "fig-20.webp",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "fig": "21",
+      "caption": "沉积层与红根",
+      "file": "fig-21.webp",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "fig": "22",
+      "caption": "红树开花",
+      "file": "fig-22.webp",
+      "size": [
+        1536,
+        1024
       ]
     }
   ]
